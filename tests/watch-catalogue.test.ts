@@ -7,9 +7,9 @@ test("watch colourways resolve to their own AI-styled asset", () => {
   for (const product of products.filter((p) => p.category === "watches")) {
     assert.equal(product.imagery, "ai-styled");
     assert.equal(
-      product.demo,
+      product.testCheckoutOnly,
       true,
-      "pricing and checkout remain a labelled preview",
+      "checkout remains in test mode",
     );
     assert.equal(
       new Set(product.colors.map((c) => c.name)).size,
@@ -27,23 +27,23 @@ test("watch colourways resolve to their own AI-styled asset", () => {
   }
 });
 
-test("identically named black finishes do not substitute a different watch model", () => {
-  const contour = products.find((p) => p.id === "w1")!;
-  const square = products.find((p) => p.id === "w2")!;
-  assert.equal(
-    productVisual(contour, "Black / Black").image,
-    "watch-contour-black",
+test("owner-corrected Felix models cannot mix dial families", () => {
+  const first = products.find((p) => p.id === "w1")!;
+  const petite = products.find((p) => p.id === "w3")!;
+  assert.deepEqual(
+    first.variants.map((v) => v.name),
+    ["Rose gold / Pink", "Gunmetal / White"],
+  );
+  assert.deepEqual(
+    petite.variants.map((v) => v.name),
+    ["Black / Black", "Rose gold / White"],
   );
   assert.equal(
-    productVisual(square, "Black / Black").image,
-    "watch-date-black",
-  );
-  assert.notEqual(
-    productVisual(contour, "Black / Black").image,
-    productVisual(square, "Black / Black").image,
+    productVisual(petite, "Black / Black").image,
+    "watch-petite-black",
   );
   assert.equal(
-    productVisual(contour, "Rose gold / Ivory").position,
-    "23% center",
+    first.variants.some((v) => v.name === "Black / Black"),
+    false,
   );
 });

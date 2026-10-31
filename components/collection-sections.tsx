@@ -73,7 +73,7 @@ export function ShopByCategory() {
           title="Watches"
           description="For every moment you make yours."
           image="watch-category-stock"
-          alt="Contour watch with a rose-gold cushion case and ivory dial on cream silk."
+          alt="Petite Dial watch with a rose-gold cushion case and ivory dial on cream silk."
         />
         <CategoryBanner
           category="bags"
@@ -115,7 +115,7 @@ export function EditorialCollection() {
         <Photo
           defer
           name="watch-editorial-stock"
-          alt="Fashion image of a woman wearing the rose-gold Contour watch with ivory tailoring."
+          alt="Fashion image of a woman wearing the rose-gold Petite Dial watch with ivory tailoring."
           sizes="100vw"
         />
       </div>

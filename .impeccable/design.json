@@ -208,17 +208,44 @@
     },
     "watchImagery": {
       "policy": "Only AI-generated website watch stills, including catalogue, colour selection, demo bag, category, editorial and moodboard. Supplied original photos and video stills are reference-only. Preserve the approved cinematic film and its performance policy.",
-      "provenance": "Seven newly generated finals plus three supplied AI assets. Preserve media/watches/MODEL-MAP.md, exact prompts in media/watches/PROMPTS.json, selected full-resolution sources in media/watches/sources/ and JPEG delivery derivatives in public/images/.",
+      "provenance": "Preserve media/watches/MODEL-MAP.md, exact prompts in media/watches/PROMPTS.json, selected sources in media/watches/sources/ and JPEG delivery derivatives in public/images/. Includes three supplied AI Petite Dial Black views.",
       "families": {
-        "The Contour Watch": { "Rose gold / Ivory": "watch-category-stock", "Black / Black": "watch-contour-black" },
-        "The Soft Square Watch": { "Rose gold / Black": "watch-date-rose-black", "Rose gold / Green": "watch-date-green", "Rose gold / Champagne": "watch-date-champagne", "Black / Black": "watch-date-black" },
-        "The Petite Square Watch": { "Rose gold / Pink": "watch-square-pink", "Gunmetal / White": "watch-square-gunmetal" },
-        "The Teal Dial Watch": { "Silver / Teal": "watch-teal" }
+        "The Signature Watch": {
+          "Rose gold / Pink": "watch-square-pink",
+          "Gunmetal / White": "watch-square-gunmetal"
+        },
+        "The Soft Square Watch": {
+          "Rose gold / Black": "watch-date-rose-black",
+          "Rose gold / Green": "watch-date-green",
+          "Rose gold / Champagne": "watch-date-champagne",
+          "Black / Black": "watch-date-black"
+        },
+        "The Petite Dial Watch": {
+          "Black / Black": "watch-petite-black",
+          "Rose gold / White": "watch-category-stock"
+        },
+        "The Teal Dial Watch": {
+          "Silver / Teal": "watch-teal"
+        }
       },
-      "suppliedAI": ["watch-date-rose-black", "watch-square-pink", "watch-square-gunmetal"],
-      "newFinals": ["watch-category-stock", "watch-contour-black", "watch-date-green", "watch-date-champagne", "watch-date-black", "watch-teal", "watch-editorial-stock"],
-      "behaviour": "lib/products.ts and productVisual resolve each of nine colourways to its own image for product selection and the demo bag. The second gallery crop reuses the selected image. Visible AI-styled/demo labels are removed at owner request; retain provenance in media/watches/.",
-      "claims": "Four editorial model families, not verified manufacturer model numbers. Owner-supplied prices are ₹599 Casio and ₹799 Felix. Stock is unconfirmed; checkout remains non-transactional with payments disabled. Dimensions, materials, movement, water resistance and authenticity remain unverified; await the verified launch catalogue. Preserve model distinctions and correction decisions in MODEL-MAP.md."
+      "suppliedAI": [
+        "watch-date-rose-black",
+        "watch-square-pink",
+        "watch-square-gunmetal",
+        "watch-petite-black",
+        "watch-petite-black-side",
+        "watch-petite-black-bracelet"
+      ],
+      "newFinals": [
+        "watch-category-stock",
+        "watch-date-green",
+        "watch-date-champagne",
+        "watch-date-black",
+        "watch-teal",
+        "watch-editorial-stock"
+      ],
+      "behaviour": "Nine colourways resolve through lib/products.ts and productVisual. Felix w1 Signature is Rose gold / Pink and Gunmetal / White; w3 Petite Dial is the separate smaller model in Black / Black and Rose gold / White. Black has three supplied AI views; White and other variants use full images and matching crops. Visible AI-styled/demo labels remain removed; retain provenance.",
+      "claims": "Editorial names are not verified manufacturer model numbers. Owner prices: Casio ₹599 and Felix ₹799; opening stock three per colour/SKU. Dimensions, materials, movement, water resistance and authenticity remain unverified; establish no genuine-product claim. Local test orders only."
     },
     "galleryTokens": {
       "controlSize": "44px",
@@ -234,17 +261,17 @@
         "components/product-image-carousel.tsx",
         "lib/carousel-scheduler.ts"
       ],
-      "pdp": "Gallery, title, price and colour chips precede description. Variant-keyed gallery resets to first matching image. Native swipe, keyboard arrows, subtle 44px controls and current/total count.",
-      "images": "Full image and named detail crop of the same generated image; no independent rear or side angles. Listing cards stay within their default variant.",
+      "pdp": "Gallery, title, price and colour chips precede description. Variant-keyed gallery resets to first matching image. Native swipe, keyboard arrows, subtle 44px controls and current/total count. One Add to bag and one Buy now share actions fixed at the mobile viewport bottom. Quantity respects current preview stock; Buy now skips the cart drawer.",
+      "images": "Petite Dial Black has supplied AI main, side and bracelet views. White and other variants use full images and detail crops of the same image. Listing cards stay within their default variant.",
       "listing": "Reusable ProductImageCarousel on listings, search and related products; native swipe, dots and desktop hover or keyboard-focus arrows.",
       "scheduler": "One global timer and visibility observer for automatic rotation. One visible card per 3.5-second tick, selected fairly from nearest-centre candidates; preload 650ms before decoded-image advance. Hold during interaction and pause eight seconds after release. Stop for reduced motion, Save-Data, slow-2g/2g and hidden documents.",
       "shoppingInfo": "Three equal points in a horizontal row at every viewport, each an icon and short label without small explanatory paragraphs.",
-      "commerce": "Owner-supplied INR prices: Casio 599, Felix 799, all bags 399. Clear non-transactional checkout, disabled order/payment action and no payment connection."
+      "commerce": "Owner prices: Casio ₹599, Felix ₹799, bags ₹399; opening stock three per colour/SKU. Free shipping across India; damage-on-delivery returns require an unpacking video. Local COD test foundation only."
     },
     "bagImagery": {
       "policy": "Nine generated bag designs replace two fictional products, based on owner references in Dearelle - Nayans/Images. Descriptive names establish no authenticity or specifications.",
       "provenance": "Retain media/bags/MODEL-MAP.md, PROMPTS.json and sources/; JPEG delivery derivatives in public/images/. Visible AI-styled/demo labels removed at owner request; provenance stays documented.",
-      "claims": "No verified material, dimensions, stock or authenticity claims. All bags ₹399, supplied by owner."
+      "claims": "No verified material, dimensions or authenticity claims. Owner confirms bags ₹399 and opening stock three per colour/SKU."
     },
     "mediaLoading": {
       "hero": "Versioned -v2 mobile/desktop MP4, WEBP and JPEG assets use public, max-age=31536000, immutable caching; MP4 delivery supports byte ranges. Original cinematic masters remain unchanged.",
@@ -256,6 +283,13 @@
       },
       "fonts": "Same Editorial/Everyday faces, glyphs, horizontal metrics and styling; WOFF2 first, TTF fallback, font-display swap.",
       "homepage": "Server-render the real hero without a generic loading fallback; loading boundaries remain in three non-home segments. Homepage Photo defer uses IntersectionObserver rootMargin 240px, reserved layout, transparent placeholder, low fetch priority and noscript real-image fallback; catalogue/PDP defaults remain unchanged."
+    },
+    "commerce": {
+      "scope": "Local SQLite test orders/inventory only. Explicit test warnings and fictional customer details required; real public orders disabled. No online gateway, automatic paid state or simulated payment success.",
+      "cod": "₹50 advance deposit is deducted from the order total, never added as a fee. Remaining balance is COD. Owner confirms with customer and manually verifies the advance before packing or dispatch.",
+      "checkout": "Mobile contact first, summary before COD consent; two columns desktop. Input text 16px. Existing palette and tokens retained.",
+      "privacy": "Private guest confirmation uses an HttpOnly cookie. Secret Bearer access gates owner order lists, status/history and tracking updates; secrets stay server-side.",
+      "review": "Commerce screenshots document the local test milestone. Preserve hero CSS and category curve geometry."
     }
   },
   "components": [
@@ -277,9 +311,9 @@
     {
       "name": "Checkout field",
       "kind": "input",
-      "description": "White field with warm border and a small 2px radius.",
+      "description": "White field with warm border, 2px radius and 16px input text.",
       "html": "<label class=\"ds-field\">Email<input type=\"email\" placeholder=\"you@example.com\"></label>",
-      "css": ".ds-field{display:flex;flex-direction:column;gap:7px;font-family:Everyday,Arial,sans-serif;font-size:11px;color:var(--espresso)}.ds-field input{background:var(--white);color:var(--espresso);border:1px solid #d7c8bf;border-radius:2px;padding:12px;min-height:46px;font:inherit;caret-color:var(--rose)}.ds-field input:focus-visible{outline:2px solid #965c68;outline-offset:5px}"
+      "css": ".ds-field{display:flex;flex-direction:column;gap:7px;font-family:Everyday,Arial,sans-serif;font-size:11px;color:var(--espresso)}.ds-field input{background:var(--white);color:var(--espresso);border:1px solid #d7c8bf;border-radius:2px;padding:12px;min-height:46px;font:inherit;font-size:16px;caret-color:var(--rose)}.ds-field input:focus-visible{outline:2px solid #965c68;outline-offset:5px}"
     },
     {
       "name": "Desktop navigation",
@@ -348,7 +382,7 @@
       }
     ],
     "dos": [
-      "Do respect owner-approved removal of visible AI-styled/demo and demo-price labels; retain provenance in media/bags/ and media/watches/ and clear non-transactional checkout status.",
+      "Do respect owner-approved removal of visible AI-styled/demo and demo-price labels; retain provenance in media/bags/ and media/watches/ and clear local-test checkout warnings.",
       "Do preserve reduced motion, keyboard focus and mobile layouts.",
       "Do keep the film unobstructed, with Explore Collection centred in a separate 52px minimum ivory strip below it.",
       "Do preserve responsive still fallback, accessible playback control, offscreen and hidden pause, and preference-aware film source loading.",
@@ -362,7 +396,7 @@
       "Don't restore the old text-heavy split hero, overlay a visible title on the model or add extra pink decoration.",
       "Don't present concept-film accessories as actual inventory.",
       "Don't publish original watch photographs, video stills, packaging, collages or price posters; originals remain reference-only until an owner-approved verified launch catalogue replaces this policy.",
-      "Don't infer verified specifications, authenticity, stock or availability from generated imagery. Prices come from the owner: ₹599 Casio, ₹799 Felix and ₹399 all bags."
+      "Don't infer verified specifications, authenticity, stock or availability from generated imagery. Owner confirms opening stock three per colour/SKU and prices ₹599 Casio, ₹799 Felix and ₹399 bags; public orders remain disabled."
     ]
   }
 }

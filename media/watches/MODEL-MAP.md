@@ -28,3 +28,14 @@ Raw phone images, video stills, the supplied ZIP, packaging photos, collages and
 ## Owner pricing update
 
 On 31 October 2026 the owner supplied Casio ₹599 and Felix ₹799 display pricing. This supersedes the unconfirmed/demo-price status above. Contour and Petite Square are assigned Felix; Soft Square and Teal Dial are assigned Casio from the supplied reference groups. These are storefront brand assignments, not independent authenticity verification. All variants inherit the brand price unless an explicit override is configured. Visible AI/demo labels are removed at the owner's request; provenance and non-transactional checkout remain.
+
+## Owner-corrected Felix groups — purchase milestone
+
+This supersedes the earlier family grouping and asset exclusion decisions above. The owner explicitly confirmed two Felix models, both ₹799:
+
+- **The Signature Watch** (w1, preserved URL the-everyday-watch): Rose gold / Pink → watch-square-pink; Gunmetal / White → watch-square-gunmetal. No black colour remains in this first model.
+- **The Petite Dial Watch** (w3, preserved URL the-petite-square-watch), the smaller-dial model: Black / Black → watch-petite-black; Rose gold / White → watch-category-stock.
+
+The owner selected the FELIX_Black_BlackDial folder as the smaller model authority. Imported AI views are 03_elegant_felix_watch_in_nature.png (main), 02_black_watch_crown_in_garden_bokeh.png (side) and 05_felix_watch_bracelet_in_nature.png (bracelet), saved as watch-petite-black, watch-petite-black-side and watch-petite-black-bracelet. These replace the old generated watch-contour-black mapping; that earlier output is archived but unused by the catalogue. Original generation prompts for these supplied AI assets are unknown; source provenance is embedded. No authenticity or technical-specification verification is inferred.
+
+Colour-derived variant IDs and SKUs are stable across reordering. The owner confirmed three pieces per colour/SKU. Old saved lines whose colours no longer belong to a model are rejected rather than remapped to another watch. Test checkout and local stock reservations are separate from a public production inventory.

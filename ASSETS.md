@@ -27,3 +27,7 @@ See `media/watches/MODEL-MAP.md` for model distinctions and exclusions, and `med
 ## Generated bags and owner pricing
 
 Nine bag photographs and a matching category banner now replace the fictional bag imagery. These were generated with the built-in imagegen tool using Dearelle - Nayans/Images originals as merchandise references. Selected PNGs: media/bags/sources/. Website JPEGs: public/images/bag-*.jpg. Exact prompts and model mapping: media/bags/PROMPTS.json and MODEL-MAP.md; prompts are also embedded in each new PNG/JPEG. Original garden/phone photographs are not published. The owner explicitly supplied ₹399 for every bag and ₹599 Casio / ₹799 Felix watch pricing. Visible AI/demo labels were removed as requested; this does not verify materials, dimensions, stock or designer authenticity, and checkout remains non-transactional. The older stock bag files are archived and no longer used for the bag catalogue, category or bag moodboard tile.
+
+## Corrected Felix families
+
+The owner confirmed Signature = Pink + Gunmetal/White and the smaller Petite Dial = Black + Rose gold/White. The Petite black model now uses three supplied AI images from FELIX_Black_BlackDial, imported as watch-petite-black, watch-petite-black-side and watch-petite-black-bracelet. The old generated watch-contour-black is no longer referenced by product data. See the superseding owner-correction section in media/watches/MODEL-MAP.md and PROMPTS.json. No new image generation was needed for this correction.

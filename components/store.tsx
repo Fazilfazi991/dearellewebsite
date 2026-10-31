@@ -26,6 +26,7 @@ import {
   money,
   productVisual,
   productPrice,
+  selectedVariant,
   type Product,
 } from "@/lib/products";
 import { addItem, subtotal, validCart, type CartItem } from "@/lib/cart";
@@ -33,7 +34,8 @@ import { Photo } from "./image";
 import { ProductImageCarousel } from "./product-image-carousel";
 type Store = {
   items: CartItem[];
-  add: (item: CartItem) => void;
+  add: (item: CartItem, options?: { openCart?: boolean }) => void;
+  clear: () => void;
   update: (id: string, color: string, quantity: number) => void;
   open: () => void;
   wish: string[];
@@ -111,9 +113,10 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     <Context.Provider
       value={{
         items,
-        add: (item) => {
+        clear: () => setItems([]),
+        add: (item, options) => {
           setItems((old) => addItem(old, item));
-          setPanel("cart");
+          if (options?.openCart !== false) setPanel("cart");
         },
         update,
         open: () => setPanel("cart"),
@@ -279,7 +282,8 @@ export function CartContents({ close }: { close?: () => void }) {
   return items.length ? (
     <>
       <p className="notice">
-        Your selected pieces. Checkout is not currently accepting orders.
+        COD · We’ll contact you before dispatch. ₹50 advance is deducted from
+        your total.
       </p>
       <div className="cart-lines">
         {items.map((item) => {
@@ -313,7 +317,9 @@ export function CartContents({ close }: { close?: () => void }) {
                   </button>
                   <span>{item.quantity}</span>
                   <button
-                    disabled={item.quantity >= 10}
+                    disabled={
+                      item.quantity >= selectedVariant(p, item.color).stock
+                    }
                     aria-label={`Increase ${p.name} quantity`}
                     onClick={() => update(p.id, item.color, item.quantity + 1)}
                   >
@@ -338,7 +344,8 @@ export function CartContents({ close }: { close?: () => void }) {
           <strong>{money(subtotal(items))}</strong>
         </div>
         <p className="small muted">
-          Shipping and taxes will be confirmed before launch.
+          Free delivery across India. ₹50 advance is part of your total;
+          remaining balance by COD.
         </p>
         <Link className="button full" onClick={close} href="/checkout">
           Go to checkout <ArrowRight size={17} />

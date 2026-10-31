@@ -4,6 +4,14 @@ const config: NextConfig = {
   images: { formats: ["image/avif", "image/webp"] },
   async headers() {
     return [
+      ...["/api/:path*", "/orders/:path*", "/admin/:path*"].map((source) => ({
+        source,
+        headers: [
+          { key: "Cache-Control", value: "private, no-store" },
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      })),
       ...["mobile", "desktop"].flatMap((format) =>
         ["mp4", "webp", "jpg"].map((extension) => ({
           source: `/videos/dearelle-hero-${format}-v2.${extension}`,

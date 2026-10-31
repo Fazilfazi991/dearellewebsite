@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Minus, Plus, ArrowRight, Heart, Check } from "lucide-react";
 import {
@@ -9,6 +9,7 @@ import {
   productPrice,
   selectedVariant,
 } from "@/lib/products";
+import { commercePolicy } from "@/lib/config";
 import { ProductGallery } from "./product-gallery";
 import { useStore } from "./store";
 export function ProductDetail({ product: p }: { product: Product }) {
@@ -18,6 +19,28 @@ export function ProductDetail({ product: p }: { product: Product }) {
   const router = useRouter();
   const variant = selectedVariant(p, color);
   const price = productPrice(p, color);
+  const lastBuy = useRef(0);
+  const [stock, setStock] = useState<Record<string, number>>({});
+  const available = stock[variant.id] ?? variant.stock;
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("/api/inventory", { cache: "no-store", signal: controller.signal })
+      .then(async (response) => {
+        if (response.ok) {
+          const data = await response.json();
+          if (!controller.signal.aborted) setStock(data.stock);
+        }
+      })
+      .catch(() => {});
+    return () => controller.abort();
+  }, [p.id]);
+  function buyNow() {
+    if (qty > available || available < 1 || Date.now() - lastBuy.current < 1000)
+      return;
+    lastBuy.current = Date.now();
+    add({ productId: p.id, color, quantity: qty }, { openCart: false });
+    router.push("/checkout");
+  }
   return (
     <div className="detail-grid">
       <ProductGallery key={variant.id} product={p} variant={variant} />
@@ -49,8 +72,11 @@ export function ProductDetail({ product: p }: { product: Product }) {
                 key={c.id}
                 aria-label={`Select ${c.name}`}
                 aria-pressed={color === c.name}
-                disabled={c.availability === "unavailable"}
-                onClick={() => setColor(c.name)}
+                disabled={c.availability === "unavailable" || stock[c.id] === 0}
+                onClick={() => {
+                  setColor(c.name);
+                  setQty(1);
+                }}
                 className={color === c.name ? "active" : ""}
               >
                 <span style={{ background: c.swatch }} />
@@ -73,29 +99,39 @@ export function ProductDetail({ product: p }: { product: Product }) {
             </button>
             <span>{qty}</span>
             <button
-              disabled={qty === 10}
+              disabled={qty >= available}
               aria-label="Increase quantity"
               onClick={() => setQty(qty + 1)}
             >
               <Plus size={15} />
             </button>
           </div>
+          <span className="small muted">
+            {available} available · SKU {variant.sku}
+          </span>
+        </div>
+        <div className="purchase-actions">
           <button
             className="button"
+            disabled={available < 1 || qty > available}
             onClick={() => add({ productId: p.id, color, quantity: qty })}
           >
             Add to bag <ArrowRight size={17} />
           </button>
+          <button
+            className="button secondary"
+            disabled={available < 1 || qty > available}
+            onClick={buyNow}
+          >
+            Buy now
+          </button>
         </div>
-        <button
-          className="button secondary full buy-now"
-          onClick={() => {
-            add({ productId: p.id, color, quantity: qty });
-            router.push("/checkout");
-          }}
-        >
-          Buy now
-        </button>
+        <p className="purchase-policy">
+          Free delivery across India · COD
+          <br />
+          We’ll contact you before dispatch. ₹50 advance is deducted from your
+          total.
+        </p>
         <div className="product-accordions">
           <details open>
             <summary>Product details & dimensions</summary>
@@ -112,36 +148,17 @@ export function ProductDetail({ product: p }: { product: Product }) {
           <details>
             <summary>Shipping & returns</summary>
             <p>
-              Delivery charges, serviceable locations and return eligibility
-              await confirmation. Read our{" "}
-              <Link href="/shipping">shipping</Link> and{" "}
-              <Link href="/returns">return policy placeholders</Link>.
+              {commercePolicy.returns}{" "}
+              <Link href="/returns">Return information</Link>.
             </p>
           </details>
           <details>
             <summary>A note on this piece</summary>
             <p>
-              This checkout is not currently accepting orders. It is not an
-              offer for sale. Availability will be confirmed before ordering.
+              This preview records test requests only. No payment is taken and
+              no real dispatch is created.
             </p>
           </details>
-        </div>
-        <div className="mobile-purchase">
-          <button
-            className="button"
-            onClick={() => add({ productId: p.id, color, quantity: qty })}
-          >
-            Add to bag
-          </button>
-          <button
-            className="button secondary"
-            onClick={() => {
-              add({ productId: p.id, color, quantity: qty });
-              router.push("/checkout");
-            }}
-          >
-            Buy now
-          </button>
         </div>
       </div>
     </div>

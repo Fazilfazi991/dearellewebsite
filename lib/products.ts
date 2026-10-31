@@ -17,6 +17,7 @@ export type ProductVariant = {
   price?: number;
   images: ProductImage[];
   availability: "unconfirmed" | "available" | "unavailable";
+  stock: number;
 };
 export const watchBrandPrices = { Casio: 599, Felix: 799 } as const;
 export type Product = {
@@ -33,7 +34,7 @@ export type Product = {
   colors: ProductColor[];
   imagery?: "ai-styled";
   description: string;
-  demo: true;
+  testCheckoutOnly: true;
 };
 const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
   brand: Product["brand"];
@@ -42,24 +43,22 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     id: "w1",
     brand: "Felix",
     slug: "the-everyday-watch",
-    name: "The Contour Watch",
+    name: "The Signature Watch",
     category: "watches",
     price: 799,
-    image: "watch-category-stock",
-    imagePosition: "23% center",
+    image: "watch-square-pink",
     colors: [
+      { name: "Rose gold / Pink", hex: "#c99494", image: "watch-square-pink" },
       {
-        name: "Rose gold / Ivory",
-        hex: "#bd9687",
-        image: "watch-category-stock",
-        imagePosition: "23% center",
+        name: "Gunmetal / White",
+        hex: "#44474b",
+        image: "watch-square-gunmetal",
       },
-      { name: "Black / Black", hex: "#252526", image: "watch-contour-black" },
     ],
     description:
-      "Soft cushion curves, slender markers and the distinctive 12-and-6 dial. Explore rose gold with an ivory face, or black with warm rose-gold details.",
+      "The first Felix model, with a softly squared dial. Choose rose gold with a pink face or gunmetal with a white face.",
     imagery: "ai-styled",
-    demo: true,
+    testCheckoutOnly: true,
   },
   {
     id: "b1",
@@ -75,7 +74,7 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     description:
       "A structured silhouette with a curved handle, textured finish and a distinctive rectangular clasp.",
     imagery: "ai-styled",
-    demo: true,
+    testCheckoutOnly: true,
   },
   {
     id: "w2",
@@ -102,7 +101,7 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     description:
       "A softly rounded square face, clean baton markers and a small date-window detail. Four colourways bring a different mood to the same considered silhouette.",
     imagery: "ai-styled",
-    demo: true,
+    testCheckoutOnly: true,
   },
   {
     id: "b2",
@@ -116,28 +115,29 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     description:
       "A roomy-looking everyday silhouette with twin handles, sculpted front pleats and a slim silver-tone detail.",
     imagery: "ai-styled",
-    demo: true,
+    testCheckoutOnly: true,
   },
   {
     id: "w3",
     brand: "Felix",
     slug: "the-petite-square-watch",
-    name: "The Petite Square Watch",
+    name: "The Petite Dial Watch",
     category: "watches",
     price: 799,
-    image: "watch-square-pink",
+    image: "watch-petite-black",
     colors: [
-      { name: "Rose gold / Pink", hex: "#c99494", image: "watch-square-pink" },
+      { name: "Black / Black", hex: "#252526", image: "watch-petite-black" },
       {
-        name: "Gunmetal / White",
-        hex: "#44474b",
-        image: "watch-square-gunmetal",
+        name: "Rose gold / White",
+        hex: "#bd9687",
+        image: "watch-category-stock",
+        imagePosition: "23% center",
       },
     ],
     description:
-      "A compact square case with gently softened corners and an understated baton dial. Choose a pink face with rose-gold details or a white face framed in gunmetal.",
+      "The smaller-dial Felix model, distinct from the Signature. Available in black with a black dial or rose gold with a white dial.",
     imagery: "ai-styled",
-    demo: true,
+    testCheckoutOnly: true,
   },
   {
     id: "w4",
@@ -151,7 +151,7 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     description:
       "A vivid teal face within a rounded silver case, with layered dial details and a silver link bracelet. A distinct design within the collection.",
     imagery: "ai-styled",
-    demo: true,
+    testCheckoutOnly: true,
   },
   {
     id: "b3",
@@ -166,7 +166,7 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     ],
     description: "A glossy marbled finish, ivory trim and a clean flap shape.",
     imagery: "ai-styled",
-    demo: true,
+    testCheckoutOnly: true,
   },
   {
     id: "b4",
@@ -181,7 +181,7 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     ],
     description: "A soft purple finish with contrasting ivory sides and strap.",
     imagery: "ai-styled",
-    demo: true,
+    testCheckoutOnly: true,
   },
   {
     id: "b5",
@@ -197,7 +197,7 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     description:
       "A compact chocolate silhouette with a floral geometric pattern and a slim shoulder strap.",
     imagery: "ai-styled",
-    demo: true,
+    testCheckoutOnly: true,
   },
   {
     id: "b6",
@@ -217,7 +217,7 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     description:
       "An ivory patterned flap, chocolate trim and a sculptural gold-tone clasp.",
     imagery: "ai-styled",
-    demo: true,
+    testCheckoutOnly: true,
   },
   {
     id: "b7",
@@ -231,7 +231,7 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     description:
       "A curved shoulder silhouette with a textured olive finish and a small gold-tone accent.",
     imagery: "ai-styled",
-    demo: true,
+    testCheckoutOnly: true,
   },
   {
     id: "b8",
@@ -245,7 +245,7 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     description:
       "A gently curved profile, ivory texture and matching shoulder strap.",
     imagery: "ai-styled",
-    demo: true,
+    testCheckoutOnly: true,
   },
   {
     id: "b9",
@@ -259,7 +259,7 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     description:
       "A rich berry finish, softly curved body and a small gold-tone detail.",
     imagery: "ai-styled",
-    demo: true,
+    testCheckoutOnly: true,
   },
 ];
 // Normalize legacy colour data once; all buying surfaces share these variants.
@@ -272,20 +272,34 @@ export const products: Product[] = catalogue.map((p) => {
     ...p,
     basePrice,
     price: basePrice,
-    variants: p.colors.map((c, index) => {
+    variants: p.colors.map((c) => {
       const image = c.image ?? p.image;
       const position =
         c.imagePosition ?? (c.image ? "center" : (p.imagePosition ?? "center"));
       return {
-        id: `${p.id}-${index + 1}`,
-        sku: `${p.id.toUpperCase()}-${index + 1}`,
+        id: `${p.id}-${c.name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/-$/, "")}`,
+        sku: `${p.id.toUpperCase()}-${c.name
+          .toUpperCase()
+          .replace(/[^A-Z0-9]+/g, "-")
+          .replace(/-$/, "")}`,
         name: c.name,
         swatch: c.hex,
-        availability: "unconfirmed" as const,
-        images: [
-          { image, position },
-          { image, position, detail: true },
-        ],
+        availability: "available" as const,
+        stock: 3,
+        images:
+          image === "watch-petite-black"
+            ? [
+                { image, position },
+                { image: "watch-petite-black-side", position: "center" },
+                { image: "watch-petite-black-bracelet", position: "center" },
+              ]
+            : [
+                { image, position },
+                { image, position, detail: true },
+              ],
       };
     }),
   };
@@ -309,10 +323,13 @@ export const money = (value: number) =>
     currency: "INR",
     maximumFractionDigits: 0,
   }).format(value);
-export const catalogueMode = "demo" as const;
-export function assertDemoOnly() {
-  if (process.env.CATALOGUE_MODE && process.env.CATALOGUE_MODE !== "demo")
+export const catalogueMode = "owner-catalogue-test-checkout" as const;
+export function assertTestCheckout() {
+  if (
+    process.env.CATALOGUE_MODE &&
+    !["test", "demo"].includes(process.env.CATALOGUE_MODE)
+  )
     throw new Error(
-      "Live catalogue is unavailable. Replace demo data and complete launch review before enabling commerce.",
+      "Live order intake is unavailable. Configure durable storage and complete launch review before enabling commerce.",
     );
 }

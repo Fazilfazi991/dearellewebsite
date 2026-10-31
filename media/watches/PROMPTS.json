@@ -105,5 +105,38 @@
       "originalSource": "FELIX_Gunmetal_WhiteDial/01_minimalist_felix_gunmetal_watch.png",
       "promptKey": null
     }
-  ]
+  ],
+  "ownerCorrection": {
+    "date": "2026-10-31",
+    "groups": {
+      "w1": [
+        "Rose gold / Pink",
+        "Gunmetal / White"
+      ],
+      "w3": [
+        "Black / Black",
+        "Rose gold / White"
+      ]
+    },
+    "providedAiAssets": [
+      {
+        "sourceFolder": "FELIX_Black_BlackDial",
+        "original": "03_elegant_felix_watch_in_nature.png",
+        "saved": "watch-petite-black",
+        "prompt": "Original generation prompt unavailable; user-supplied AI asset."
+      },
+      {
+        "sourceFolder": "FELIX_Black_BlackDial",
+        "original": "02_black_watch_crown_in_garden_bokeh.png",
+        "saved": "watch-petite-black-side",
+        "prompt": "Original generation prompt unavailable; user-supplied AI asset."
+      },
+      {
+        "sourceFolder": "FELIX_Black_BlackDial",
+        "original": "05_felix_watch_bracelet_in_nature.png",
+        "saved": "watch-petite-black-bracelet",
+        "prompt": "Original generation prompt unavailable; user-supplied AI asset."
+      }
+    ]
+  }
 }

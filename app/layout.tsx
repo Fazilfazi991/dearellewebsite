@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { StoreProvider } from "@/components/store";
-import { assertDemoOnly } from "@/lib/products";
+import { assertTestCheckout } from "@/lib/products";
 import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
@@ -22,7 +22,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  assertDemoOnly();
+  assertTestCheckout();
   return (
     <html lang="en-IN">
       <body>

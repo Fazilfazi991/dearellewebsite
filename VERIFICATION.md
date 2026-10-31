@@ -89,3 +89,7 @@ This supersedes older demo pricing/visible-label requirements. Owner prices: Cas
 - Build passed with 28 routes, lint and TypeScript passed, 12 tests passed. Fresh read-only finish reviewer: **ship**, no blocking visual or functional issue found in reviewed screenshots/source. Mechanical detector found advisory design-system token drift in the existing global stylesheet; no primary findings. New control/indicator tokens are documented without changing incumbent hero or category geometry.
 
 Evidence in .impeccable/review/product-ux/: options-final-360/375/390/414.jpg, product-desktop.jpg, bags-final-375.jpg, listing-final-360/390/414/768/1440.jpg, watches-final-375.jpg, home-category-final-375.jpg, home-information-final-375.jpg, search-desktop.jpg and autoplay-observations.json.
+
+## COD purchase milestone
+
+See PURCHASE-MILESTONE.md for the superseding owner facts and full test matrix. Seventeen tests and the actual-server verification script pass. Mobile 360/375/390/414 and desktop checkout/owner views were inspected. No gateway payment or real dispatch was performed. Test requests persist locally; unauthorized/other-browser access is denied; duplicate retries do not create duplicate orders. Cart shipping copy and confirmation status display were corrected after read-only review. Evidence is under .impeccable/review/commerce/.

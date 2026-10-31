@@ -22,7 +22,7 @@ export function validCart(input: unknown): CartItem[] {
         ) &&
         Number.isInteger(row.quantity) &&
         row.quantity > 0 &&
-        row.quantity <= 10,
+        row.quantity <= 100,
     )
     .reduce<CartItem[]>((rows, row) => {
       if (
@@ -33,7 +33,13 @@ export function validCart(input: unknown): CartItem[] {
         rows.push({
           productId: row.productId,
           color: row.color,
-          quantity: row.quantity,
+          quantity: Math.min(
+            row.quantity,
+            selectedVariant(
+              products.find((p) => p.id === row.productId)!,
+              row.color,
+            ).stock,
+          ),
           variantId: selectedVariant(
             products.find((p) => p.id === row.productId)!,
             row.color,
@@ -62,7 +68,16 @@ export function addItem(items: CartItem[], item: CartItem): CartItem[] {
     found
       ? items.map((r) =>
           r === found
-            ? { ...r, quantity: Math.min(10, r.quantity + item.quantity) }
+            ? {
+                ...r,
+                quantity: Math.min(
+                  selectedVariant(
+                    products.find((p) => p.id === item.productId)!,
+                    item.color,
+                  ).stock,
+                  r.quantity + item.quantity,
+                ),
+              }
             : r,
         )
       : [...items, item],

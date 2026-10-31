@@ -25,19 +25,19 @@ const pages: Record<string, { title: string; text: string }> = {
   },
   shipping: {
     title: "Shipping, thoughtfully considered.",
-    text: "Shipping destinations, delivery estimates, charges and processing times await owner confirmation. Delivery options will be confirmed before ordering.",
+    text: "Delivery is available across India with no delivery charge. We contact you before dispatch. A ₹50 advance deposit is manually confirmed and deducted from the product total; the remaining balance is payable by COD. Dispatch follows confirmation and advance verification. No delivery time is promised.",
   },
   returns: {
     title: "The details that matter.",
-    text: "The return window, eligibility, costs and process await owner confirmation. This preview cannot accept purchases or returns.",
+    text: "Returns are available for damage during delivery. An unpacking video is required when reporting delivery damage. A return time window, return shipping arrangements and refund process have not yet been specified.",
   },
   privacy: {
     title: "Your privacy matters.",
-    text: "This site stores your bag and wishlist in this browser’s local storage. Checkout details are never submitted or saved. There are no analytics or payment integrations. A reviewed privacy policy and verified data-controller contact must be added before launch.",
+    text: "This site stores your bag and wishlist in this browser’s local storage. When enabled locally, test checkout stores the sample contact and delivery details you submit in a private test order database for owner review. Use sample details only. Order access is restricted to the submitting browser and the owner. No payment details are collected. A reviewed privacy policy and verified data-controller contact must be added before launch.",
   },
   terms: {
     title: "A note about this preview.",
-    text: "Checkout is not currently accepting orders. Product images are styled representations of the collection. Prices are supplied by Dearelle. Availability, delivery and final terms will be confirmed before ordering.",
+    text: "This preview records test COD requests only and does not create real deliveries or take payment. Prices, three pieces per colour/SKU, free delivery across India and a ₹50 advance deposit deducted from the total are supplied by Dearelle. Customer contact and manual advance verification are required before dispatch in the intended COD process. Product images are styled representations; no independent authenticity claim is made.",
   },
   instagram: {
     title: "Stay close to Dearelle.",
