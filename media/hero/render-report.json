@@ -1,0 +1,19 @@
+{
+  "concept": true,
+  "duration": 8.4,
+  "sourceTakes": 3,
+  "creditsUsed": 50,
+  "creditBudget": 50,
+  "paidPurchases": 0,
+  "desktopTreatment": "Full-frame landscape edit from the landscape signature and watch-detail takes; no stretched portrait footage",
+  "assets": {
+    "mobile": {
+      "mp4Bytes": 1517509,
+      "posterBytes": 40762
+    },
+    "desktop": {
+      "mp4Bytes": 1352554,
+      "posterBytes": 41378
+    }
+  }
+}

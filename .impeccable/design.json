@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T05:35:31.242Z",
+  "title": "Design System: Dearelle V2",
+  "extensions": {
+    "colorMeta": {
+      "ivory": {
+        "role": "neutral",
+        "displayName": "Warm ivory"
+      },
+      "blush": {
+        "role": "secondary",
+        "displayName": "Soft blush"
+      },
+      "rose": {
+        "role": "primary",
+        "displayName": "Dusty rose"
+      },
+      "espresso": {
+        "role": "neutral",
+        "displayName": "Espresso"
+      },
+      "emphasis": {
+        "role": "primary",
+        "displayName": "Deep rose emphasis"
+      },
+      "campaign-sand": {
+        "role": "neutral",
+        "displayName": "Campaign sand"
+      },
+      "arrivals-paper": {
+        "role": "neutral",
+        "displayName": "Arrival photography paper",
+        "purpose": "Scoped to approved collection sections; normative primitive is in DESIGN.md frontmatter."
+      },
+      "editorial-brown": {
+        "role": "neutral",
+        "displayName": "Wristwatch editorial brown",
+        "purpose": "Scoped to approved collection sections; normative primitive is in DESIGN.md frontmatter."
+      },
+      "arrivals-demo-ivory": {
+        "role": "neutral",
+        "displayName": "Demo label translucent ivory",
+        "purpose": "Scoped to approved collection sections; normative primitive is in DESIGN.md frontmatter."
+      },
+      "arrivals-wish-ivory": {
+        "role": "neutral",
+        "displayName": "Wishlist translucent ivory",
+        "purpose": "Scoped to approved collection sections; normative primitive is in DESIGN.md frontmatter."
+      },
+      "arrivals-wish-mobile-ivory": {
+        "role": "neutral",
+        "displayName": "Mobile wishlist translucent ivory",
+        "purpose": "Scoped to approved collection sections; normative primitive is in DESIGN.md frontmatter."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Editorial",
+        "purpose": "Locally hosted Cormorant Garamond; general headings. Header and footer use the supplied image logo; the cinematic hero h1 is screen-reader-only."
+      },
+      "body": {
+        "displayName": "Everyday",
+        "purpose": "Locally hosted DM Sans; body, controls and product names. Paragraph line-height is 1.75."
+      },
+      "collection-category": {
+        "displayName": "collection category",
+        "purpose": "Scoped collection role. Normative primitive is in DESIGN.md frontmatter; mobile suffix applies at <=640px. Category copy becomes 11px at <=1000px and line-height 1.5 at every size."
+      },
+      "collection-category-copy": {
+        "displayName": "collection category copy",
+        "purpose": "Category supporting copy; 11px at widths up to 1000px, with line-height 1.5 at every size. Normative desktop role is in DESIGN.md frontmatter."
+      },
+      "arrivals-heading": {
+        "displayName": "arrivals heading",
+        "purpose": "Scoped collection role. Normative primitive is in DESIGN.md frontmatter; mobile suffix applies at <=640px. Category copy becomes 11px at <=1000px and line-height 1.5 at every size."
+      },
+      "arrivals-heading-mobile": {
+        "displayName": "arrivals heading mobile",
+        "purpose": "Scoped collection role. Normative primitive is in DESIGN.md frontmatter; mobile suffix applies at <=640px. Category copy becomes 11px at <=1000px and line-height 1.5 at every size."
+      },
+      "arrivals-product": {
+        "displayName": "arrivals product",
+        "purpose": "Scoped collection role. Normative primitive is in DESIGN.md frontmatter; mobile suffix applies at <=640px. Category copy becomes 11px at <=1000px and line-height 1.5 at every size."
+      },
+      "arrivals-product-mobile": {
+        "displayName": "arrivals product mobile",
+        "purpose": "Scoped collection role. Normative primitive is in DESIGN.md frontmatter; mobile suffix applies at <=640px. Category copy becomes 11px at <=1000px and line-height 1.5 at every size."
+      },
+      "collection-editorial": {
+        "displayName": "collection editorial",
+        "purpose": "Scoped collection role. Normative primitive is in DESIGN.md frontmatter; mobile suffix applies at <=640px. Category copy becomes 11px at <=1000px and line-height 1.5 at every size."
+      },
+      "collection-editorial-mobile": {
+        "displayName": "collection editorial mobile",
+        "purpose": "Scoped collection role. Normative primitive is in DESIGN.md frontmatter; mobile suffix applies at <=640px. Category copy becomes 11px at <=1000px and line-height 1.5 at every size."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.23,1,.32,1)",
+        "purpose": "Shared interaction easing."
+      },
+      {
+        "name": "button",
+        "value": "140ms",
+        "purpose": "Background change and .98 press scale."
+      },
+      {
+        "name": "product-image",
+        "value": "240ms",
+        "purpose": "1.025 hover scale on fine-pointer hover devices."
+      },
+      {
+        "name": "card-explore",
+        "value": "180ms",
+        "purpose": "Desktop product link slides into view."
+      },
+      {
+        "name": "reduced-motion",
+        "value": ".01ms",
+        "purpose": "Transitions shortened, animations removed, hover image and button press transforms removed."
+      },
+      {
+        "name": "campaign-film",
+        "value": "muted loop, playsInline, preload none",
+        "purpose": "Silent cinematic film. Pause offscreen or when the document is hidden. Reduced motion, Save-Data and slow-2g/2g initially show the responsive poster with no film source loaded; explicit Play opts into playback. Accessible Play/Pause control reflects playback state."
+      },
+      {
+        "name": "collection-category-image",
+        "value": "280ms var(--ease); scale(1.025)",
+        "purpose": "Fine-pointer hover on sculpted category images only."
+      },
+      {
+        "name": "collection-category-entry",
+        "value": "280ms cubic-bezier(.23,1,.32,1); opacity .82 to 1; translateY(8px) to none",
+        "purpose": "Once when 18% visible, with no delay or stagger. Content is visible without JavaScript. Reduced motion skips or cancels animation and removes category hover transforms and transitions."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-max",
+        "value": "640px"
+      },
+      {
+        "name": "tablet-max",
+        "value": "1000px"
+      }
+    ],
+    "focus": {
+      "outline": "2px solid #965c68",
+      "outlineOffset": "5px"
+    },
+    "drawer": {
+      "backdrop": "#30272566",
+      "width": "min(480px,100%)",
+      "mobilePadding": "20px",
+      "desktopPadding": "26px"
+    },
+    "brandMark": {
+      "asset": "public/brand/dearelle-logo.png",
+      "intrinsicWidth": 550,
+      "intrinsicHeight": 170,
+      "description": "User-supplied transparent gold logo. Preserve image colour and aspect ratio; height auto.",
+      "headerWidth": "180px",
+      "headerMobileWidth": "138px",
+      "footerWidth": "190px",
+      "footerMobileWidth": "155px"
+    },
+    "collectionSections": {
+      "scope": [
+        "components/collection-sections.tsx",
+        "app/collections.css",
+        "components/reveal.tsx"
+      ],
+      "layout": {
+        "categoriesDesktop": "1 column, 18px gap, centred 1000px grid, no offset; 1320px outer max; padding 34px 6% 20px",
+        "categoriesMobile": "1 column, 14px gap, no offset; padding 18px 16px 4px",
+        "arrivalsDesktop": "4 columns, 26px gap; padding 38px 6% 54px",
+        "arrivalsTablet": "18px gap at <=1000px",
+        "arrivalsMobile": "2 columns, 22px 14px gap; padding 23px 20px 30px",
+        "editorial": "1440px max; aspect-ratio 2.5 desktop, 2 tablet, 1.12 mobile"
+      },
+      "geometry": {
+        "watchClip": "none",
+        "bagClip": "none",
+        "radii": "Normative sculpted watch/bag and arrivals-photo tokens live in DESIGN.md frontmatter.",
+        "categoryRatio": "2.2 desktop; 1.65 mobile, matching watches and bags",
+        "arrivalPhotoRatio": ".94 desktop, .98 mobile",
+        "categoryCopy": "top 50%, translateY(-50%); watches right 6%, width 34% desktop / right 5.5%, width 35% mobile; bags left 8%, width 34% desktop / left 7%, width 30% mobile"
+      },
+      "secondaryType": {
+        "viewAll": "12px desktop, 10px mobile",
+        "editorialAction": "11px desktop, 9px mobile; .04em tracking",
+        "demoLabel": "8px desktop, 7px mobile",
+        "priceQualifier": "9px desktop, 8px mobile",
+        "previewNote": "10px desktop, 9px mobile",
+        "categoryAction": "Underlined Shop Watches / Shop Bags; 11px desktop, 10px mobile; static 14px arrow"
+      },
+      "interaction": {
+        "categoryFocusOffset": "7px",
+        "wishlistTarget": "40px desktop, 44px mobile",
+        "editorialActionMinHeight": "44px desktop, 40px mobile"
+      },
+      "imagery": "Representative concept watch and bag photography; wristwatch lifestyle image accompanies Details make it yours. Demo pieces and illustrative prices remain labelled."
+    }
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Square espresso action; 48px minimum height, with selected mobile actions at 44px.",
+      "html": "<button class=\"ds-button\">Explore the collection</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;background:var(--espresso);color:var(--white);min-height:48px;padding:13px 25px;font-family:Everyday,Arial,sans-serif;font-size:12px;letter-spacing:.025em;border:1px solid var(--espresso);cursor:pointer;transition:transform 140ms var(--ease),background-color 140ms var(--ease)}.ds-button:hover{background:#59423e}.ds-button:active{transform:scale(.98)}.ds-button:focus-visible{outline:2px solid #965c68;outline-offset:5px}.ds-button:disabled{opacity:.55;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-button{transition-duration:.01ms}.ds-button:active{transform:none}}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "description": "Transparent outlined secondary action.",
+      "html": "<button class=\"ds-secondary\">Buy now · Demo checkout</button>",
+      "css": ".ds-secondary{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--espresso);min-height:48px;padding:13px 25px;font-family:Everyday,Arial,sans-serif;font-size:12px;letter-spacing:.025em;border:1px solid #bda8a0;cursor:pointer;transition:transform 140ms var(--ease),background-color 140ms var(--ease)}.ds-secondary:active{transform:scale(.98)}.ds-secondary:focus-visible{outline:2px solid #965c68;outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-secondary{transition-duration:.01ms}.ds-secondary:active{transform:none}}"
+    },
+    {
+      "name": "Checkout field",
+      "kind": "input",
+      "description": "White field with warm border and a small 2px radius.",
+      "html": "<label class=\"ds-field\">Email<input type=\"email\" placeholder=\"you@example.com\"></label>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:7px;font-family:Everyday,Arial,sans-serif;font-size:11px;color:var(--espresso)}.ds-field input{background:var(--white);color:var(--espresso);border:1px solid #d7c8bf;border-radius:2px;padding:12px;min-height:46px;font:inherit;caret-color:var(--rose)}.ds-field input:focus-visible{outline:2px solid #965c68;outline-offset:5px}"
+    },
+    {
+      "name": "Desktop navigation",
+      "kind": "nav",
+      "description": "Quiet text navigation; mobile uses a native dialog menu.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#new\">New Arrivals</a><a href=\"#watches\">Watches</a><a href=\"#bags\">Bags</a></nav>",
+      "css": ".ds-nav{display:flex;gap:34px;font-family:Everyday,Arial,sans-serif;font-size:12px;color:var(--espresso)}.ds-nav a{color:inherit;text-decoration:none}.ds-nav a:hover{color:#935b67}.ds-nav a:focus-visible{outline:2px solid #965c68;outline-offset:5px}"
+    },
+    {
+      "name": "Colour option",
+      "kind": "chip",
+      "description": "Rectangular product selector with an espresso selected border.",
+      "html": "<button class=\"ds-colour\" aria-pressed=\"true\"><span></span>Blush</button>",
+      "css": ".ds-colour{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:9px 12px;background:transparent;color:var(--espresso);font-family:Everyday,Arial,sans-serif;font-size:11px;border:1px solid var(--border);cursor:pointer}.ds-colour[aria-pressed=true]{border-color:var(--espresso)}.ds-colour span{width:15px;height:15px;border-radius:50%;background:var(--blush);border:1px solid #30272530}.ds-colour:focus-visible{outline:2px solid #965c68;outline-offset:5px}"
+    },
+    {
+      "name": "Product card",
+      "kind": "card",
+      "description": "Flat photographic card; names and illustrative INR prices remain visible on mobile.",
+      "html": "<article class=\"ds-card\"><a class=\"ds-photo\" href=\"#product\" aria-label=\"View demo piece\"><span>DEMO</span></a><div class=\"ds-info\"><a href=\"#product\">A little everyday piece</a><p>₹1,299 <small>demo price</small></p></div></article>",
+      "css": ".ds-card{font-family:Everyday,Arial,sans-serif;font-size:12px;color:var(--espresso);max-width:260px}.ds-card a{color:inherit;text-decoration:none}.ds-photo{display:block;position:relative;aspect-ratio:.78;background:#f1ebe5}.ds-photo span{position:absolute;left:12px;top:13px;background:#fcf9f6dd;font-size:8px;letter-spacing:.1em;padding:3px 7px}.ds-info{padding:14px 0}.ds-info>a{font-weight:500;line-height:1.5}.ds-info p{margin:7px 0 0;font-variant-numeric:tabular-nums}.ds-info small{font-size:8px;color:var(--muted)}.ds-card a:focus-visible{outline:2px solid #965c68;outline-offset:5px}"
+    },
+    {
+      "name": "Cinematic campaign hero",
+      "kind": "custom",
+      "description": "Unobstructed silent concept fashion film followed by a centred Explore Collection link in a 52px minimum ivory caption strip. Only the 44px playback control overlays the footage. The h1 is screen-reader-only. Generated footage depicts fictional unbranded accessories, never inventory. This static preview shows the poster state; runtime playback policy lives in components/cinematic-hero.tsx and lib/hero-policy.ts.",
+      "html": "<section class=\"ds-campaign\" aria-labelledby=\"ds-campaign-title\"><h1 id=\"ds-campaign-title\" class=\"ds-sr-only\">Dearelle watches and handbags</h1><div class=\"ds-campaign-film\"><picture><source media=\"(max-width:640px)\" srcset=\"/videos/dearelle-hero-mobile.webp\"><img src=\"/videos/dearelle-hero-desktop.webp\" alt=\"Concept fashion film featuring fictional unbranded accessories.\"></picture><button class=\"ds-campaign-play\" aria-label=\"Play campaign film\" aria-pressed=\"false\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m6 3 14 9-14 9V3Z\"/></svg></button></div><div class=\"ds-campaign-caption\"><a href=\"/new-arrivals\">Explore Collection <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></a></div></section>",
+      "css": ".ds-campaign{width:100%;color:var(--espresso)}.ds-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.ds-campaign-film{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;isolation:isolate;background:#e7dfd2}.ds-campaign picture,.ds-campaign img{position:absolute;inset:0;width:100%;height:100%}.ds-campaign img{object-fit:cover}.ds-campaign-caption{display:flex;justify-content:center;align-items:center;min-height:52px;background:var(--ivory);border-bottom:1px solid var(--border)}.ds-campaign a{display:inline-flex;align-items:center;gap:13px;min-height:44px;font:12px Everyday,Arial,sans-serif;color:inherit;text-decoration:underline;text-underline-offset:5px}.ds-campaign a:hover{text-decoration-thickness:2px}.ds-campaign-play{position:absolute;right:24px;bottom:16px;display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;background:#fcf9f6ed;color:inherit;border:0;border-radius:50%;cursor:pointer}.ds-campaign-play:hover{background:#fcf9f6}.ds-campaign a:focus-visible,.ds-campaign-play:focus-visible{outline:2px solid #965c68;outline-offset:5px}@media(max-width:640px){.ds-campaign-film{aspect-ratio:auto;height:70svh;min-height:420px;max-height:740px}.ds-campaign-play{right:16px;bottom:13px}}"
+    },
+    {
+      "name": "Sculpted category banner",
+      "kind": "custom",
+      "description": "Watch and bag links stacked at every size in a centred 1000px grid, with matching aspect ratios, opposite rounded corners and vertically centred copy. Underlined editorial shopping labels use static arrows. Preview shows fallback surfaces.",
+      "html": "<div class=\"ds-categories\"><a class=\"ds-sculpted\" href=\"/watches\"><div class=\"ds-sculpted-copy\"><h3>Watches</h3><p>For every moment you make yours.</p><span>Shop Watches <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></span></div></a><a class=\"ds-sculpted ds-sculpted-bag\" href=\"/bags\"><div class=\"ds-sculpted-copy\"><h3>Bags</h3><p>Carry a little more of you.</p><span>Shop Bags <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></span></div></a></div>",
+      "css": ".ds-categories{display:grid;grid-template-columns:1fr;max-width:1000px;margin:auto;gap:18px}.ds-sculpted{display:block;position:relative;aspect-ratio:2.2;overflow:hidden;border-radius:40px 10px 40px 10px;background:#e7dfd2;color:var(--espresso);text-decoration:none}.ds-sculpted-copy{position:absolute;top:50%;transform:translateY(-50%);right:6%;width:34%}.ds-sculpted h3{font:400 clamp(30px,3.6vw,48px)/1.1 Editorial,Georgia,serif;margin:0}.ds-sculpted p{font:13px/1.5 Everyday,Arial,sans-serif;max-width:15ch;margin:8px 0 0}.ds-sculpted span{display:inline-flex;align-items:center;gap:9px;min-height:30px;margin-top:16px;font:11px/1.4 Everyday,Arial,sans-serif;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}.ds-sculpted-bag{border-radius:10px 40px 10px 40px;background:#514033;color:var(--ivory)}.ds-sculpted-bag .ds-sculpted-copy{left:8%;right:auto;width:34%}.ds-sculpted:focus-visible{outline:2px solid #965c68;outline-offset:7px}@media(max-width:1000px){.ds-sculpted p{font-size:11px}}@media(max-width:640px){.ds-categories{gap:14px}.ds-sculpted{aspect-ratio:1.65;border-radius:28px 8px 28px 8px}.ds-sculpted-copy{right:5.5%;width:35%}.ds-sculpted h3{font-size:30px}.ds-sculpted p{margin-top:7px}.ds-sculpted span{font-size:10px;gap:7px;margin-top:11px}.ds-sculpted-bag{border-radius:8px 28px 8px 28px}.ds-sculpted-bag .ds-sculpted-copy{left:7%;width:30%}}"
+    },
+    {
+      "name": "Arrival product card",
+      "kind": "card",
+      "description": "Scoped softer photography with demo labels; 13px names/prices desktop and 12px mobile. Preview shows its empty image surface.",
+      "html": "<article class=\"ds-arrival\"><a class=\"ds-arrival-photo\" href=\"#product\"><span>DEMO</span></a><h3><a href=\"#product\">A little everyday piece</a></h3><p>₹1,299 <small>demo price</small></p></article>",
+      "css": ".ds-arrival{max-width:260px;color:var(--espresso);font:13px Everyday,Arial,sans-serif}.ds-arrival a{color:inherit;text-decoration:none}.ds-arrival-photo{display:block;aspect-ratio:.94;border-radius:5px;background:#eee5dc;padding:8px}.ds-arrival-photo span{background:#fcf9f6e8;padding:3px 6px;font-size:8px}.ds-arrival h3{font:400 13px/1.5 Everyday,Arial,sans-serif;margin:12px 1px 0;min-height:39px}.ds-arrival p{margin:1px 0 0}.ds-arrival small{font-size:9px;color:var(--muted)}.ds-arrival a:hover{text-decoration:underline}.ds-arrival a:focus-visible{outline:2px solid #965c68;outline-offset:5px}@media(max-width:640px){.ds-arrival{font-size:12px}.ds-arrival-photo{aspect-ratio:.98}.ds-arrival h3{font-size:12px;line-height:1.45;min-height:35px}.ds-arrival small{font-size:8px}.ds-arrival-photo span{font-size:7px}}"
+    },
+    {
+      "name": "Wristwatch editorial action",
+      "kind": "custom",
+      "description": "Details make it yours over wristwatch lifestyle photography. Preview shows its fallback brown surface.",
+      "html": "<section class=\"ds-editorial\"><h2>Details<br>make it yours.</h2><a href=\"#watches\">Shop Watches <span aria-hidden=\"true\">→</span></a></section>",
+      "css": ".ds-editorial{background:#514033;color:var(--ivory);padding:40px;max-width:500px}.ds-editorial h2{font:400 clamp(34px,4.2vw,58px)/1.05 Editorial,Georgia,serif;letter-spacing:-.02em;max-width:8.5ch;margin:0}.ds-editorial a{display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:44px;margin-top:27px;padding:10px 18px;background:var(--ivory);color:var(--espresso);font:11px Everyday,Arial,sans-serif;letter-spacing:.04em;text-decoration:none}.ds-editorial a:hover{text-decoration:underline}.ds-editorial a:focus-visible{outline:2px solid #965c68;outline-offset:5px}@media(max-width:640px){.ds-editorial h2{font-size:34px;line-height:1.08}.ds-editorial a{font-size:9px;gap:12px;padding:9px 12px;min-height:40px;margin-top:20px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A small fashion editorial",
+    "overview": "Minimal luxury with restrained feminine detail, warm paper surfaces, rose italics and straight-edged shopping photography. The homepage opens with a silent cinematic concept fashion film and a separate collection action below the footage. An independent watches-and-handbags prototype for Indian women discovering accessories on mobile.",
+    "keyCharacteristics": [
+      "70% minimal luxury / 30% feminine",
+      "Flat editorial surfaces",
+      "Unobstructed silent cinematic homepage",
+      "Quiet shopping controls"
+    ],
+    "rules": [
+      {
+        "name": "Legible rose",
+        "body": "Use deeper rose for italic text; dusty rose is decorative.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Do label demo products, representative photography and illustrative prices.",
+      "Do preserve reduced motion, keyboard focus and mobile layouts.",
+      "Do keep the film unobstructed, with Explore Collection centred in a separate 52px minimum ivory strip below it.",
+      "Do preserve responsive still fallback, accessible playback control, offscreen and hidden pause, and preference-aware film source loading.",
+      "Do retain generated-concept provenance and fictional-accessory context in documentation, with no visible concept caption on the hero.",
+      "Do use the supplied transparent gold logo in header and footer with its original proportions."
+    ],
+    "donts": [
+      "Don't invent reviews, discounts, popularity or fulfilment claims.",
+      "Don't connect production services or collect payment.",
+      "Don't restore the old text-heavy split hero, overlay a visible title on the model or add extra pink decoration.",
+      "Don't present concept-film accessories as actual inventory."
+    ]
+  }
+}

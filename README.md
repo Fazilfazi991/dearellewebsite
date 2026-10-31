@@ -1,0 +1,37 @@
+# Dearelle V2
+
+Homepage collections follow the approved Option 2 direction. Watches and Bags use equally sized, alternating photographic banners with restrained asymmetric corners and editorial shopping links. Category navigation stays at `/watches` and `/bags`. New Arrivals and the wristwatch editorial remain below them; the approved hero is preserved. Product imagery and prices are explicitly demo-only.
+
+The homepage now features the cinematic hero film and the owner's supplied gold logo. Both visible hero labels were removed at the owner's request; Explore Collection sits beneath the footage. Three real Veo source clips were produced for 50 existing credits total, with no purchases. Final files: `public/videos/dearelle-hero-mobile.mp4`, `dearelle-hero-desktop.mp4`, and matching WebP posters. High-quality masters, source clips, reproducible FFmpeg editing script and production notes are in `media/hero/`. Film controls support pause/resume, reduced motion, data saving and offscreen/hidden-tab pausing.
+
+Independent Next.js App Router / TypeScript / Tailwind CSS / Lucide storefront prototype. No connection to the existing Dearelle repository, production domain, database, customers, orders or payments.
+
+## Run
+
+Node.js 20.9+ and pnpm:
+
+```sh
+pnpm install
+pnpm dev
+```
+
+Open http://127.0.0.1:3000. To verify: `pnpm typecheck`, `pnpm lint`, `pnpm test`, `pnpm build`. Production preview: `pnpm start`.
+
+## Included
+
+- Server-rendered home, watches, bags, new arrivals, four product detail pages and informational routes.
+- Client-side colour filtering, price/name sorting, searchable catalogue, saved wishlist, modal bag with native focus trapping/Escape, quantity editing and persisted variant-specific totals.
+- Swipe/keyboard-scrollable representative gallery, mobile sticky purchasing controls and non-transactional guest checkout.
+- Responsive optimized local imagery, fallbacks, loading/error/404 states, reduced-motion support, metadata, canonical paths and social image. The entire preview is noindex.
+
+## Demo boundaries
+
+Every product is marked `demo: true`. Prices, colours, names and photographs are illustrative. Gallery detail views reuse a cropped representative image. No inventory claims, reviews, discounts, live checkout or order-success screen. Checkout fields are not submitted or saved. Local bag/wishlist state is kept in the browser only. `CATALOGUE_MODE=live` deliberately fails; replacing demo data requires a code integration and launch review. There are no environment credentials.
+
+## Before launch
+
+Provide final products, rights-cleared product/campaign images, variant-specific images, specifications, prices and inventory. Complete verified contact/social configuration in `lib/config.ts`; publish approved shipping, returns, privacy and terms. Add a database/admin adapter, inventory and pricing checks on the server, payment/order processing, transactional messaging, security review and accessible checkout validation. Configure the approved canonical host, remove noindex only after review, and integrate the verified structured-data adapter. Measure LCP/CLS on the production preview under representative mobile throttling; no lab-performance certification is claimed.
+
+Deploy only to a new, separate Vercel project named dearelle-v2, without adding the production domain. This milestone remains local; no external repository or deployment was created.
+
+See DESIGN.md, ASSETS.md and VERIFICATION.md. Screenshots are in `.impeccable/review/`.

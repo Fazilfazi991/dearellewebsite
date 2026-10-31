@@ -1,0 +1,7 @@
+node_modules/
+.next/
+.env*
+!.env.example
+*.tsbuildinfo
+.impeccable/review/
+.impeccable/option2-hero-baseline.json
