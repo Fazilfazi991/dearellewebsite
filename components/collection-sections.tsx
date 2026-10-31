@@ -72,8 +72,8 @@ export function ShopByCategory() {
           category="watches"
           title="Watches"
           description="For every moment you make yours."
-          image="option2-watch"
-          alt="Demo concept photography: a gold watch resting on cream silk."
+          image="watch-category-stock"
+          alt="AI-styled Contour watch with a rose-gold cushion case and ivory dial on cream silk."
         />
         <CategoryBanner
           category="bags"
@@ -100,12 +100,12 @@ export function NewArrivals() {
         </Link>
       </div>
       <div className="product-grid">
-        {products.map((p) => (
+        {products.slice(0, 4).map((p) => (
           <ProductCard key={p.id} product={p} deferImage />
         ))}
       </div>
       <p className="option2-demo-note">
-        Preview pieces · Demo prices and representative imagery.
+        Preview pieces · Demo prices. Watches shown in AI-styled imagery.
       </p>
     </section>
   );
@@ -117,8 +117,8 @@ export function EditorialCollection() {
       <div className="option2-editorial-photo">
         <Photo
           defer
-          name="option2-editorial"
-          alt="Concept fashion photograph of a woman wearing an unbranded gold watch with ivory tailoring."
+          name="watch-editorial-stock"
+          alt="AI-styled fashion image of a woman wearing the rose-gold Contour watch with ivory tailoring."
           sizes="100vw"
         />
       </div>

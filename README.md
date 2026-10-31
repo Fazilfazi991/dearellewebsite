@@ -21,7 +21,7 @@ Open http://127.0.0.1:3000. To verify: `pnpm typecheck`, `pnpm lint`, `pnpm test
 
 ## Included
 
-- Server-rendered home, watches, bags, new arrivals, four product detail pages and informational routes.
+- Server-rendered home, watches, bags, new arrivals, six product detail pages and informational routes.
 - Client-side colour filtering, price/name sorting, searchable catalogue, saved wishlist, modal bag with native focus trapping/Escape, quantity editing and persisted variant-specific totals.
 - Swipe/keyboard-scrollable representative gallery, mobile sticky purchasing controls and non-transactional guest checkout.
 - Responsive optimized local imagery, fallbacks, loading/error/404 states, reduced-motion support, metadata, canonical paths and social image. The entire preview is noindex.
@@ -34,6 +34,10 @@ Every product is marked `demo: true`. Prices, colours, names and photographs are
 
 Provide final products, rights-cleared product/campaign images, variant-specific images, specifications, prices and inventory. Complete verified contact/social configuration in `lib/config.ts`; publish approved shipping, returns, privacy and terms. Add a database/admin adapter, inventory and pricing checks on the server, payment/order processing, transactional messaging, security review and accessible checkout validation. Configure the approved canonical host, remove noindex only after review, and integrate the verified structured-data adapter. Measure LCP/CLS on the production preview under representative mobile throttling; no lab-performance certification is claimed.
 
-Deploy only to a new, separate Vercel project named dearelle-v2, without adding the production domain. This milestone remains local; no external repository or deployment was created.
+Deploy only to a new, separate Vercel project named dearelle-v2, without adding the production domain. The updated V2 source is pushed to the user-authorized GitHub repository; the preview runs locally and the production domain is untouched.
 
 See DESIGN.md, ASSETS.md and VERIFICATION.md. Screenshots are in `.impeccable/review/`.
+
+## AI-only watches
+
+The watch catalogue contains four editorial model families and nine colourways, with AI-generated stills only. Selected colours update the product gallery and bag thumbnail. Original stock photos remain reference-only. Prices and checkout are still demo. Asset provenance and exact generation prompts: `media/watches/MODEL-MAP.md` and `media/watches/PROMPTS.json`. Hero performance results and measurement limits: `media/hero/PERFORMANCE.md`.

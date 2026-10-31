@@ -21,7 +21,7 @@ import {
   Plus,
   Trash2,
 } from "lucide-react";
-import { products, money, type Product } from "@/lib/products";
+import { products, money, productVisual, type Product } from "@/lib/products";
 import { addItem, subtotal, validCart, type CartItem } from "@/lib/cart";
 import { Photo } from "./image";
 type Store = {
@@ -244,7 +244,11 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
                     className="search-result"
                   >
                     <div className="tiny-photo">
-                      <Photo name={p.image} alt={p.name} />
+                      <Photo
+                        name={p.image}
+                        alt={p.name}
+                        position={p.imagePosition}
+                      />
                     </div>
                     <div>
                       {p.name}
@@ -278,6 +282,7 @@ export function CartContents({ close }: { close?: () => void }) {
       <div className="cart-lines">
         {items.map((item) => {
           const p = products.find((p) => p.id === item.productId)!;
+          const visual = productVisual(p, item.color);
           return (
             <div className="cart-line" key={p.id + item.color}>
               <Link
@@ -285,7 +290,11 @@ export function CartContents({ close }: { close?: () => void }) {
                 href={`/products/${p.slug}`}
                 className="cart-photo"
               >
-                <Photo name={p.image} alt={p.name} />
+                <Photo
+                  name={visual.image}
+                  alt={`${p.name}, ${item.color}`}
+                  position={visual.position}
+                />
               </Link>
               <div>
                 <Link href={`/products/${p.slug}`} onClick={close}>
@@ -363,12 +372,12 @@ export function ProductCard({
           <Photo
             defer={deferImage}
             name={p.image}
-            alt={`Representative photograph for ${p.name}`}
+            alt={`${p.imagery ? "AI-styled image" : "Representative photograph"} of ${p.name}`}
             position={p.imagePosition}
             sizes="(max-width: 640px) 50vw, 25vw"
           />
         </Link>
-        <span className="demo-label">DEMO</span>
+        <span className="demo-label">{p.imagery ? "AI STYLED" : "DEMO"}</span>
         <button
           className={`wish icon ${wish.includes(p.id) ? "selected" : ""}`}
           aria-label={`${wish.includes(p.id) ? "Remove" : "Save"} ${p.name} ${wish.includes(p.id) ? "from" : "to"} wishlist`}

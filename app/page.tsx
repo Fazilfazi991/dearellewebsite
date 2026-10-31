@@ -74,18 +74,25 @@ export default function Home() {
           <p>Our moodboard, made for your next “where did you get that?”</p>
         </div>
         <div className="moodboard">
-          {["bag-cream", "hero", "watch-gold", "editorial"].map((name, i) => (
-            <div key={name}>
-              <Photo
-                defer
-                name={name}
-                alt={`Brand inspiration moodboard, representative stock photography ${i + 1}`}
-              />
-            </div>
-          ))}
+          {["bag-cream", "hero", "watch-date-green", "editorial"].map(
+            (name, i) => (
+              <div key={name}>
+                <Photo
+                  defer
+                  name={name}
+                  alt={
+                    name === "watch-date-green"
+                      ? "AI-styled Soft Square watch in rose gold and green"
+                      : `Brand inspiration moodboard, representative stock photography ${i + 1}`
+                  }
+                />
+              </div>
+            ),
+          )}
         </div>
         <p className="catalogue-disclaimer">
-          Editorial moodboard · Stock photography, not customer submissions.
+          Editorial moodboard · AI-styled watches and representative fashion
+          photography.
         </p>
         <Link className="text-link" href="/instagram">
           Stay close to Dearelle <ArrowUpRight size={17} />

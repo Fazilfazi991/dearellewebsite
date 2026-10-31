@@ -204,7 +204,21 @@
         "wishlistTarget": "40px desktop, 44px mobile",
         "editorialActionMinHeight": "44px desktop, 40px mobile"
       },
-      "imagery": "Representative concept watch and bag photography; wristwatch lifestyle image accompanies Details make it yours. Demo pieces and illustrative prices remain labelled. Category image sizes: (max-width: 1100px) 90vw, 1000px; bag object-position center 30%."
+      "imagery": "AI-generated watch stills and representative concept bag photography; AI-styled wristwatch editorial image accompanies Details make it yours. Demo pieces and illustrative prices remain labelled. Category image sizes: (max-width: 1100px) 90vw, 1000px; bag object-position center 30%."
+    },
+    "watchImagery": {
+      "policy": "Only AI-generated website watch stills, including catalogue, colour selection, demo bag, category, editorial and moodboard. Supplied original photos and video stills are reference-only. Preserve the approved cinematic film and its performance policy.",
+      "provenance": "Seven newly generated finals plus three supplied AI assets. Preserve media/watches/MODEL-MAP.md, exact prompts in media/watches/PROMPTS.json, selected full-resolution sources in media/watches/sources/ and JPEG delivery derivatives in public/images/.",
+      "families": {
+        "The Contour Watch": { "Rose gold / Ivory": "watch-category-stock", "Black / Black": "watch-contour-black" },
+        "The Soft Square Watch": { "Rose gold / Black": "watch-date-rose-black", "Rose gold / Green": "watch-date-green", "Rose gold / Champagne": "watch-date-champagne", "Black / Black": "watch-date-black" },
+        "The Petite Square Watch": { "Rose gold / Pink": "watch-square-pink", "Gunmetal / White": "watch-square-gunmetal" },
+        "The Teal Dial Watch": { "Silver / Teal": "watch-teal" }
+      },
+      "suppliedAI": ["watch-date-rose-black", "watch-square-pink", "watch-square-gunmetal"],
+      "newFinals": ["watch-category-stock", "watch-contour-black", "watch-date-green", "watch-date-champagne", "watch-date-black", "watch-teal", "watch-editorial-stock"],
+      "behaviour": "lib/products.ts and productVisual resolve each of nine colourways to its own image for product selection and the demo bag. The second gallery crop reuses the selected image. Retain AI-styled card and product-page labels.",
+      "claims": "Four editorial model families, not verified manufacturer model numbers. Prices, stock and checkout remain demo-only. Dimensions, materials, movement, water resistance and authenticity remain unverified; await the verified launch catalogue. Preserve model distinctions and correction decisions in MODEL-MAP.md."
     },
     "mediaLoading": {
       "hero": "Versioned -v2 mobile/desktop MP4, WEBP and JPEG assets use public, max-age=31536000, immutable caching; MP4 delivery supports byte ranges. Original cinematic masters remain unchanged.",
@@ -313,13 +327,16 @@
       "Do keep the film unobstructed, with Explore Collection centred in a separate 52px minimum ivory strip below it.",
       "Do preserve responsive still fallback, accessible playback control, offscreen and hidden pause, and preference-aware film source loading.",
       "Do retain generated-concept provenance and fictional-accessory context in documentation, with no visible concept caption on the hero.",
-      "Do use the supplied transparent gold logo in header and footer with its original proportions."
+      "Do use the supplied transparent gold logo in header and footer with its original proportions.",
+      "Do use only AI-generated website watch stills, preserve all nine per-colour mappings and AI-styled labels, and retain exact prompts and model provenance."
     ],
     "donts": [
       "Don't invent reviews, discounts, popularity or fulfilment claims.",
       "Don't connect production services or collect payment.",
       "Don't restore the old text-heavy split hero, overlay a visible title on the model or add extra pink decoration.",
-      "Don't present concept-film accessories as actual inventory."
+      "Don't present concept-film accessories as actual inventory.",
+      "Don't publish original watch photographs, video stills, packaging, collages or price posters; originals remain reference-only until an owner-approved verified launch catalogue replaces this policy.",
+      "Don't infer verified specifications, authenticity, real pricing, stock or availability from AI-styled watch imagery."
     ]
   }
 }

@@ -1,3 +1,9 @@
+export type ProductColor = {
+  name: string;
+  hex: string;
+  image?: string;
+  imagePosition?: string;
+};
 export type Product = {
   id: string;
   slug: string;
@@ -6,7 +12,8 @@ export type Product = {
   price: number;
   image: string;
   imagePosition?: string;
-  colors: { name: string; hex: string }[];
+  colors: ProductColor[];
+  imagery?: "ai-styled";
   description: string;
   demo: true;
 };
@@ -14,17 +21,23 @@ export const products: Product[] = [
   {
     id: "w1",
     slug: "the-everyday-watch",
-    name: "The Everyday Watch",
+    name: "The Contour Watch",
     category: "watches",
     price: 1490,
-    image: "option2-watch",
+    image: "watch-category-stock",
     imagePosition: "23% center",
     colors: [
-      { name: "Gold", hex: "#c5a365" },
-      { name: "Silver", hex: "#b9b9b5" },
+      {
+        name: "Rose gold / Ivory",
+        hex: "#bd9687",
+        image: "watch-category-stock",
+        imagePosition: "23% center",
+      },
+      { name: "Black / Black", hex: "#252526", image: "watch-contour-black" },
     ],
     description:
-      "A considered finishing touch for your everyday wardrobe. Explore the watch shopping experience with this representative sample.",
+      "Soft cushion curves, slender markers and the distinctive 12-and-6 dial. Explore rose gold with an ivory face, or black with warm rose-gold details.",
+    imagery: "ai-styled",
     demo: true,
   },
   {
@@ -46,16 +59,27 @@ export const products: Product[] = [
   {
     id: "w2",
     slug: "the-classic-watch",
-    name: "The Classic Watch",
+    name: "The Soft Square Watch",
     category: "watches",
     price: 1690,
-    image: "watch-rose",
+    image: "watch-date-rose-black",
     colors: [
-      { name: "Rose gold", hex: "#bd9687" },
-      { name: "Gold", hex: "#c5a365" },
+      {
+        name: "Rose gold / Black",
+        hex: "#bd9687",
+        image: "watch-date-rose-black",
+      },
+      { name: "Rose gold / Green", hex: "#216447", image: "watch-date-green" },
+      {
+        name: "Rose gold / Champagne",
+        hex: "#d4b599",
+        image: "watch-date-champagne",
+      },
+      { name: "Black / Black", hex: "#252526", image: "watch-date-black" },
     ],
     description:
-      "An understated accent, styled your way. A demo watch to help you explore colours, your bag and checkout.",
+      "A softly rounded square face, clean baton markers and a small date-window detail. Four colourways bring a different mood to the same considered silhouette.",
+    imagery: "ai-styled",
     demo: true,
   },
   {
@@ -73,7 +97,46 @@ export const products: Product[] = [
       "A softer approach to everyday dressing. This representative handbag shows the future shopping experience.",
     demo: true,
   },
+  {
+    id: "w3",
+    slug: "the-petite-square-watch",
+    name: "The Petite Square Watch",
+    category: "watches",
+    price: 1690,
+    image: "watch-square-pink",
+    colors: [
+      { name: "Rose gold / Pink", hex: "#c99494", image: "watch-square-pink" },
+      {
+        name: "Gunmetal / White",
+        hex: "#44474b",
+        image: "watch-square-gunmetal",
+      },
+    ],
+    description:
+      "A compact square case with gently softened corners and an understated baton dial. Choose a pink face with rose-gold details or a white face framed in gunmetal.",
+    imagery: "ai-styled",
+    demo: true,
+  },
+  {
+    id: "w4",
+    slug: "the-teal-dial-watch",
+    name: "The Teal Dial Watch",
+    category: "watches",
+    price: 1690,
+    image: "watch-teal",
+    colors: [{ name: "Silver / Teal", hex: "#16818b", image: "watch-teal" }],
+    description:
+      "A vivid teal face within a rounded silver case, with layered dial details and a silver link bracelet. A distinct design within the collection.",
+    imagery: "ai-styled",
+    demo: true,
+  },
 ];
+export function productVisual(product: Product, color?: string) {
+  const variant = product.colors.find((c) => c.name === color);
+  return variant?.image
+    ? { image: variant.image, position: variant.imagePosition ?? "center" }
+    : { image: product.image, position: product.imagePosition ?? "center" };
+}
 export const money = (value: number) =>
   new Intl.NumberFormat("en-IN", {
     style: "currency",

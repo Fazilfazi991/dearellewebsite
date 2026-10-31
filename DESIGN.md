@@ -108,6 +108,26 @@ Cinematic hero: a silent, muted, looping, inline film is followed by a single un
 Homepage loading: the real hero is server-rendered without a generic loading-screen flash; loading boundaries live in three non-home segments. Homepage Photo instances defer image requests until within 240px of the viewport, preserving reserved layout with a transparent placeholder, low fetch priority and a noscript real-image fallback. Catalogue and product-page Photo defaults remain unchanged.
 Brand mark: use the supplied transparent gold PNG at public/brand/dearelle-logo.png, intrinsic size 550 by 170. Preserve its aspect ratio with height auto. Header width is 180px desktop and 138px mobile; footer width is 190px desktop and 155px mobile. Do not recreate the supplied mark as text.
 
+## Watch imagery and catalogue
+Use only AI-generated website watch stills across catalogue cards, colour selections, the demo bag, category photography, the editorial banner and the watch moodboard. Supplied original photos and video stills are reference-only. The published set contains seven newly generated finals and three supplied AI assets; preserve exact prompts in media/watches/PROMPTS.json, selected full-resolution sources in media/watches/sources/, and the model/provenance decisions in media/watches/MODEL-MAP.md. Delivery JPEGs live in public/images/. These rules concern watch stills; the approved cinematic film and its performance policy remain unchanged.
+
+The four names are editorial model families, not verified manufacturer model numbers. Nine colourways each resolve to their own image through lib/products.ts and productVisual; product colour selection and demo bag imagery must stay consistent.
+
+| Editorial model family | Colourway | Image key |
+|---|---|---|
+| The Contour Watch | Rose gold / Ivory | watch-category-stock |
+| The Contour Watch | Black / Black | watch-contour-black |
+| The Soft Square Watch | Rose gold / Black | watch-date-rose-black |
+| The Soft Square Watch | Rose gold / Green | watch-date-green |
+| The Soft Square Watch | Rose gold / Champagne | watch-date-champagne |
+| The Soft Square Watch | Black / Black | watch-date-black |
+| The Petite Square Watch | Rose gold / Pink | watch-square-pink |
+| The Petite Square Watch | Gunmetal / White | watch-square-gunmetal |
+| The Teal Dial Watch | Silver / Teal | watch-teal |
+
+The three supplied AI imports are watch-date-rose-black, watch-square-pink and watch-square-gunmetal. The seven new finals include the remaining six colourway images and watch-editorial-stock. Preserve visual distinctions in MODEL-MAP.md: Contour has 12/6 numerals and no date window; Soft Square has baton markers and a small circular date window; Petite Square has a compact softened square case and baton dial; Teal Dial has its distinct layered teal dial and lower-right date window. AI styling is labelled on cards and product pages. A second gallery crop is the same selected AI image, not an independent product view. Prices, stock and checkout remain explicitly demo; dimensions, materials, movement, water resistance and authenticity remain unverified and must await the verified launch catalogue.
+
 ## Do's and Don'ts
 Keep all sample items visibly demo. Never invent reviews, discounts, customer photos, operating policies or popularity. Use genuine launch photos when supplied; stock photography is representative only. Do not connect production services or repurpose this preview as a live store.
 Keep the homepage film unobstructed with its single collection action below the footage. Do not restore the old text-heavy split hero, overlay a visible headline on the model or add pink decoration. Preserve the responsive poster, pause control and preference-aware source loading. Describe generated film accessories as fictional concept styling, not inventory.
+Keep website watch stills AI-only and retain per-colour mapping, AI-styled labels, exact prompts and model provenance. Do not publish raw original watch photographs, video stills, packaging, collages or price posters, or infer verified specifications or real availability from generated imagery. The watch policy takes precedence over the general guidance to use genuine launch photos until the owner approves a verified launch catalogue.

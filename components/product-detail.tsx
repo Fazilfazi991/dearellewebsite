@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Minus, Plus, ArrowRight, Heart } from "lucide-react";
-import { type Product, money } from "@/lib/products";
+import { type Product, money, productVisual } from "@/lib/products";
 import { Photo } from "./image";
 import { useStore } from "./store";
 export function ProductDetail({ product: p }: { product: Product }) {
@@ -11,6 +11,7 @@ export function ProductDetail({ product: p }: { product: Product }) {
   const [qty, setQty] = useState(1);
   const { add, wish, toggleWish } = useStore();
   const router = useRouter();
+  const visual = productVisual(p, color);
   return (
     <div className="detail-grid">
       <div>
@@ -21,24 +22,27 @@ export function ProductDetail({ product: p }: { product: Product }) {
         >
           <div>
             <Photo
-              name={p.image}
-              position={p.imagePosition}
-              alt={`Representative stock photograph for ${p.name}`}
+              key={visual.image}
+              name={visual.image}
+              position={visual.position}
+              alt={`${p.imagery ? "AI-styled image" : "Representative photograph"} of ${p.name}, ${color}`}
               priority
             />
           </div>
           <div>
             <Photo
-              name={p.image}
-              position={p.imagePosition}
-              alt="Detail crop of the same representative photograph"
+              key={visual.image}
+              name={visual.image}
+              position={visual.position}
+              alt={`Detail crop of ${p.imagery ? "the same AI-styled image" : "the same representative photograph"}`}
               className="detail-crop"
             />
           </div>
         </div>
         <p className="small muted gallery-note">
-          Swipe to explore · Representative stock photography, not final product
-          images.
+          {p.imagery
+            ? "Swipe to explore · AI-styled watch imagery."
+            : "Swipe to explore · Representative stock photography, not final product images."}
         </p>
       </div>
       <div className="detail-copy">
@@ -61,7 +65,9 @@ export function ProductDetail({ product: p }: { product: Product }) {
         </p>
         <p>{p.description}</p>
         <p className="notice">
-          Demo product · Not available to purchase. Stock is unconfirmed.
+          {p.imagery
+            ? "AI-styled product preview · Final pricing and availability to be confirmed. Demo checkout only."
+            : "Demo product · Not available to purchase. Stock is unconfirmed."}
         </p>
         <fieldset className="color-options">
           <legend>
@@ -121,8 +127,10 @@ export function ProductDetail({ product: p }: { product: Product }) {
               {p.category === "watches"
                 ? "Dial colour, strap material, case size, movement and water resistance"
                 : "Material, dimensions, compartments, lining and strap length"}{" "}
-              will be added with the verified launch catalogue. Preview colour
-              options are illustrative and share a representative image.
+              will be added with the verified launch catalogue.{" "}
+              {p.imagery
+                ? "Each colourway has its own AI-styled image, based on the collection's model references."
+                : "Preview colour options are illustrative and share a representative image."}
             </p>
           </details>
           <details>

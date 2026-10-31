@@ -62,3 +62,15 @@ Independent finish reviewer disposition: **ship the prototype**, no material vis
 This is a prototype review, not launch approval. No physical-device Safari run, screen-reader audit, production-network LCP/CLS measurement, payment test or real inventory/order test. Product gallery reuses a representative image for its detail crop; variant photos, final specs and policies are intentionally unconfirmed. Stock photography must be replaced before launch.
 
 Screenshots: `.impeccable/review/desktop.jpg`, `mobile.jpg`, `mobile-viewport.jpg`, `bags-mobile.jpg`, `product-mobile.jpg`, `checkout-mobile.jpg`.
+
+## AI-only watch catalogue — 31 October 2026
+
+This supersedes the older watch sample names, colour-filter and Silver-variant examples above. Four model families expose nine distinct AI-styled colourways. No raw original stock photo is referenced by website watch stills. Real retail prices and technical specifications remain unconfirmed.
+
+- Production build passed (21 routes), lint and TypeScript passed; nine tests passed, including per-variant asset coverage and distinct black-model imagery.
+- Actual 375px browser checks: Soft Square green/champagne/black selections change the image; adding Black / Black retains that colour and its matching thumbnail at the demo subtotal ₹1,690. Test item removed. Petite Square Gunmetal / White resolves its own image.
+- Inspected mobile collection, product, cart and editorial banner, plus desktop category composition. All four models appear in Watches.
+- Independent read-only finish reviewer: ship, no blocking visual or source issue. Detector returned no findings for the changed UI targets.
+- Approved hero implementation, performance configuration and category curve CSS remain unchanged from `8cafc98`.
+
+Evidence: `.impeccable/review/performance/watches-home-375.jpg`, `watches-catalogue-375.jpg`, `watches-product-375.jpg`, `watches-cart-375.jpg`, `watches-editorial-375.jpg`, `watches-home-desktop.jpg`. AI styling is not a technical specification or a manufacturer-certified product rendering. Physical-device Safari/Android and launch inventory are not verified.

@@ -1,0 +1,109 @@
+{
+  "mode": "Built-in imagegen for new assets; user-supplied folder 02 AI imagery for imports. Original physical photos are reference-only and never deployed.",
+  "prompts": [
+    {
+      "name": "watch-date-green",
+      "prompt": "Use case: product-mockup. Create ONE AI-generated premium e-commerce product photograph, portrait 4:5. Input 1 is only the campaign styling reference: refined warm cream watch cushion, soft warm window light, natural suede grain, warm ivory background, restrained luxury accessory photography. Input 2 is the actual physical merchandise and is the authority for product shape and colour. Subject: LEFT watch in the real group photo: emerald green sunburst dial, rose-gold case and bracelet, rose-gold baton hour markers and hands, circular date window at 3. No Arabic numerals, no subdials. Precisely retain the softly rounded square/cushion case outline, bezel proportions, crown at right, three-row articulated metal bracelet and visible dial design from that specific watch. Retain the small CASIO and QUARTZ dial lettering seen on the real watch; no other text or graphics. Present only that ONE watch around a cream cushion, with entire case and generous portions of both bracelet ends visible, straight-on slight three-quarter view. Centre the dial around 50% horizontal and 47% vertical with comfortable margins suitable for a square mobile crop. Remove all packaging stickers, hands and shop background. Do not invent a different model, stones, leather strap, additional displays or a rectangular Tank case. This is AI-styled imagery based on the supplied inventory, not a new watch design."
+    },
+    {
+      "name": "watch-date-champagne",
+      "prompt": "Use case: product-mockup. Create ONE AI-generated premium e-commerce product photograph, portrait 4:5. Input 1 is only the campaign styling reference: refined warm cream watch cushion, soft warm window light, natural suede grain, warm ivory background, restrained luxury accessory photography. Input 2 is the actual physical merchandise and is the authority for product shape and colour. Subject: MIDDLE watch in the real group photo: pale champagne sunburst dial, rose-gold case and bracelet, thin darker rose-gold baton markers and hands, circular date window at 3. No Arabic numerals, no subdials. Precisely retain the softly rounded square/cushion case outline, bezel proportions, crown at right, three-row articulated metal bracelet and visible dial design from that specific watch. Retain the small CASIO and QUARTZ dial lettering seen on the real watch; no other text or graphics. Present only that ONE watch around a cream cushion, with entire case and generous portions of both bracelet ends visible, straight-on slight three-quarter view. Centre the dial around 50% horizontal and 47% vertical with comfortable margins suitable for a square mobile crop. Remove all packaging stickers, hands and shop background. Do not invent a different model, stones, leather strap, additional displays or a rectangular Tank case. This is AI-styled imagery based on the supplied inventory, not a new watch design."
+    },
+    {
+      "name": "watch-date-black",
+      "prompt": "Use case: product-mockup. Create ONE AI-generated premium e-commerce product photograph, portrait 4:5. Input 1 is only the campaign styling reference: refined warm cream watch cushion, soft warm window light, natural suede grain, warm ivory background, restrained luxury accessory photography. Input 2 is the actual physical merchandise and is the authority for product shape and colour. Subject: RIGHT watch in the real group photo: black dial, black case and black bracelet, strong white/silver baton hour markers and white/silver hands, circular date window at 3. No Arabic numerals, no subdials. Do not change it into the different FELIX model with 12 and 6. Precisely retain the softly rounded square/cushion case outline, bezel proportions, crown at right, three-row articulated metal bracelet and visible dial design from that specific watch. Retain the small CASIO and QUARTZ dial lettering seen on the real watch; no other text or graphics. Present only that ONE watch around a cream cushion, with entire case and generous portions of both bracelet ends visible, straight-on slight three-quarter view. Centre the dial around 50% horizontal and 47% vertical with comfortable margins suitable for a square mobile crop. Remove all packaging stickers, hands and shop background. Do not invent a different model, stones, leather strap, additional displays or a rectangular Tank case. This is AI-styled imagery based on the supplied inventory, not a new watch design."
+    },
+    {
+      "name": "watch-contour-black",
+      "prompt": "Use case: product-mockup. Generate ONE polished AI-styled premium product photograph, portrait 4:5. Both references show the SAME physical black Contour model. Preserve this exact softly rounded cushion case (slightly taller than wide, NOT circular), glossy gunmetal-black finish and articulated black bracelet, black dial with slender rose-gold hands and baton markers, Arabic 12 at top and 6 at bottom. Crucially this watch has NO DATE WINDOW and NO SUBDIALS. Do not add either. Preserve the visible lug, crown and bracelet pattern from the first actual-product reference; second reference clarifies the face. Place this exact watch around a warm ivory suede watch cushion, on a softly lit warm beige stone surface, quiet warm cream background, soft natural window light, refined shadows, realistic black metal reflections. Whole case entirely visible and comfortable margins above and below bracelet for square mobile crops. Dial centred x50% y46%. No hands, no vegetation, no props that distract, no overlay text or watermark. Keep any subtle actual dial lettering only if faithfully legible; never invent extra branding. Output only one photograph, not a collage."
+    },
+    {
+      "name": "watch-category-stock",
+      "prompt": "Use case: precise-object-edit. Produce ONE landscape 3:2 AI-generated watch category campaign photograph. Input 1 is the approved composition/materials reference ONLY: cream silk and suede, watch on left 50%, softly lit uninterrupted cream silk on right 45% for dark HTML typography. Replace its fictional rectangular Tank watch with the ACTUAL Contour watch from input 2. Input 3 clarifies the same white-dial cushion shape at higher detail; actual product input 2 wins on bracelet/lug details. Preserve the true rounded cushion case, rose-gold finish, white/ivory dial with Arabic 12 and 6 and thin baton other markers, three slim hands, small right crown, matching rose-gold articulated bracelet and its actual link pattern. NO date window, NO subdials, NO round dial and NO squared rectangular Tank case. Let the watch rest naturally diagonally over the left silk folds, face centred approximately x28% y43%, entire case visible, bracelet extending top-left and lower-left. Right half remains calm low-detail warm cream. Match the refined warm campaign lighting of input 1 and preserve premium sharp material detail. Keep exact small FELIX dial lettering as on supplied watch, no overlay text or new logo/watermark. No website or mockup. This replaces the watch photograph within an existing curved banner; do not draw the banner shape."
+    },
+    {
+      "name": "watch-editorial-stock",
+      "prompt": "Use case: precise-object-edit. Edit the FIRST image only. Preserve the adult fictional woman's pose, face, skin, hand anatomy, ivory tailoring, warm architectural background, lighting, camera framing and large dark quiet negative space on the left exactly. Change ONLY the watch on her wrist. Replace the fictional round mesh-strap watch with the supplied ACTUAL Contour model shown in references 2 and 3: softly rounded cushion case, rose-gold bezel and articulated rose-gold metal link bracelet (not mesh), ivory/white face, Arabic 12 and 6 with thin baton other hour markers, slim rose-gold hands, small crown. Actual reference 2 is authority for case/lug/bracelet details; reference3 clarifies dial. No date window or subdials. The watch must fit naturally around her wrist, correct scale and perspective, visible in lower right. Keep the wristwatch and cream cuff readable in a square mobile crop; do not hide the watch under sleeve. No new typography, no watermarks, no graphic overlays, no other jewellery. Output one landscape 3:2 photograph only."
+    },
+    {
+      "name": "watch-teal",
+      "prompt": "Use case: precise-object-edit. Generate one premium AI-styled e-commerce product photograph, portrait 4:5. First image is the actual physical watch and is authoritative for ALL product details; second is only a cleaner studio-lighting reference and must not override the true dial. Preserve the actual silver metal softly rounded rectangular/cushion case, silver three-row bracelet, teal sunburst dial, raised Arabic 12, small left day-style subdial and right numbered subdial, lower navy moon/sun motif, thin silver baton other markers and silver hands. Include the actual SMALL rectangular DATE WINDOW on the lower-right dial between roughly 3 and 4 o'clock, as visible on reference1, showing 15. Do not omit it. Small CASIO lettering and existing lower dial lettering may be preserved; no extra graphics, no invented labels. Whole watch upright around a warm ivory suede cushion on pale beige stone, softly defocused neutral cream background and refined window light. Face centred 50% horizontal/46% vertical, entire case visible and generous bracelet/margins for square crop. No hand or shop surroundings. Accurate source model, not a redesigned watch. One photograph, no collage."
+    },
+    {
+      "name": "watch-editorial-stock-final",
+      "prompt": "Use case: precise-object-edit. Make ONE very small correction to the FIRST landscape editorial image. Preserve every pixel of composition, woman, pose, hand, skin, ivory jacket, rose-gold watch style, background and lighting as closely as possible. Correct only the watch crown position: remove the small protruding knob currently above the case at 12 o'clock, and place the crown on the RIGHT SIDE of the cushion case at 3 o'clock, like the actual watch in reference2. Keep Arabic12 at top and6 at bottom of the ivory dial, slender baton markers and rose-gold hands, no date window, same case size and bracelet. Do not rotate the dial or move the watch on the wrist. Everything else stays unchanged. No typography or watermark."
+    }
+  ],
+  "selected": [
+    {
+      "name": "watch-date-green",
+      "sourceKind": "generated-ai",
+      "retainedSource": "sources/watch-date-green.png",
+      "originalSource": "exec-f3883b08-c85f-4a25-8479-6ac551028d8a.png",
+      "promptKey": "watch-date-green"
+    },
+    {
+      "name": "watch-date-champagne",
+      "sourceKind": "generated-ai",
+      "retainedSource": "sources/watch-date-champagne.png",
+      "originalSource": "exec-7e12d184-100f-4b87-aab2-36ddafa9d7ed.png",
+      "promptKey": "watch-date-champagne"
+    },
+    {
+      "name": "watch-date-black",
+      "sourceKind": "generated-ai",
+      "retainedSource": "sources/watch-date-black.png",
+      "originalSource": "exec-1b5c439c-ebcf-4ee9-9777-b204751b007e.png",
+      "promptKey": "watch-date-black"
+    },
+    {
+      "name": "watch-contour-black",
+      "sourceKind": "generated-ai",
+      "retainedSource": "sources/watch-contour-black.png",
+      "originalSource": "exec-6d0c5da9-7c56-442b-a19e-6ebdab75691f.png",
+      "promptKey": "watch-contour-black"
+    },
+    {
+      "name": "watch-category-stock",
+      "sourceKind": "generated-ai",
+      "retainedSource": "sources/watch-category-stock.png",
+      "originalSource": "exec-48baf22d-c49f-4996-a9fe-0fc6f4ca5c9f.png",
+      "promptKey": "watch-category-stock"
+    },
+    {
+      "name": "watch-teal",
+      "sourceKind": "generated-ai",
+      "retainedSource": "sources/watch-teal.png",
+      "originalSource": "exec-262a8a9b-4a9a-4880-b883-a36acf0d42d5.png",
+      "promptKey": "watch-teal"
+    },
+    {
+      "name": "watch-editorial-stock",
+      "sourceKind": "generated-ai",
+      "retainedSource": "sources/watch-editorial-stock.png",
+      "originalSource": "exec-59e724ce-9fb1-4977-aa76-dae5ac55c7b6.png",
+      "promptKey": "watch-editorial-stock-final"
+    },
+    {
+      "name": "watch-date-rose-black",
+      "sourceKind": "provided-ai",
+      "retainedSource": "sources/watch-date-rose-black.png",
+      "originalSource": "CASIO_RoseGold_BlackDial/09_rose_gold_casio_watch_on_cream_cushion.png",
+      "promptKey": null
+    },
+    {
+      "name": "watch-square-pink",
+      "sourceKind": "provided-ai",
+      "retainedSource": "sources/watch-square-pink.png",
+      "originalSource": "FELIX_RoseGold_PinkDial/01_luxury_rose_gold_watch_still_life.png",
+      "promptKey": null
+    },
+    {
+      "name": "watch-square-gunmetal",
+      "sourceKind": "provided-ai",
+      "retainedSource": "sources/watch-square-gunmetal.png",
+      "originalSource": "FELIX_Gunmetal_WhiteDial/01_minimalist_felix_gunmetal_watch.png",
+      "promptKey": null
+    }
+  ]
+}
