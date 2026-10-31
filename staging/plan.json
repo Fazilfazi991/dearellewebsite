@@ -1,0 +1,17 @@
+{
+  "vercelTeamId": "team_FKtnAnds9Xak13ypGNvXO346",
+  "vercelProjectId": "prj_BrLZcJDr9gxf6Rll0jGYI6xI3Zhh",
+  "vercelProjectName": "dearellewebsite",
+  "gitBranch": "codex/secure-commerce-backend",
+  "baselineCommit": "a3b3041e8bf94de6e6b0c0e94a12b0daa93031d8",
+  "target": "preview",
+  "region": "bom1",
+  "supabaseOrganizationId": "jydhpjdbnqbhcbvopwef",
+  "supabaseProjectRef": "pvdklulichacdvsjfdqz",
+  "supabaseRegion": "ap-south-1",
+  "appOrigin": "https://dearellewebsite-git-codex-secure-commer-641b0c-faziils-projects.vercel.app",
+  "publicOrderIntake": false,
+  "liveExpiryApproved": false,
+  "hostedMigrationsAuthorized": false,
+  "ownerInvitationAuthorized": false
+}

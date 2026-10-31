@@ -1,3 +1,4 @@
+import { syntheticStagingCustomer } from "../lib/staging-safety";
 import { readFileSync } from "node:fs";
 import assert from "node:assert/strict";
 import { randomUUID, createHash } from "node:crypto";
@@ -318,6 +319,45 @@ try {
     const [negative] =
       await sql`select count(*)::int as n from commerce.inventory where reserved<0 or on_hand<reserved`;
     assert.equal(negative.n, 0);
+  });
+  await test("staging rejects real customer fields before any database write", async () => {
+    const beforeStage = process.env.DEPLOYMENT_STAGE,
+      beforeFlag = process.env.STAGING_SYNTHETIC_ONLY;
+    try {
+      const r = await make(),
+        [before] = await sql`select count(*)::int as n from commerce.orders`;
+      process.env.DEPLOYMENT_STAGE = "staging";
+      process.env.STAGING_SYNTHETIC_ONLY = "1";
+      await assert.rejects(
+        repo.create(
+          {
+            ...r.input,
+            customer: {
+              ...syntheticStagingCustomer,
+              email: "realperson@gmail.com",
+            },
+          },
+          r.g,
+        ),
+      );
+      const [after] = await sql`select count(*)::int as n from commerce.orders`;
+      assert.equal(after.n, before.n);
+      const order = await repo.create(
+        { ...r.input, customer: syntheticStagingCustomer },
+        r.g,
+      );
+      assert.equal(order.customer.email, "uat@example.test");
+      await repo.update(
+        order.id,
+        { action: "fulfilment", fulfilment: "cancelled", version: 1 },
+        owner,
+      );
+    } finally {
+      if (beforeStage === undefined) delete process.env.DEPLOYMENT_STAGE;
+      else process.env.DEPLOYMENT_STAGE = beforeStage;
+      if (beforeFlag === undefined) delete process.env.STAGING_SYNTHETIC_ONLY;
+      else process.env.STAGING_SYNTHETIC_ONLY = beforeFlag;
+    }
   });
   await test("retention requires approval and preserves financial records", async () => {
     await assert.rejects(

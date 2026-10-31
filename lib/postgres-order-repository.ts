@@ -1,3 +1,4 @@
+import { assertSyntheticStagingCustomer } from "./staging-safety";
 import { randomUUID, createHash } from "node:crypto";
 import type { Sql } from "postgres";
 import { database, testOrdersEnabled } from "./database";
@@ -153,6 +154,7 @@ export class PostgresOrderRepository {
       throw new CommerceError(
         "Check your delivery details and acknowledge the test request.",
       );
+    assertSyntheticStagingCustomer(checked.customer);
     const payload = hash(
       JSON.stringify({
         items: input.items,

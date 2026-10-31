@@ -1,0 +1,17 @@
+{
+  "targetProjectRef": "pvdklulichacdvsjfdqz",
+  "region": "ap-south-1",
+  "applied": false,
+  "ownerSeeded": false,
+  "publicIntake": false,
+  "files": [
+    {
+      "path": "supabase/migrations/20261031090525_commerce_foundation.sql",
+      "sha256": "ffa9827e88e269da6a69414f034a72139e3d7a0b845d0086e4d4583547ec0c3a"
+    },
+    {
+      "path": "supabase/seed.sql",
+      "sha256": "661748a14016b9834a81b0243d6fb3c5acd51ce88bc51d3e0592fccacff5b771"
+    }
+  ]
+}
