@@ -12,6 +12,8 @@
   "appOrigin": "https://dearellewebsite-git-codex-secure-commer-641b0c-faziils-projects.vercel.app",
   "publicOrderIntake": false,
   "liveExpiryApproved": false,
-  "hostedMigrationsAuthorized": false,
-  "ownerInvitationAuthorized": false
+  "hostedMigrationsAuthorized": true,
+  "ownerInvitationAuthorized": false,
+  "previewDeploymentAuthorized": false,
+  "hostedUatAuthorized": false
 }

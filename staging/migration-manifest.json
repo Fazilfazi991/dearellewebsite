@@ -1,7 +1,7 @@
 {
   "targetProjectRef": "pvdklulichacdvsjfdqz",
   "region": "ap-south-1",
-  "applied": false,
+  "applied": true,
   "ownerSeeded": false,
   "publicIntake": false,
   "files": [
@@ -13,5 +13,12 @@
       "path": "supabase/seed.sql",
       "sha256": "661748a14016b9834a81b0243d6fb3c5acd51ce88bc51d3e0592fccacff5b771"
     }
-  ]
+  ],
+  "applicationMethod": "Supabase dashboard SQL editor; reviewed files in one transaction",
+  "appliedDate": "2026-10-31",
+  "verifiedProducts": 13,
+  "verifiedSkus": 18,
+  "verifiedRlsTables": 16,
+  "runtimeLoginEnabled": false,
+  "supabaseCliHistoryRegistered": false
 }

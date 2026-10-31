@@ -2,11 +2,23 @@
 
 Scope: existing Vercel project `dearellewebsite`, only `codex/secure-commerce-backend` Preview deployments; existing Supabase project `pvdklulichacdvsjfdqz` in organization `jydhpjdbnqbhcbvopwef`, Mumbai `ap-south-1`. The connector is authenticated to a different Supabase organization; do not use it for these writes. Use the verified Dearelle browser account or reconnect the connector to the correct account before authorized operations. Never link or alter dearelle.in, main, or Vercel Production secrets.
 
-## Inspected, not provisioned
+## Current hosted setup status
+
+On 31 October the user explicitly approved the existing free Mumbai project migration/seed, restricted database access and Auth hardening, excluding deployments, accounts/invitations, expenditure and live orders. The reviewed migration and seed have now been applied in one dashboard transaction. Verified: 13 products, 18 SKUs, three units each, 16/16 tables with RLS, no anonymous/authenticated schema access, zero users/orders, public intake and live expiry OFF. The app role exists with reviewed grants, no superuser/bypass-RLS/create privileges and NOLOGIN; its new password requires a user-controlled credential handoff. No credential has been entered by the agent.
+
+Public signup, anonymous sign-in and manual linking are OFF; email confirmation, TOTP and the 15-minute AAL1 limit are ON. Secure password change is ON, minimum password length configured to 12, email OTP lifetime 600 seconds. The Site URL and sole callback use the exact stable protected branch URL. Commerce is not exposed in the Data API, with zero exposed commerce tables/functions; automatic future table grants are OFF. Advisor Center showed no error/warning items, and 11 informational index recommendations. These are observations, not hosted commerce UAT.
+
+Custom SMTP is absent: the dashboard blocks editing invitation/recovery templates until SMTP is configured. Prepared templates remain uninstalled. No email was sent. The managed SQL executor rejects SET ROLE dearelle_app; do not grant extra role membership to make an administrative test pass. Use the actual restricted login for the prepared preflight after the user sets its credential.
+
+Dashboard execution does not register Supabase CLI migration history. The version and exact applied hashes are recorded in `migration-manifest.json`. Do not run `supabase db push` against this project until the existing migration history has been inspected and the already-applied version reconciled through an authorized administrative connection. Never rerun the foundation blindly over the installed schema.
+
+`USER-SET-RUNTIME-PASSWORD.sql` is a guarded template for the user to enter and submit the new credential themselves. It has not been executed. The role stays NOLOGIN until that action; do not store the completed query in Git or send it in chat.
+
+## Initial infrastructure inspection (historical)
 
 The current branch preview at https://dearellewebsite-fxzspwaps-faziils-projects.vercel.app was built from a3b3041 and is READY, but no backend variables are configured. The stable branch URL is in `plan.json`. Anonymous requests redirect to Vercel sign-in. Existing deployment protection is enabled (`all_except_custom_domains`); dearelle.in is not attached to this project. Production still points to main/1661027. Functions currently use iad1; the prepared `vercel.preview.json` selects bom1 for an authorized preview deployment. The existing project reports Node 26.x. This candidate pins package.json engines to the locally tested Node 24.x, which Vercel supports as a deployment-specific override; the current main deployment and shared project setting are untouched. Verify the approved preview actually uses Node 24 before UAT sign-off.
 
-The Supabase dashboard shows a healthy Free/Nano Mumbai project. An aggregate-only SQL query confirmed zero Auth users, zero public tables, no commerce schema and no dearelle_app role. No migrations or scheduled backups are present. Signup is currently enabled. Nothing has been migrated or invited by this milestone.
+The Supabase dashboard shows a healthy Free/Nano Mumbai project. An aggregate-only SQL query confirmed zero Auth users, zero public tables, no commerce schema and no dearelle_app role. No migrations or scheduled backups are present. Signup is currently enabled. This paragraph describes the pre-approval inspection; see current status above for the applied migration. No one has been invited.
 
 This branch now has a Git auto-deployment hold in the root `vercel.json`; pushes can be reviewed without deploying the unapproved candidate. Main is not changed. After authorization, explicitly deploy the reviewed commit with the prepared preview configuration, or lift only this branch hold in a reviewed change.
 
@@ -45,4 +57,4 @@ For MFA loss: stop owner operations, verify the claimant through the pre-approve
 
 ## Acceptance state
 
-Current recommendation: NOT READY for live enablement. Hosted database installation, protected backend-connected deployment, real-owner activation, hosted concurrency/UAT and separate hosted restore are awaiting authorization/configuration. Local tests are evidence for preparation, not hosted test evidence. Finish `OWNER-APPROVALS.md` and obtain a separate live-enablement approval after all hosted gates pass.
+Current recommendation: NOT READY for live enablement. Hosted database installation is verified. Restricted-login credential provisioning, protected backend-connected deployment, real-owner activation, hosted concurrency/UAT and separate hosted restore remain pending authorization/configuration. Local tests are evidence for preparation, not hosted test evidence. Finish `OWNER-APPROVALS.md` and obtain a separate live-enablement approval after all hosted gates pass.
