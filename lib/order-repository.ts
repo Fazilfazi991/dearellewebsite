@@ -1,30 +1,14 @@
 import { DatabaseSync } from "node:sqlite";
 import { mkdirSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { createHash, randomUUID } from "node:crypto";
+import { dirname } from "node:path";
+import { randomUUID } from "node:crypto";
 import { products } from "./products";
-import { createQuote, CommerceError, type Quote } from "./quote";
-import { validateCustomer, type Customer } from "./checkout";
+import { createQuote, CommerceError } from "./quote";
+import { validateCustomer } from "./checkout";
 
-export type Fulfilment =
-  | "awaiting_contact"
-  | "confirmed"
-  | "packed"
-  | "shipped"
-  | "delivered"
-  | "cancelled";
-export type Order = {
-  id: string;
-  createdAt: string;
-  customer: Customer;
-  quote: Quote;
-  mode: "test";
-  payment: "advance_pending" | "advance_verified" | "cod_collected";
-  fulfilment: Fulfilment;
-  tracking: string;
-  version: number;
-  history: { at: string; message: string }[];
-};
+import { hash, type Order, type Fulfilment } from "./order-domain";
+export { hash } from "./order-domain";
+export type { Order, Fulfilment } from "./order-domain";
 const transitions: Record<Fulfilment, Fulfilment[]> = {
   awaiting_contact: ["confirmed", "cancelled"],
   confirmed: ["packed", "cancelled"],
@@ -32,10 +16,8 @@ const transitions: Record<Fulfilment, Fulfilment[]> = {
   shipped: ["delivered"],
   delivered: [],
   cancelled: [],
+  expired: [],
 };
-export const hash = (value: string) =>
-  createHash("sha256").update(value).digest("hex");
-
 // SQLite is a local test repository. A durable hosted adapter is required for public orders.
 export class OrderRepository {
   private db: DatabaseSync;
@@ -271,22 +253,4 @@ export class OrderRepository {
     }
   }
 }
-let instance: OrderRepository | undefined;
-export function testOrdersEnabled() {
-  return (
-    process.env.COMMERCE_TEST_ORDERS === "1" &&
-    !process.env.VERCEL &&
-    (process.env.OWNER_ACCESS_TOKEN?.length ?? 0) >= 32
-  );
-}
-export function orderRepository() {
-  if (!testOrdersEnabled())
-    throw new CommerceError(
-      "Order recording is not configured on this preview. No order or payment has been created.",
-      503,
-    );
-  return (instance ??= new OrderRepository(
-    process.env.TEST_ORDER_DB_PATH ??
-      join(process.cwd(), ".data", "test-orders.sqlite"),
-  ));
-}
+// Retained solely for regression tests of the previous local prototype.

@@ -1,11 +1,11 @@
+import { hash } from "@/lib/order-domain";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import {
-  hash,
   orderRepository,
   testOrdersEnabled,
-} from "@/lib/order-repository";
+} from "@/lib/postgres-order-repository";
 import { money } from "@/lib/products";
 export const dynamic = "force-dynamic";
 export const metadata = {
@@ -20,7 +20,7 @@ export default async function OrderConfirmation({
   const { id } = await params;
   const token = (await cookies()).get("dearelle_guest")?.value;
   if (!token || !testOrdersEnabled()) notFound();
-  const order = orderRepository().get(id, hash(token));
+  const order = await orderRepository().get(id, hash(token));
   if (!order) notFound();
   return (
     <main id="main" className="section inner-page confirmation-page">

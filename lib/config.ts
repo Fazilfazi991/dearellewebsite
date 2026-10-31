@@ -5,7 +5,7 @@ export const launchConfig = {
   instagramUrl: null,
   shippingPolicy: "Delivery across India. No delivery charge.",
   returnPolicy:
-    "Returns for damage during delivery. An unpacking video is required.",
+    "Contact us for damage during delivery. An unpacking video helps document damage; it does not limit your statutory consumer rights.",
   liveCommerceEnabled: false,
 } as const;
 
@@ -20,5 +20,5 @@ export const commercePolicy = {
   dispatchRequiresContact: true,
   dispatchRequiresVerifiedAdvance: true,
   returns:
-    "Returns for damage during delivery. Please record an unpacking video.",
+    "Contact us for damage during delivery. An unpacking video helps document damage; it does not limit your statutory consumer rights.",
 } as const;

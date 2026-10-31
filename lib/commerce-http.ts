@@ -1,7 +1,7 @@
-import { randomBytes, timingSafeEqual } from "node:crypto";
+import { randomBytes } from "node:crypto";
 import { cookies } from "next/headers";
 import { CommerceError } from "./quote";
-import { hash } from "./order-repository";
+import { hash } from "./order-domain";
 
 const headers = {
   "Cache-Control": "private, no-store",
@@ -34,7 +34,9 @@ export async function readBody(request: Request) {
   let sameOrigin = false;
   try {
     const parsed = new URL(origin ?? "");
-    sameOrigin = parsed.host === host && parsed.protocol === `${protocol}:`;
+    sameOrigin = process.env.APP_ORIGIN
+      ? parsed.origin === process.env.APP_ORIGIN
+      : parsed.host === host && parsed.protocol === `${protocol}:`;
   } catch {}
   if (!sameOrigin)
     throw new CommerceError("This request must come from the storefront.", 403);
@@ -79,31 +81,12 @@ export async function guestSession(create = false) {
   }
   return hash(token);
 }
-export function ownerAuthorized(request: Request) {
-  const secret = process.env.OWNER_ACCESS_TOKEN;
-  if (!secret || secret.length < 32)
-    throw new CommerceError(
-      "Owner access is not configured. Set a private owner access token on the server.",
-      503,
-    );
-  const supplied =
-    request.headers.get("authorization")?.replace(/^Bearer /, "") ?? "";
-  if (
-    !timingSafeEqual(
-      Buffer.from(hash(secret), "hex"),
-      Buffer.from(hash(supplied), "hex"),
-    )
-  )
-    throw new CommerceError("Owner access required.", 401);
-}
-const requests = new Map<string, { count: number; reset: number }>();
-export function rateLimit(key: string) {
-  const now = Date.now();
-  for (const [id, value] of requests)
-    if (value.reset <= now) requests.delete(id);
-  const entry = requests.get(key) ?? { count: 0, reset: now + 60000 };
-  entry.count++;
-  requests.set(key, entry);
-  if (entry.count > 20)
-    throw new CommerceError("Please wait a minute before trying again.", 429);
+export { durableRateLimit as rateLimit } from "./rate-limit";
+
+// Deployment proxy must replace, rather than append arbitrary incoming forwarding headers.
+export function clientAddress(request: Request) {
+  return process.env.VERCEL
+    ? (request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+        "unknown")
+    : "local";
 }

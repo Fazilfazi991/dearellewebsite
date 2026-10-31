@@ -2053,3 +2053,114 @@ select {
     margin-bottom: 25px;
   }
 }
+.owner-filter {
+  display: grid;
+  gap: 8px;
+  max-width: 320px;
+  margin: 24px 0 16px;
+}
+.owner-filter select {
+  padding: 12px;
+  background: var(--ivory);
+  border: 1px solid var(--border);
+  font: inherit;
+}
+.owner-inventory {
+  border-block: 1px solid var(--border);
+  padding: 16px 0;
+  margin-bottom: 24px;
+}
+.owner-inventory summary {
+  cursor: pointer;
+}
+.owner-inventory p {
+  font-size: 13px;
+  margin: 12px 0;
+}
+.owner-actions fieldset {
+  min-width: 0;
+  border: 1px solid var(--border);
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+.owner-actions label,
+.owner-login label {
+  display: grid;
+  gap: 6px;
+}
+.owner-actions textarea {
+  resize: vertical;
+  min-height: 80px;
+  font: inherit;
+  padding: 10px;
+  border: 1px solid var(--border);
+  width: 100%;
+}
+.owner-detail {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.owner-login details {
+  max-width: 100%;
+}
+.owner-login img {
+  max-width: 100%;
+  height: auto;
+}
+.owner-filter select:focus-visible {
+  outline: 2px solid #965c68;
+  outline-offset: 3px;
+}
+
+.owner-back {
+  display: none;
+}
+.owner-toolbar button {
+  min-height: 44px;
+}
+.owner-detail,
+.owner-list {
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 640px) {
+  .owner-grid.has-selection .owner-list {
+    display: none;
+  }
+  .owner-back {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+}
+
+.owner-login input,
+.owner-detail input,
+.owner-detail textarea {
+  font-size: 16px;
+}
+.owner-inventory summary {
+  min-height: 44px;
+  padding-block: 10px;
+}
+.owner-page .owner-toolbar {
+  margin-bottom: 12px;
+}
+.owner-page .owner-filter {
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.owner-page .owner-inventory {
+  padding-block: 0;
+  margin-bottom: 16px;
+}
+@media (max-width: 640px) {
+  .owner-page .page-heading {
+    padding-bottom: 16px;
+  }
+  .owner-page:has(.owner-grid.has-selection) .owner-filter,
+  .owner-page:has(.owner-grid.has-selection) .owner-inventory {
+    display: none;
+  }
+}

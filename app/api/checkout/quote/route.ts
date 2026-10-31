@@ -4,18 +4,23 @@ import {
   readBody,
   guestSession,
   rateLimit,
+  clientAddress,
 } from "@/lib/commerce-http";
 import { createQuote } from "@/lib/quote";
-import { orderRepository, testOrdersEnabled } from "@/lib/order-repository";
+import {
+  orderRepository,
+  testOrdersEnabled,
+} from "@/lib/postgres-order-repository";
 export const runtime = "nodejs";
 export async function POST(request: Request) {
   return handle(async () => {
     const body = await readBody(request);
     const guest = await guestSession(true);
-    rateLimit(guest);
+    await rateLimit(`quote:guest:${guest}`, 30);
+    await rateLimit(`quote:ip:${clientAddress(request)}`, 100);
     const recordingEnabled = testOrdersEnabled();
     const quote = recordingEnabled
-      ? orderRepository().quote(body.items)
+      ? await orderRepository().quote(body.items)
       : createQuote(body.items);
     return json({ ...quote, recordingEnabled });
   });

@@ -1,5 +1,7 @@
 # Purchase experience milestone — 31 October 2026
 
+Historical record of commit 1661027. Backend implementation and setup below are superseded by [BACKEND-MILESTONE.md](BACKEND-MILESTONE.md): the application now uses PostgreSQL and Supabase MFA owner access. The old bearer-token interface and SQLite application factory are retired.
+
 ## Already working
 
 The shared catalogue, owner prices, per-colour imagery, gallery navigation, selective listing carousels, wishlist, quantity controls, modal bag and local cart persistence were present. The hero film and flowing category geometry were approved. They were preserved rather than rebuilt.

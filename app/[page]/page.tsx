@@ -29,7 +29,7 @@ const pages: Record<string, { title: string; text: string }> = {
   },
   returns: {
     title: "The details that matter.",
-    text: "Returns are available for damage during delivery. An unpacking video is required when reporting delivery damage. A return time window, return shipping arrangements and refund process have not yet been specified.",
+    text: "Returns are available for damage during delivery. Please record an unpacking video to help document delivery damage. This evidence guidance does not exclude statutory consumer rights. A return time window, return shipping arrangements and refund process have not yet been specified.",
   },
   privacy: {
     title: "Your privacy matters.",
