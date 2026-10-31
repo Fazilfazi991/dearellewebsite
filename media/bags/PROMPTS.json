@@ -1,0 +1,88 @@
+{
+  "method": "Built-in imagegen, original photographs used as merchandise references",
+  "assets": [
+    {
+      "name": "bag-oxblood-top-handle",
+      "ref": "IMG_0187.JPG",
+      "subject": "the single dark oxblood/brown snakeskin-textured structured rectangular top-handle bag, burgundy trim, curved short handle, broad front flap, centre burgundy tab through dark rectangular silver clasp",
+      "prompt": "Use case: product-mockup. Generate one photorealistic premium e-commerce product photograph using the attached original product as the strict merchandise reference, not as a style reference. Show the single dark oxblood/brown snakeskin-textured structured rectangular top-handle bag, burgundy trim, curved short handle, broad front flap, centre burgundy tab through dark rectangular silver clasp. Precisely preserve silhouette, proportions, colour, pattern, texture, handle/strap construction, hardware and existing emblem from the reference; do not invent a different bag, additional branding or designer affiliation. Replace the garden, hands and packaging with a quiet warm ivory studio, cream limestone plinth and soft window light from upper left. Editorial luxury accessories campaign, natural texture, restrained warm neutral colour grade. Front three-quarter camera view, entire bag and handle/strap within frame with comfortable margins for responsive portrait/square crops, product centred around 50% horizontal. Portrait 4:5, single bag only, no typography, no watermark, no decorative flowers, no excessive shadows. This is AI-styled merchandise imagery, not an authenticity claim.",
+      "source": "sources/bag-oxblood-top-handle.png",
+      "website": "public/images/bag-oxblood-top-handle.jpg",
+      "originalReference": "IMG_0187.JPG"
+    },
+    {
+      "name": "bag-taupe-flap",
+      "ref": "IMG_0192.JPG",
+      "subject": "the single glossy taupe marbled-texture rectangular flap crossbody with ivory piping and ivory shoulder strap, tiny existing gold front emblem",
+      "prompt": "Use case: product-mockup. Generate one photorealistic premium e-commerce product photograph using the attached original product as the strict merchandise reference, not as a style reference. Show the single glossy taupe marbled-texture rectangular flap crossbody with ivory piping and ivory shoulder strap, tiny existing gold front emblem. Precisely preserve silhouette, proportions, colour, pattern, texture, handle/strap construction, hardware and existing emblem from the reference; do not invent a different bag, additional branding or designer affiliation. Replace the garden, hands and packaging with a quiet warm ivory studio, cream limestone plinth and soft window light from upper left. Editorial luxury accessories campaign, natural texture, restrained warm neutral colour grade. Front three-quarter camera view, entire bag and handle/strap within frame with comfortable margins for responsive portrait/square crops, product centred around 50% horizontal. Portrait 4:5, single bag only, no typography, no watermark, no decorative flowers, no excessive shadows. This is AI-styled merchandise imagery, not an authenticity claim.",
+      "source": "sources/bag-taupe-flap.png",
+      "website": "public/images/bag-taupe-flap.jpg",
+      "originalReference": "IMG_0192.JPG"
+    },
+    {
+      "name": "bag-burgundy-tote",
+      "ref": "IMG_0225.JPG",
+      "subject": "the single smooth burgundy two-handle tote with its distinctive pleated front, horizontal front pocket seam and slim vertical silver pointed oval ornament; remove only handle packaging",
+      "prompt": "Use case: product-mockup. Generate one photorealistic premium e-commerce product photograph using the attached original product as the strict merchandise reference, not as a style reference. Show the single smooth burgundy two-handle tote with its distinctive pleated front, horizontal front pocket seam and slim vertical silver pointed oval ornament; remove only handle packaging. Precisely preserve silhouette, proportions, colour, pattern, texture, handle/strap construction, hardware and existing emblem from the reference; do not invent a different bag, additional branding or designer affiliation. Replace the garden, hands and packaging with a quiet warm ivory studio, cream limestone plinth and soft window light from upper left. Editorial luxury accessories campaign, natural texture, restrained warm neutral colour grade. Front three-quarter camera view, entire bag and handle/strap within frame with comfortable margins for responsive portrait/square crops, product centred around 50% horizontal. Portrait 4:5, single bag only, no typography, no watermark, no decorative flowers, no excessive shadows. This is AI-styled merchandise imagery, not an authenticity claim.",
+      "source": "sources/bag-burgundy-tote.png",
+      "website": "public/images/bag-burgundy-tote.jpg",
+      "originalReference": "IMG_0225.JPG"
+    },
+    {
+      "name": "bag-berry-shoulder",
+      "ref": "IMG_0227.JPG",
+      "subject": "the single berry/burgundy textured curved shoulder bag with rounded base, scooped top, matching short strap and small gold oval front detail",
+      "prompt": "Use case: product-mockup. Generate one photorealistic premium e-commerce product photograph using the attached original product as the strict merchandise reference, not as a style reference. Show the single berry/burgundy textured curved shoulder bag with rounded base, scooped top, matching short strap and small gold oval front detail. Precisely preserve silhouette, proportions, colour, pattern, texture, handle/strap construction, hardware and existing emblem from the reference; do not invent a different bag, additional branding or designer affiliation. Replace the garden, hands and packaging with a quiet warm ivory studio, cream limestone plinth and soft window light from upper left. Editorial luxury accessories campaign, natural texture, restrained warm neutral colour grade. Front three-quarter camera view, entire bag and handle/strap within frame with comfortable margins for responsive portrait/square crops, product centred around 50% horizontal. Portrait 4:5, single bag only, no typography, no watermark, no decorative flowers, no excessive shadows. This is AI-styled merchandise imagery, not an authenticity claim.",
+      "source": "sources/bag-berry-shoulder.png",
+      "website": "public/images/bag-berry-shoulder.jpg",
+      "originalReference": "IMG_0227.JPG"
+    },
+    {
+      "name": "bag-ivory-monogram",
+      "ref": "IMG_0190.JPG",
+      "subject": "the single ivory/black grid monogram small flap bag with dark brown sides and base, matching curved flap and large gold teardrop clasp, dark brown shoulder strap",
+      "prompt": "Use case: product-mockup. Generate one photorealistic premium e-commerce product photograph using the attached original product as the strict merchandise reference, not as a style reference. Show the single ivory/black grid monogram small flap bag with dark brown sides and base, matching curved flap and large gold teardrop clasp, dark brown shoulder strap. Precisely preserve silhouette, proportions, colour, pattern, texture, handle/strap construction, hardware and existing emblem from the reference; do not invent a different bag, additional branding or designer affiliation. Replace the garden, hands and packaging with a quiet warm ivory studio, cream limestone plinth and soft window light from upper left. Editorial luxury accessories campaign, natural texture, restrained warm neutral colour grade. Front three-quarter camera view, entire bag and handle/strap within frame with comfortable margins for responsive portrait/square crops, product centred around 50% horizontal. Portrait 4:5, single bag only, no typography, no watermark, no decorative flowers, no excessive shadows. This is AI-styled merchandise imagery, not an authenticity claim.",
+      "source": "sources/bag-ivory-monogram.png",
+      "website": "public/images/bag-ivory-monogram.jpg",
+      "originalReference": "IMG_0190.JPG"
+    },
+    {
+      "name": "bag-purple-flap",
+      "ref": "IMG_0200.JPG",
+      "subject": "ONLY the purple/mauve glossy rectangular flap crossbody at the LEFT of the group photograph, with ivory side panels/piping, ivory thin strap and existing tiny gold front emblem. Do not include the taupe, brown, ivory or green bags",
+      "prompt": "Use case: product-mockup. Generate one photorealistic premium e-commerce product photograph using the attached original product as the strict merchandise reference, not as a style reference. Show ONLY the purple/mauve glossy rectangular flap crossbody at the LEFT of the group photograph, with ivory side panels/piping, ivory thin strap and existing tiny gold front emblem. Do not include the taupe, brown, ivory or green bags. Precisely preserve silhouette, proportions, colour, pattern, texture, handle/strap construction, hardware and existing emblem from the reference; do not invent a different bag, additional branding or designer affiliation. Replace the garden, hands and packaging with a quiet warm ivory studio, cream limestone plinth and soft window light from upper left. Editorial luxury accessories campaign, natural texture, restrained warm neutral colour grade. Front three-quarter camera view, entire bag and handle/strap within frame with comfortable margins for responsive portrait/square crops, product centred around 50% horizontal. Portrait 4:5, single bag only, no typography, no watermark, no decorative flowers, no excessive shadows. This is AI-styled merchandise imagery, not an authenticity claim.",
+      "source": "sources/bag-purple-flap.png",
+      "website": "public/images/bag-purple-flap.jpg",
+      "originalReference": "IMG_0200.JPG"
+    },
+    {
+      "name": "bag-chocolate-pattern",
+      "ref": "IMG_0200.JPG",
+      "subject": "ONLY the dark chocolate rectangular patterned flap bag at the TOP of the group photograph, with mustard/gold floral geometric motifs, dark brown thin shoulder strap and centre closure tab. Remove its hanging shop tag. Do not include the other bags",
+      "prompt": "Use case: product-mockup. Generate one photorealistic premium e-commerce product photograph using the attached original product as the strict merchandise reference, not as a style reference. Show ONLY the dark chocolate rectangular patterned flap bag at the TOP of the group photograph, with mustard/gold floral geometric motifs, dark brown thin shoulder strap and centre closure tab. Remove its hanging shop tag. Do not include the other bags. Precisely preserve silhouette, proportions, colour, pattern, texture, handle/strap construction, hardware and existing emblem from the reference; do not invent a different bag, additional branding or designer affiliation. Replace the garden, hands and packaging with a quiet warm ivory studio, cream limestone plinth and soft window light from upper left. Editorial luxury accessories campaign, natural texture, restrained warm neutral colour grade. Front three-quarter camera view, entire bag and handle/strap within frame with comfortable margins for responsive portrait/square crops, product centred around 50% horizontal. Portrait 4:5, single bag only, no typography, no watermark, no decorative flowers, no excessive shadows. This is AI-styled merchandise imagery, not an authenticity claim.",
+      "source": "sources/bag-chocolate-pattern.png",
+      "website": "public/images/bag-chocolate-pattern.jpg",
+      "originalReference": "IMG_0200.JPG"
+    },
+    {
+      "name": "bag-olive-shoulder",
+      "ref": "IMG_0200.JPG",
+      "subject": "ONLY the large olive-grey woven/textured curved shoulder bag in the FOREGROUND BOTTOM of the group photo, with long olive strap, rounded base, scooped top and tiny gold oval front detail. Do not include other bags",
+      "prompt": "Use case: product-mockup. Generate one photorealistic premium e-commerce product photograph using the attached original product as the strict merchandise reference, not as a style reference. Show ONLY the large olive-grey woven/textured curved shoulder bag in the FOREGROUND BOTTOM of the group photo, with long olive strap, rounded base, scooped top and tiny gold oval front detail. Do not include other bags. Precisely preserve silhouette, proportions, colour, pattern, texture, handle/strap construction, hardware and existing emblem from the reference; do not invent a different bag, additional branding or designer affiliation. Replace the garden, hands and packaging with a quiet warm ivory studio, cream limestone plinth and soft window light from upper left. Editorial luxury accessories campaign, natural texture, restrained warm neutral colour grade. Front three-quarter camera view, entire bag and handle/strap within frame with comfortable margins for responsive portrait/square crops, product centred around 50% horizontal. Portrait 4:5, single bag only, no typography, no watermark, no decorative flowers, no excessive shadows. This is AI-styled merchandise imagery, not an authenticity claim.",
+      "source": "sources/bag-olive-shoulder.png",
+      "website": "public/images/bag-olive-shoulder.jpg",
+      "originalReference": "IMG_0200.JPG"
+    },
+    {
+      "name": "bag-ivory-shoulder",
+      "ref": "IMG_0200.JPG",
+      "subject": "ONLY the cream/ivory woven-textured curved shoulder bag at the RIGHT of the group photograph, with ivory shoulder strap, rounded base, scooped top and tiny gold oval front detail. Do not include any other bag",
+      "prompt": "Use case: product-mockup. Generate one photorealistic premium e-commerce product photograph using the attached original product as the strict merchandise reference, not as a style reference. Show ONLY the cream/ivory woven-textured curved shoulder bag at the RIGHT of the group photograph, with ivory shoulder strap, rounded base, scooped top and tiny gold oval front detail. Do not include any other bag. Precisely preserve silhouette, proportions, colour, pattern, texture, handle/strap construction, hardware and existing emblem from the reference; do not invent a different bag, additional branding or designer affiliation. Replace the garden, hands and packaging with a quiet warm ivory studio, cream limestone plinth and soft window light from upper left. Editorial luxury accessories campaign, natural texture, restrained warm neutral colour grade. Front three-quarter camera view, entire bag and handle/strap within frame with comfortable margins for responsive portrait/square crops, product centred around 50% horizontal. Portrait 4:5, single bag only, no typography, no watermark, no decorative flowers, no excessive shadows. This is AI-styled merchandise imagery, not an authenticity claim.",
+      "source": "sources/bag-ivory-shoulder.png",
+      "website": "public/images/bag-ivory-shoulder.jpg",
+      "originalReference": "IMG_0200.JPG"
+    }
+  ],
+  "categoryBanner": {"name":"bag-category-stock","prompt":"Use case: product-mockup. Create a photorealistic landscape 16:9 luxury accessory category banner for Dearelle. Reference 1 is the exact merchandise authority: retain the dark oxblood/brown snakeskin-textured rectangular structured top-handle bag, matching curved burgundy handle, broad front flap, central burgundy tab and dark silver rectangular clasp. Reference 2 is the studio campaign styling: warm ivory limestone, natural window light, authentic material grain. Place this exact bag entirely on the RIGHT 58% of the frame, all important bag/handle geometry within x43%-94%, y10%-92%. It sits on a low cream stone plinth; very slight three-quarter view. The LEFT 38% is a dark warm chocolate architectural recess with calm clean negative space to support ivory typography added in code. Rich subdued warm fashion photography, coherent with a premium watch campaign. No text or graphic CTA in image, no people or hands, no flowers, no extra bags, no fake brand logos. Preserve reference hardware and texture, don't change the bag model.","ref":"IMG_0187.JPG","source":"sources/bag-category-stock.png","website":"public/images/bag-category-stock.jpg"},
+  "prices": "All bags INR 399, explicitly supplied by owner on 31 October 2026"
+}

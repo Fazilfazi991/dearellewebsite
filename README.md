@@ -41,3 +41,9 @@ See DESIGN.md, ASSETS.md and VERIFICATION.md. Screenshots are in `.impeccable/re
 ## AI-only watches
 
 The watch catalogue contains four editorial model families and nine colourways, with AI-generated stills only. Selected colours update the product gallery and bag thumbnail. Original stock photos remain reference-only. Prices and checkout are still demo. Asset provenance and exact generation prompts: `media/watches/MODEL-MAP.md` and `media/watches/PROMPTS.json`. Hero performance results and measurement limits: `media/hero/PERFORMANCE.md`.
+
+## Product buying flow and bag catalogue — 31 October 2026
+
+The owner's display prices are centralized: Casio ₹599, Felix ₹799, all bags ₹399. These replace earlier illustrative pricing. Four watch families (nine colourways) and nine bags have matching variant images. Visible AI/demo labels are removed at the owner's request; provenance remains in media/watches and media/bags. Checkout still does not accept orders or payments.
+
+Product information follows gallery → title → price → colour chips → description → purchase controls → details. The selected variant resets its gallery to the first slide. Galleries currently expose a full image and a labelled crop, rather than claiming independent rear/side photos. Listing cards use ProductImageCarousel across homepage, category grids, related pieces and search. One global scheduler handles visible-card autoplay, preloading and preference-aware pauses; no large carousel library is installed. The three homepage shopping-information points use a compact parallel icon row.

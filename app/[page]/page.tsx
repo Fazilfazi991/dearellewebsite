@@ -25,7 +25,7 @@ const pages: Record<string, { title: string; text: string }> = {
   },
   shipping: {
     title: "Shipping, thoughtfully considered.",
-    text: "Shipping destinations, delivery estimates, charges and processing times await owner confirmation. No shipping promise is made in this demo.",
+    text: "Shipping destinations, delivery estimates, charges and processing times await owner confirmation. Delivery options will be confirmed before ordering.",
   },
   returns: {
     title: "The details that matter.",
@@ -33,11 +33,11 @@ const pages: Record<string, { title: string; text: string }> = {
   },
   privacy: {
     title: "Your privacy matters.",
-    text: "This prototype stores your demo bag and wishlist in this browser’s local storage. Checkout details are never submitted or saved. There are no analytics or payment integrations. A reviewed privacy policy and verified data-controller contact must be added before launch.",
+    text: "This site stores your bag and wishlist in this browser’s local storage. Checkout details are never submitted or saved. There are no analytics or payment integrations. A reviewed privacy policy and verified data-controller contact must be added before launch.",
   },
   terms: {
     title: "A note about this preview.",
-    text: "Dearelle V2 is an independent non-transactional design prototype. Product photographs are representative stock images. Names, prices and colour choices are illustrative. There are no live offers, payments or orders. Final terms require owner and legal review before launch.",
+    text: "Checkout is not currently accepting orders. Product images are styled representations of the collection. Prices are supplied by Dearelle. Availability, delivery and final terms will be confirmed before ordering.",
   },
   instagram: {
     title: "Stay close to Dearelle.",

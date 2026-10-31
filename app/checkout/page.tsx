@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { LockKeyhole, ArrowLeft } from "lucide-react";
 import { useStore, Mounted } from "@/components/store";
-import { products, money } from "@/lib/products";
+import { products, money, productPrice } from "@/lib/products";
 import { subtotal } from "@/lib/cart";
 export default function Checkout() {
   const { items } = useStore();
@@ -12,8 +12,8 @@ export default function Checkout() {
         <ArrowLeft size={16} /> Back to shopping
       </Link>
       <div className="page-heading">
-        <h1>A lovely little checkout.</h1>
-        <p>Guest checkout preview. No payment or order will be created.</p>
+        <h1>Your checkout.</h1>
+        <p>Checkout is not currently accepting orders.</p>
       </div>
       <Mounted>
         {items.length ? (
@@ -94,14 +94,14 @@ export default function Checkout() {
                 Planned options only. Availability will be confirmed at launch.
               </p>
               <button className="button full" disabled>
-                <LockKeyhole size={16} /> Payments disabled in this preview
+                <LockKeyhole size={16} /> Orders are not open yet
               </button>
               <p className="small muted">
                 No order can be placed. There is no payment connection.
               </p>
             </form>
             <aside className="order-summary">
-              <h2>Your demo bag</h2>
+              <h2>Your bag</h2>
               {items.map((item) => {
                 const p = products.find((p) => p.id === item.productId)!;
                 return (
@@ -112,23 +112,25 @@ export default function Checkout() {
                         {item.color} · Qty {item.quantity}
                       </small>
                     </span>
-                    <strong>{money(p.price * item.quantity)}</strong>
+                    <strong>
+                      {money(productPrice(p, item.color) * item.quantity)}
+                    </strong>
                   </div>
                 );
               })}
               <div>
-                <span>Demo subtotal</span>
+                <span>Subtotal</span>
                 <strong>{money(subtotal(items))}</strong>
               </div>
               <p className="small muted">
-                Illustrative prices. Final taxes and shipping are unconfirmed.
+                Taxes and shipping will be confirmed before ordering.
               </p>
             </aside>
           </div>
         ) : (
           <div className="empty">
             <h2>Your bag is waiting for you.</h2>
-            <p>Add a demo piece to explore checkout.</p>
+            <p>Add a piece to your bag.</p>
             <Link className="button" href="/new-arrivals">
               Explore the collection
             </Link>

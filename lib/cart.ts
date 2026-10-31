@@ -1,5 +1,11 @@
-import { products } from "./products";
-export type CartItem = { productId: string; color: string; quantity: number };
+import { products, productPrice, selectedVariant } from "./products";
+export type CartItem = {
+  productId: string;
+  color: string;
+  quantity: number;
+  variantId?: string;
+  sku?: string;
+};
 export function validCart(input: unknown): CartItem[] {
   if (!Array.isArray(input)) return [];
   return input
@@ -10,7 +16,9 @@ export function validCart(input: unknown): CartItem[] {
         products.some(
           (p) =>
             p.id === row.productId &&
-            p.colors.some((c) => c.name === row.color),
+            p.variants.some(
+              (v) => v.name === row.color && v.availability !== "unavailable",
+            ),
         ) &&
         Number.isInteger(row.quantity) &&
         row.quantity > 0 &&
@@ -26,18 +34,25 @@ export function validCart(input: unknown): CartItem[] {
           productId: row.productId,
           color: row.color,
           quantity: row.quantity,
+          variantId: selectedVariant(
+            products.find((p) => p.id === row.productId)!,
+            row.color,
+          ).id,
+          sku: selectedVariant(
+            products.find((p) => p.id === row.productId)!,
+            row.color,
+          ).sku,
         });
       return rows;
     }, []);
 }
 export function subtotal(items: CartItem[]) {
-  return items.reduce(
-    (sum, item) =>
-      sum +
-      (products.find((p) => p.id === item.productId)?.price ?? 0) *
-        item.quantity,
-    0,
-  );
+  return items.reduce((sum, item) => {
+    const product = products.find((p) => p.id === item.productId);
+    return (
+      sum + (product ? productPrice(product, item.color) : 0) * item.quantity
+    );
+  }, 0);
 }
 export function addItem(items: CartItem[], item: CartItem): CartItem[] {
   const found = items.find(

@@ -15,7 +15,7 @@ test("same variant merges while distinct variants remain separate", () => {
   bag = addItem(bag, { productId: "w1", color: "Black / Black", quantity: 1 });
   assert.equal(bag.length, 2);
   assert.equal(bag[0].quantity, 3);
-  assert.equal(subtotal(bag), 5960);
+  assert.equal(subtotal(bag), 3196);
 });
 test("corrupted, unavailable or unsafe persisted lines are discarded", () => {
   assert.deepEqual(

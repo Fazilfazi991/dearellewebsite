@@ -863,7 +863,12 @@ select {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  gap: 10px;
+  gap: 0;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.product-gallery::-webkit-scrollbar {
+  display: none;
 }
 .product-gallery > div {
   position: relative;
@@ -912,30 +917,81 @@ select {
 .color-options {
   border: 0;
   padding: 0;
-  margin: 25px 0;
+  margin: 22px 0;
+  min-width: 0;
 }
 .color-options legend {
   font-size: 12px;
   margin-bottom: 12px;
 }
+.variant-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
 .color-options button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 8px;
+  text-align: left;
   font-size: 11px;
+  line-height: 1.4;
   border: 1px solid var(--border);
-  padding: 9px 12px;
-  margin-right: 8px;
-  min-height: 44px;
+  padding: 10px;
+  min-height: 48px;
 }
 .color-options button.active {
   border-color: var(--espresso);
+  background: #eee5dd;
 }
-.color-options button span {
+.color-options button > span:first-child {
+  flex: 0 0 15px;
   width: 15px;
   height: 15px;
   border-radius: 50%;
   border: 1px solid #30272530;
+}
+.color-options .variant-name {
+  flex: 1;
+  min-width: 0;
+}
+.color-options button svg {
+  flex-shrink: 0;
+}
+.gallery-frame {
+  position: relative;
+  min-width: 0;
+}
+.gallery-arrow {
+  position: absolute;
+  top: calc(50% - 22px);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ivory);
+  color: var(--espresso);
+  border: 1px solid var(--border);
+}
+.gallery-arrow:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.gallery-previous {
+  left: 12px;
+}
+.gallery-next {
+  right: 12px;
+}
+.gallery-count {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 5px 10px;
+  background: var(--ivory);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
 }
 .purchase-row {
   display: flex;
@@ -1644,4 +1700,147 @@ select {
   .catalogue-disclaimer {
     font-size: 10px;
   }
+}
+
+/* A compact, parallel shopping-information row at every viewport. */
+.shopping-info {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.shopping-info > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 0;
+  min-width: 0;
+}
+.shopping-info span {
+  font-size: 12px;
+  line-height: 1.4;
+}
+.shopping-info svg {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+}
+@media (max-width: 640px) {
+  .shopping-info {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0 20px;
+    padding: 22px 0;
+    gap: 8px;
+  }
+  .shopping-info > div {
+    gap: 8px;
+  }
+  .shopping-info span {
+    font-size: 10px;
+  }
+  .shopping-info svg {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+.product-image-carousel,
+.product-image-carousel > a {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.card-image-track {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.card-image-track::-webkit-scrollbar {
+  display: none;
+}
+.card-image-slide {
+  flex: 0 0 100%;
+  position: relative;
+  height: 100%;
+  scroll-snap-align: start;
+  overflow: hidden;
+  background: #eee5dd;
+}
+.card-image-slide img {
+  object-fit: cover;
+}
+.card-image-slide .card-detail-image {
+  transform: scale(1.28);
+}
+.product-card:hover .card-image-slide img {
+  transform: none;
+}
+.product-card:hover .card-image-slide .card-detail-image {
+  transform: scale(1.28);
+}
+.card-image-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  padding: 5px 7px;
+  background: var(--ivory);
+  pointer-events: none;
+  border-radius: 8px;
+}
+.card-image-indicators > span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #baada5;
+}
+.card-image-indicators > span.active {
+  background: var(--espresso);
+}
+.card-image-arrow {
+  position: absolute;
+  top: calc(50% - 22px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ivory);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+.card-image-previous {
+  left: 6px;
+}
+.card-image-next {
+  right: 6px;
+}
+.product-image-carousel:has(:focus-visible) .card-image-arrow {
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (min-width: 641px) and (hover: hover) and (pointer: fine) {
+  .product-image-carousel:hover .card-image-arrow {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+.tiny-photo .card-image-indicators {
+  bottom: 3px;
+  padding: 3px 5px;
+  gap: 3px;
+}
+.tiny-photo .card-image-arrow {
+  display: none;
+}
+
+.product-info h3 {
+  min-height: 3em;
 }

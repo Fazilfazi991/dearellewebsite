@@ -74,3 +74,18 @@ This supersedes the older watch sample names, colour-filter and Silver-variant e
 - Approved hero implementation, performance configuration and category curve CSS remain unchanged from `8cafc98`.
 
 Evidence: `.impeccable/review/performance/watches-home-375.jpg`, `watches-catalogue-375.jpg`, `watches-product-375.jpg`, `watches-cart-375.jpg`, `watches-editorial-375.jpg`, `watches-home-desktop.jpg`. AI styling is not a technical specification or a manufacturer-certified product rendering. Physical-device Safari/Android and launch inventory are not verified.
+
+## Product UX, bags and listing carousels — 31 October 2026
+
+This supersedes older demo pricing/visible-label requirements. Owner prices: Casio ₹599, Felix ₹799, every bag ₹399. Checkout is still non-transactional. Nine bags replace the two fictional bag products; originals are merchandise references, and ten generated final assets include the category banner. Provenance: media/bags/MODEL-MAP.md and PROMPTS.json.
+
+- Actual production browser checks at 360, 375, 390, 414px: price and colour chips precede description; no horizontal overflow. Tablet 768px and desktop 1440px listing screenshots also inspected.
+- Main gallery Next moved 1/2 → 2/2; selecting Green reset to 1/2 and changed the source to watch-date-green. Black showed its matching black asset. The gallery uses full photo + explicitly named detail crop of that photo.
+- Added Casio green, Felix ivory and oxblood bag through UI. Checkout showed ₹599 + ₹799 + ₹399 = ₹1,797. Removed all test items after checking.
+- Native pointer drag on listing image changed the indicator to 2/2 without navigating. Desktop keyboard-focus arrow changed the image; wishlist toggled independently and was restored. Casio search returned two correctly priced products using the same carousel component.
+- Selective autoplay observed in visible cards. Offscreen lower cards retained one loaded image while visible cards prepared a second; card dimensions/positions remained stable. One global timeout chain and one observer govern autoplay. Reduced motion, Save-Data, slow-2g/2g and document visibility gates are unit/source checked. Full camera angles, physical touch-device testing, a short interaction video, native iOS/Android performance and network-throttled carousel benchmarks are not claimed.
+- Single-view and duplicate views are filtered/gated in source; failed image requests use the local fallback and are excluded from further rotation. These fault cases were source-reviewed, not injected into the production catalogue.
+- Homepage shopping row: computed three equal 104.219px columns at 375px, all three points share the same Y position. No supporting paragraphs remain.
+- Build passed with 28 routes, lint and TypeScript passed, 12 tests passed. Fresh read-only finish reviewer: **ship**, no blocking visual or functional issue found in reviewed screenshots/source. Mechanical detector found advisory design-system token drift in the existing global stylesheet; no primary findings. New control/indicator tokens are documented without changing incumbent hero or category geometry.
+
+Evidence in .impeccable/review/product-ux/: options-final-360/375/390/414.jpg, product-desktop.jpg, bags-final-375.jpg, listing-final-360/390/414/768/1440.jpg, watches-final-375.jpg, home-category-final-375.jpg, home-information-final-375.jpg, search-desktop.jpg and autoplay-observations.json.

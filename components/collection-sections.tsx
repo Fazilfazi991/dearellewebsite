@@ -73,14 +73,14 @@ export function ShopByCategory() {
           title="Watches"
           description="For every moment you make yours."
           image="watch-category-stock"
-          alt="AI-styled Contour watch with a rose-gold cushion case and ivory dial on cream silk."
+          alt="Contour watch with a rose-gold cushion case and ivory dial on cream silk."
         />
         <CategoryBanner
           category="bags"
           title="Bags"
           description="Carry a little more of you."
-          image="option2-bag"
-          alt="Demo concept photography: a taupe top-handle bag in warm architectural light."
+          image="bag-category-stock"
+          alt="Oxblood textured top-handle bag in warm architectural light."
         />
       </div>
     </section>
@@ -104,9 +104,6 @@ export function NewArrivals() {
           <ProductCard key={p.id} product={p} deferImage />
         ))}
       </div>
-      <p className="option2-demo-note">
-        Preview pieces · Demo prices. Watches shown in AI-styled imagery.
-      </p>
     </section>
   );
 }
@@ -118,7 +115,7 @@ export function EditorialCollection() {
         <Photo
           defer
           name="watch-editorial-stock"
-          alt="AI-styled fashion image of a woman wearing the rose-gold Contour watch with ivory tailoring."
+          alt="Fashion image of a woman wearing the rose-gold Contour watch with ivory tailoring."
           sizes="100vw"
         />
       </div>

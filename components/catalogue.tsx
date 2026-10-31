@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { SlidersHorizontal, X } from "lucide-react";
-import { products } from "@/lib/products";
+import { products, productPrice } from "@/lib/products";
 import { ProductCard } from "./store";
 export function Catalogue({
   category,
@@ -18,9 +18,9 @@ export function Catalogue({
     .filter((p) => color === "all" || p.colors.some((c) => c.name === color))
     .toSorted((a, b) =>
       sort === "low"
-        ? a.price - b.price
+        ? productPrice(a) - productPrice(b)
         : sort === "high"
-          ? b.price - a.price
+          ? productPrice(b) - productPrice(a)
           : sort === "name"
             ? a.name.localeCompare(b.name)
             : 0,
@@ -28,7 +28,7 @@ export function Catalogue({
   return (
     <>
       <div className="catalogue-toolbar">
-        <span>{rows.length} demo pieces</span>
+        <span>{rows.length} pieces</span>
         <div>
           <button
             className="text-link"
@@ -85,10 +85,6 @@ export function Catalogue({
           </button>
         </div>
       )}
-      <p className="catalogue-disclaimer">
-        All pieces are demo-only. Images and prices are representative, not a
-        live offer for sale.
-      </p>
     </>
   );
 }

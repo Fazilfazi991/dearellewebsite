@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | Dearelle",
   },
   description:
-    "Explore a new world of everyday watches and handbags. Independent Dearelle V2 demo storefront.",
+    "Explore a new world of everyday watches and handbags. Dearelle watches and bags.",
   robots: { index: false, follow: false },
   openGraph: {
     title: "Dearelle — Little Luxuries. Big Feelings.",

@@ -24,3 +24,7 @@ New images were made with the built-in imagegen tool. Exact prompts and selected
 - `watch-square-gunmetal`: folder 02, FELIX_Gunmetal_WhiteDial/01_minimalist_felix_gunmetal_watch.png.
 
 Raw phone images, video stills, the supplied ZIP, packaging photos, collages and price posters remain outside the published asset set. Prompt provenance is embedded in the JPEG files. No raw original is referenced from product data, category photography, the editorial watch banner or the watch moodboard tile.
+
+## Owner pricing update
+
+On 31 October 2026 the owner supplied Casio ₹599 and Felix ₹799 display pricing. This supersedes the unconfirmed/demo-price status above. Contour and Petite Square are assigned Felix; Soft Square and Teal Dial are assigned Casio from the supplied reference groups. These are storefront brand assignments, not independent authenticity verification. All variants inherit the brand price unless an explicit override is configured. Visible AI/demo labels are removed at the owner's request; provenance and non-transactional checkout remain.

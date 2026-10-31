@@ -14,7 +14,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const p = products.find((p) => p.slug === slug);
   return {
-    title: p ? `${p.name} — Demo` : "Product not found",
+    title: p ? p.name : "Product not found",
     description: p?.description,
     alternates: { canonical: `/products/${slug}` },
   };
@@ -42,6 +42,7 @@ export default async function Page({
         <div className="product-grid">
           {products
             .filter((x) => x.category !== p.category)
+            .slice(0, 2)
             .map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}

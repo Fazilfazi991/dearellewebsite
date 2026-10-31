@@ -2,49 +2,25 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Minus, Plus, ArrowRight, Heart } from "lucide-react";
-import { type Product, money, productVisual } from "@/lib/products";
-import { Photo } from "./image";
+import { Minus, Plus, ArrowRight, Heart, Check } from "lucide-react";
+import {
+  type Product,
+  money,
+  productPrice,
+  selectedVariant,
+} from "@/lib/products";
+import { ProductGallery } from "./product-gallery";
 import { useStore } from "./store";
 export function ProductDetail({ product: p }: { product: Product }) {
   const [color, setColor] = useState(p.colors[0].name);
   const [qty, setQty] = useState(1);
   const { add, wish, toggleWish } = useStore();
   const router = useRouter();
-  const visual = productVisual(p, color);
+  const variant = selectedVariant(p, color);
+  const price = productPrice(p, color);
   return (
     <div className="detail-grid">
-      <div>
-        <div
-          className="product-gallery"
-          tabIndex={0}
-          aria-label="Swipe representative product photographs"
-        >
-          <div>
-            <Photo
-              key={visual.image}
-              name={visual.image}
-              position={visual.position}
-              alt={`${p.imagery ? "AI-styled image" : "Representative photograph"} of ${p.name}, ${color}`}
-              priority
-            />
-          </div>
-          <div>
-            <Photo
-              key={visual.image}
-              name={visual.image}
-              position={visual.position}
-              alt={`Detail crop of ${p.imagery ? "the same AI-styled image" : "the same representative photograph"}`}
-              className="detail-crop"
-            />
-          </div>
-        </div>
-        <p className="small muted gallery-note">
-          {p.imagery
-            ? "Swipe to explore · AI-styled watch imagery."
-            : "Swipe to explore · Representative stock photography, not final product images."}
-        </p>
-      </div>
+      <ProductGallery key={variant.id} product={p} variant={variant} />
       <div className="detail-copy">
         <div className="detail-title">
           <h1>{p.name}</h1>
@@ -61,31 +37,31 @@ export function ProductDetail({ product: p }: { product: Product }) {
           </button>
         </div>
         <p className="detail-price">
-          {money(p.price)} <span>Illustrative demo price</span>
-        </p>
-        <p>{p.description}</p>
-        <p className="notice">
-          {p.imagery
-            ? "AI-styled product preview · Final pricing and availability to be confirmed. Demo checkout only."
-            : "Demo product · Not available to purchase. Stock is unconfirmed."}
+          {money(price)} <span>{p.category === "watches" ? p.brand : ""}</span>
         </p>
         <fieldset className="color-options">
           <legend>
             Colour: <strong>{color}</strong>
           </legend>
-          {p.colors.map((c) => (
-            <button
-              key={c.name}
-              aria-label={`Select ${c.name}`}
-              aria-pressed={color === c.name}
-              onClick={() => setColor(c.name)}
-              className={color === c.name ? "active" : ""}
-            >
-              <span style={{ background: c.hex }} />
-              {c.name}
-            </button>
-          ))}
+          <div className="variant-grid">
+            {p.variants.map((c) => (
+              <button
+                key={c.id}
+                aria-label={`Select ${c.name}`}
+                aria-pressed={color === c.name}
+                disabled={c.availability === "unavailable"}
+                onClick={() => setColor(c.name)}
+                className={color === c.name ? "active" : ""}
+              >
+                <span style={{ background: c.swatch }} />
+                <span className="variant-name">{c.name}</span>
+                {color === c.name && <Check size={13} aria-hidden="true" />}
+              </button>
+            ))}
+          </div>
         </fieldset>
+        <p>{p.description}</p>
+
         <div className="purchase-row">
           <div className="qty">
             <button
@@ -108,7 +84,7 @@ export function ProductDetail({ product: p }: { product: Product }) {
             className="button"
             onClick={() => add({ productId: p.id, color, quantity: qty })}
           >
-            Add to demo bag <ArrowRight size={17} />
+            Add to bag <ArrowRight size={17} />
           </button>
         </div>
         <button
@@ -118,7 +94,7 @@ export function ProductDetail({ product: p }: { product: Product }) {
             router.push("/checkout");
           }}
         >
-          Buy now · Demo checkout
+          Buy now
         </button>
         <div className="product-accordions">
           <details open>
@@ -129,7 +105,7 @@ export function ProductDetail({ product: p }: { product: Product }) {
                 : "Material, dimensions, compartments, lining and strap length"}{" "}
               will be added with the verified launch catalogue.{" "}
               {p.imagery
-                ? "Each colourway has its own AI-styled image, based on the collection's model references."
+                ? "Choose a colour to explore its matching images."
                 : "Preview colour options are illustrative and share a representative image."}
             </p>
           </details>
@@ -145,8 +121,8 @@ export function ProductDetail({ product: p }: { product: Product }) {
           <details>
             <summary>A note on this piece</summary>
             <p>
-              This sample lets you explore the interface. It is not an offer for
-              sale and carries no review, quality or stock claims.
+              This checkout is not currently accepting orders. It is not an
+              offer for sale. Availability will be confirmed before ordering.
             </p>
           </details>
         </div>
@@ -155,7 +131,7 @@ export function ProductDetail({ product: p }: { product: Product }) {
             className="button"
             onClick={() => add({ productId: p.id, color, quantity: qty })}
           >
-            Add to demo bag
+            Add to bag
           </button>
           <button
             className="button secondary"
@@ -164,7 +140,7 @@ export function ProductDetail({ product: p }: { product: Product }) {
               router.push("/checkout");
             }}
           >
-            Buy now · Demo
+            Buy now
           </button>
         </div>
       </div>

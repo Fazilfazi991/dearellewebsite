@@ -40,29 +40,19 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section
-        className="shopping-info"
-        aria-label="Preview shopping information"
-      >
+      <section className="shopping-info" aria-label="Shopping information">
         <div>
           <Eye size={24} strokeWidth={1.3} />
-          <span>
-            Thoughtfully presented
-            <small>Explore every detail before you decide</small>
-          </span>
+          <span>Considered details</span>
         </div>
         <div>
           <ShoppingBag size={24} strokeWidth={1.3} />
-          <span>
-            A bag that remembers
-            <small>Your demo favourites, saved on this device</small>
-          </span>
+          <span>Saved favourites</span>
         </div>
         <div>
           <PackageCheck size={24} strokeWidth={1.3} />
           <span>
-            A little more to come
-            <small>Shipping & returns confirmed before launch</small>
+            <Link href="/shipping">Delivery &amp; returns</Link>
           </span>
         </div>
       </section>
@@ -74,7 +64,7 @@ export default function Home() {
           <p>Our moodboard, made for your next “where did you get that?”</p>
         </div>
         <div className="moodboard">
-          {["bag-cream", "hero", "watch-date-green", "editorial"].map(
+          {["bag-berry-shoulder", "hero", "watch-date-green", "editorial"].map(
             (name, i) => (
               <div key={name}>
                 <Photo
@@ -82,7 +72,7 @@ export default function Home() {
                   name={name}
                   alt={
                     name === "watch-date-green"
-                      ? "AI-styled Soft Square watch in rose gold and green"
+                      ? "Soft Square watch in rose gold and green"
                       : `Brand inspiration moodboard, representative stock photography ${i + 1}`
                   }
                 />
@@ -90,10 +80,7 @@ export default function Home() {
             ),
           )}
         </div>
-        <p className="catalogue-disclaimer">
-          Editorial moodboard · AI-styled watches and representative fashion
-          photography.
-        </p>
+
         <Link className="text-link" href="/instagram">
           Stay close to Dearelle <ArrowUpRight size={17} />
         </Link>

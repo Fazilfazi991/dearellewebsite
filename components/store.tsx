@@ -21,9 +21,16 @@ import {
   Plus,
   Trash2,
 } from "lucide-react";
-import { products, money, productVisual, type Product } from "@/lib/products";
+import {
+  products,
+  money,
+  productVisual,
+  productPrice,
+  type Product,
+} from "@/lib/products";
 import { addItem, subtotal, validCart, type CartItem } from "@/lib/cart";
 import { Photo } from "./image";
+import { ProductImageCarousel } from "./product-image-carousel";
 type Store = {
   items: CartItem[];
   add: (item: CartItem) => void;
@@ -117,10 +124,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
           ),
       }}
     >
-      <div className="preview-banner">
-        A little preview of what’s to come{" "}
-        <span>— Demo store. No real orders.</span>
-      </div>
+      <div className="preview-banner">Your everyday little luxury </div>
       <header className="header">
         <div className="header-inner">
           <button
@@ -225,42 +229,40 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
               />
             </label>
             <p className="muted small">
-              {query
-                ? "Matching demo products"
-                : "A few lovely places to start"}
+              {query ? "Matching products" : "A few lovely places to start"}
             </p>
             <div className="search-results">
               {products
                 .filter((p) =>
-                  `${p.name} ${p.category} ${p.colors.map((c) => c.name).join(" ")}`
+                  `${p.name} ${p.brand} ${p.category} ${p.colors.map((c) => c.name).join(" ")}`
                     .toLowerCase()
                     .includes(query.toLowerCase()),
                 )
                 .map((p) => (
-                  <Link
-                    onClick={() => setPanel(null)}
-                    key={p.id}
-                    href={`/products/${p.slug}`}
-                    className="search-result"
-                  >
+                  <div className="search-result" key={p.id}>
                     <div className="tiny-photo">
-                      <Photo
-                        name={p.image}
-                        alt={p.name}
-                        position={p.imagePosition}
+                      <ProductImageCarousel
+                        product={p}
+                        onNavigate={() => setPanel(null)}
                       />
                     </div>
-                    <div>
+                    <Link
+                      href={`/products/${p.slug}`}
+                      onClick={() => setPanel(null)}
+                    >
                       {p.name}
-                      <small>{money(p.price)} · Demo price</small>
-                    </div>
+                      <small>
+                        {money(productPrice(p))}{" "}
+                        {p.category === "watches" ? p.brand : ""}
+                      </small>
+                    </Link>
                     <ArrowRight size={18} />
-                  </Link>
+                  </div>
                 ))}
             </div>
             {query &&
               !products.some((p) =>
-                `${p.name} ${p.category} ${p.colors.map((c) => c.name).join(" ")}`
+                `${p.name} ${p.brand} ${p.category} ${p.colors.map((c) => c.name).join(" ")}`
                   .toLowerCase()
                   .includes(query.toLowerCase()),
               ) && <p>No matches yet. Try “bag” or “watch”.</p>}
@@ -277,7 +279,7 @@ export function CartContents({ close }: { close?: () => void }) {
   return items.length ? (
     <>
       <p className="notice">
-        Demo bag · Illustrative prices. Nothing can be purchased.
+        Your selected pieces. Checkout is not currently accepting orders.
       </p>
       <div className="cart-lines">
         {items.map((item) => {
@@ -300,8 +302,8 @@ export function CartContents({ close }: { close?: () => void }) {
                 <Link href={`/products/${p.slug}`} onClick={close}>
                   {p.name}
                 </Link>
-                <p className="small muted">{item.color} · Demo</p>
-                <strong>{money(p.price)}</strong>
+                <p className="small muted">{item.color}</p>
+                <strong>{money(productPrice(p, item.color))}</strong>
                 <div className="qty">
                   <button
                     aria-label={`Decrease ${p.name} quantity`}
@@ -332,14 +334,14 @@ export function CartContents({ close }: { close?: () => void }) {
       </div>
       <div className="cart-summary">
         <div>
-          <span>Demo subtotal</span>
+          <span>Subtotal</span>
           <strong>{money(subtotal(items))}</strong>
         </div>
         <p className="small muted">
           Shipping and taxes will be confirmed before launch.
         </p>
         <Link className="button full" onClick={close} href="/checkout">
-          Explore demo checkout <ArrowRight size={17} />
+          Go to checkout <ArrowRight size={17} />
         </Link>
         <button className="text-link full" onClick={close}>
           Continue exploring
@@ -368,16 +370,8 @@ export function ProductCard({
   return (
     <article className="product-card">
       <div className="product-photo">
-        <Link href={`/products/${p.slug}`} aria-label={`View ${p.name}`}>
-          <Photo
-            defer={deferImage}
-            name={p.image}
-            alt={`${p.imagery ? "AI-styled image" : "Representative photograph"} of ${p.name}`}
-            position={p.imagePosition}
-            sizes="(max-width: 640px) 50vw, 25vw"
-          />
-        </Link>
-        <span className="demo-label">{p.imagery ? "AI STYLED" : "DEMO"}</span>
+        <ProductImageCarousel product={p} deferImage={deferImage} />
+
         <button
           className={`wish icon ${wish.includes(p.id) ? "selected" : ""}`}
           aria-label={`${wish.includes(p.id) ? "Remove" : "Save"} ${p.name} ${wish.includes(p.id) ? "from" : "to"} wishlist`}
@@ -389,22 +383,15 @@ export function ProductCard({
             fill={wish.includes(p.id) ? "currentColor" : "none"}
           />
         </button>
-        <Link className="card-explore" href={`/products/${p.slug}`}>
-          Take a closer look <ArrowRight size={16} />
-        </Link>
       </div>
       <div className="product-info">
-        <div className="product-category">
-          {p.category === "watches"
-            ? "A MOMENT FOR YOU"
-            : "YOUR EVERYDAY PLUS-ONE"}
-        </div>
         <Link href={`/products/${p.slug}`}>
           <h3>{p.name}</h3>
         </Link>
         <div className="product-bottom">
           <span>
-            {money(p.price)} <small>demo price</small>
+            {money(productPrice(p))}{" "}
+            <small>{p.category === "watches" ? p.brand : ""}</small>
           </span>
           <div
             className="swatches"
@@ -461,7 +448,7 @@ function Footer() {
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Dearelle V2</span>
-        <span>Independent storefront preview · Demo catalogue</span>
+
         <span>Made for your everyday.</span>
       </div>
     </footer>

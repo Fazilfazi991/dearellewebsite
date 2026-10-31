@@ -204,7 +204,7 @@
         "wishlistTarget": "40px desktop, 44px mobile",
         "editorialActionMinHeight": "44px desktop, 40px mobile"
       },
-      "imagery": "AI-generated watch stills and representative concept bag photography; AI-styled wristwatch editorial image accompanies Details make it yours. Demo pieces and illustrative prices remain labelled. Category image sizes: (max-width: 1100px) 90vw, 1000px; bag object-position center 30%."
+      "imagery": "AI-generated watch stills and representative concept bag photography; AI-styled wristwatch editorial image accompanies Details make it yours. Visible AI-styled/demo and demo-price labels are removed at the owner’s request; retain provenance in media/bags/ and media/watches/. Owner prices: ₹599 Casio, ₹799 Felix and ₹399 all bags. Category image sizes: (max-width: 1100px) 90vw, 1000px; bag object-position center 30%."
     },
     "watchImagery": {
       "policy": "Only AI-generated website watch stills, including catalogue, colour selection, demo bag, category, editorial and moodboard. Supplied original photos and video stills are reference-only. Preserve the approved cinematic film and its performance policy.",
@@ -217,8 +217,34 @@
       },
       "suppliedAI": ["watch-date-rose-black", "watch-square-pink", "watch-square-gunmetal"],
       "newFinals": ["watch-category-stock", "watch-contour-black", "watch-date-green", "watch-date-champagne", "watch-date-black", "watch-teal", "watch-editorial-stock"],
-      "behaviour": "lib/products.ts and productVisual resolve each of nine colourways to its own image for product selection and the demo bag. The second gallery crop reuses the selected image. Retain AI-styled card and product-page labels.",
-      "claims": "Four editorial model families, not verified manufacturer model numbers. Prices, stock and checkout remain demo-only. Dimensions, materials, movement, water resistance and authenticity remain unverified; await the verified launch catalogue. Preserve model distinctions and correction decisions in MODEL-MAP.md."
+      "behaviour": "lib/products.ts and productVisual resolve each of nine colourways to its own image for product selection and the demo bag. The second gallery crop reuses the selected image. Visible AI-styled/demo labels are removed at owner request; retain provenance in media/watches/.",
+      "claims": "Four editorial model families, not verified manufacturer model numbers. Owner-supplied prices are ₹599 Casio and ₹799 Felix. Stock is unconfirmed; checkout remains non-transactional with payments disabled. Dimensions, materials, movement, water resistance and authenticity remain unverified; await the verified launch catalogue. Preserve model distinctions and correction decisions in MODEL-MAP.md."
+    },
+    "galleryTokens": {
+      "controlSize": "44px",
+      "indicatorRadius": "8px",
+      "neutralDot": "#BAADA5",
+      "dotSize": "4px",
+      "activeDot": "{colors.espresso}"
+    },
+    "productBrowsing": {
+      "source": [
+        "components/product-detail.tsx",
+        "components/product-gallery.tsx",
+        "components/product-image-carousel.tsx",
+        "lib/carousel-scheduler.ts"
+      ],
+      "pdp": "Gallery, title, price and colour chips precede description. Variant-keyed gallery resets to first matching image. Native swipe, keyboard arrows, subtle 44px controls and current/total count.",
+      "images": "Full image and named detail crop of the same generated image; no independent rear or side angles. Listing cards stay within their default variant.",
+      "listing": "Reusable ProductImageCarousel on listings, search and related products; native swipe, dots and desktop hover or keyboard-focus arrows.",
+      "scheduler": "One global timer and visibility observer for automatic rotation. One visible card per 3.5-second tick, selected fairly from nearest-centre candidates; preload 650ms before decoded-image advance. Hold during interaction and pause eight seconds after release. Stop for reduced motion, Save-Data, slow-2g/2g and hidden documents.",
+      "shoppingInfo": "Three equal points in a horizontal row at every viewport, each an icon and short label without small explanatory paragraphs.",
+      "commerce": "Owner-supplied INR prices: Casio 599, Felix 799, all bags 399. Clear non-transactional checkout, disabled order/payment action and no payment connection."
+    },
+    "bagImagery": {
+      "policy": "Nine generated bag designs replace two fictional products, based on owner references in Dearelle - Nayans/Images. Descriptive names establish no authenticity or specifications.",
+      "provenance": "Retain media/bags/MODEL-MAP.md, PROMPTS.json and sources/; JPEG delivery derivatives in public/images/. Visible AI-styled/demo labels removed at owner request; provenance stays documented.",
+      "claims": "No verified material, dimensions, stock or authenticity claims. All bags ₹399, supplied by owner."
     },
     "mediaLoading": {
       "hero": "Versioned -v2 mobile/desktop MP4, WEBP and JPEG assets use public, max-age=31536000, immutable caching; MP4 delivery supports byte ranges. Original cinematic masters remain unchanged.",
@@ -245,7 +271,7 @@
       "name": "Secondary button",
       "kind": "button",
       "description": "Transparent outlined secondary action.",
-      "html": "<button class=\"ds-secondary\">Buy now · Demo checkout</button>",
+      "html": "<button class=\"ds-secondary\">Buy now</button>",
       "css": ".ds-secondary{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--espresso);min-height:48px;padding:13px 25px;font-family:Everyday,Arial,sans-serif;font-size:12px;letter-spacing:.025em;border:1px solid #bda8a0;cursor:pointer;transition:transform 140ms var(--ease),background-color 140ms var(--ease)}.ds-secondary:active{transform:scale(.98)}.ds-secondary:focus-visible{outline:2px solid #965c68;outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-secondary{transition-duration:.01ms}.ds-secondary:active{transform:none}}"
     },
     {
@@ -272,8 +298,8 @@
     {
       "name": "Product card",
       "kind": "card",
-      "description": "Flat photographic card; names and illustrative INR prices remain visible on mobile.",
-      "html": "<article class=\"ds-card\"><a class=\"ds-photo\" href=\"#product\" aria-label=\"View demo piece\"><span>DEMO</span></a><div class=\"ds-info\"><a href=\"#product\">A little everyday piece</a><p>₹1,299 <small>demo price</small></p></div></article>",
+      "description": "Flat photographic card with ProductImageCarousel; names and owner-supplied INR prices remain visible on mobile without AI-styled/demo labels.",
+      "html": "<article class=\"ds-card\"><a class=\"ds-photo\" href=\"#product\" aria-label=\"View piece\"></a><div class=\"ds-info\"><a href=\"#product\">A little everyday piece</a><p>₹399</p></div></article>",
       "css": ".ds-card{font-family:Everyday,Arial,sans-serif;font-size:12px;color:var(--espresso);max-width:260px}.ds-card a{color:inherit;text-decoration:none}.ds-photo{display:block;position:relative;aspect-ratio:.78;background:#f1ebe5}.ds-photo span{position:absolute;left:12px;top:13px;background:#fcf9f6dd;font-size:8px;letter-spacing:.1em;padding:3px 7px}.ds-info{padding:14px 0}.ds-info>a{font-weight:500;line-height:1.5}.ds-info p{margin:7px 0 0;font-variant-numeric:tabular-nums}.ds-info small{font-size:8px;color:var(--muted)}.ds-card a:focus-visible{outline:2px solid #965c68;outline-offset:5px}"
     },
     {
@@ -293,8 +319,8 @@
     {
       "name": "Arrival product card",
       "kind": "card",
-      "description": "Scoped softer photography with demo labels; 13px names/prices desktop and 12px mobile. Preview shows its empty image surface.",
-      "html": "<article class=\"ds-arrival\"><a class=\"ds-arrival-photo\" href=\"#product\"><span>DEMO</span></a><h3><a href=\"#product\">A little everyday piece</a></h3><p>₹1,299 <small>demo price</small></p></article>",
+      "description": "Scoped softer photography with ProductImageCarousel and no visible AI-styled/demo labels; 13px names/prices desktop and 12px mobile. Preview shows its empty image surface.",
+      "html": "<article class=\"ds-arrival\"><a class=\"ds-arrival-photo\" href=\"#product\"></a><h3><a href=\"#product\">A little everyday piece</a></h3><p>₹399</p></article>",
       "css": ".ds-arrival{max-width:260px;color:var(--espresso);font:13px Everyday,Arial,sans-serif}.ds-arrival a{color:inherit;text-decoration:none}.ds-arrival-photo{display:block;aspect-ratio:.94;border-radius:5px;background:#eee5dc;padding:8px}.ds-arrival-photo span{background:#fcf9f6e8;padding:3px 6px;font-size:8px}.ds-arrival h3{font:400 13px/1.5 Everyday,Arial,sans-serif;margin:12px 1px 0;min-height:39px}.ds-arrival p{margin:1px 0 0}.ds-arrival small{font-size:9px;color:var(--muted)}.ds-arrival a:hover{text-decoration:underline}.ds-arrival a:focus-visible{outline:2px solid #965c68;outline-offset:5px}@media(max-width:640px){.ds-arrival{font-size:12px}.ds-arrival-photo{aspect-ratio:.98}.ds-arrival h3{font-size:12px;line-height:1.45;min-height:35px}.ds-arrival small{font-size:8px}.ds-arrival-photo span{font-size:7px}}"
     },
     {
@@ -322,13 +348,13 @@
       }
     ],
     "dos": [
-      "Do label demo products, representative photography and illustrative prices.",
+      "Do respect owner-approved removal of visible AI-styled/demo and demo-price labels; retain provenance in media/bags/ and media/watches/ and clear non-transactional checkout status.",
       "Do preserve reduced motion, keyboard focus and mobile layouts.",
       "Do keep the film unobstructed, with Explore Collection centred in a separate 52px minimum ivory strip below it.",
       "Do preserve responsive still fallback, accessible playback control, offscreen and hidden pause, and preference-aware film source loading.",
       "Do retain generated-concept provenance and fictional-accessory context in documentation, with no visible concept caption on the hero.",
       "Do use the supplied transparent gold logo in header and footer with its original proportions.",
-      "Do use only AI-generated website watch stills, preserve all nine per-colour mappings and AI-styled labels, and retain exact prompts and model provenance."
+      "Do use only AI-generated website watch stills, preserve all nine per-colour mappings and retain exact prompts and model provenance."
     ],
     "donts": [
       "Don't invent reviews, discounts, popularity or fulfilment claims.",
@@ -336,7 +362,7 @@
       "Don't restore the old text-heavy split hero, overlay a visible title on the model or add extra pink decoration.",
       "Don't present concept-film accessories as actual inventory.",
       "Don't publish original watch photographs, video stills, packaging, collages or price posters; originals remain reference-only until an owner-approved verified launch catalogue replaces this policy.",
-      "Don't infer verified specifications, authenticity, real pricing, stock or availability from AI-styled watch imagery."
+      "Don't infer verified specifications, authenticity, stock or availability from generated imagery. Prices come from the owner: ₹599 Casio, ₹799 Felix and ₹399 all bags."
     ]
   }
 }
