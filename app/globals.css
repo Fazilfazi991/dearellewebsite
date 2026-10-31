@@ -3,13 +3,17 @@
 @import "./collections.css";
 @font-face {
   font-family: Editorial;
-  src: url("/fonts/editorial.ttf") format("truetype");
+  src:
+    url("/fonts/editorial.woff2") format("woff2"),
+    url("/fonts/editorial.ttf") format("truetype");
   font-display: swap;
   font-weight: 400 600;
 }
 @font-face {
   font-family: Everyday;
-  src: url("/fonts/everyday.ttf") format("truetype");
+  src:
+    url("/fonts/everyday.woff2") format("woff2"),
+    url("/fonts/everyday.ttf") format("truetype");
   font-display: swap;
   font-weight: 400 700;
 }

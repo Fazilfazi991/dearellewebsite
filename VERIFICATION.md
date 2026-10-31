@@ -1,5 +1,11 @@
 # Verification — 31 October 2026
 
+## Hero delivery optimization
+
+Production build, lint and all seven cart/hero tests pass. Independent performance-preservation review: ship, no material fixes. Measured cold Fast 4G LCP 1.076→0.300s / first decoded frame 2.870→1.000s; Slow 4G LCP 2.604→2.088s / first frame 8.680→4.737s under the explicitly documented local network simulation. Final CLS was below 0.001; the root homepage loading boundary was responsible for earlier placeholder-to-hero shifts.
+
+Single responsive source/poster, pause/resume, 360/375/390/414px, desktop, failed-video poster, policy preference emulation and startup with external hydration bundles blocked were verified. Native iPhone Safari, physical Android and public CDN conditions remain untested. Full evidence, conditions, source sizes and limitations: `media/hero/PERFORMANCE.md` and `media/hero/performance-results.json`. Original cinema masters and the visual category geometry are preserved; hero delivery code and derivatives changed with explicit user authorization.
+
 ## Original Option 2 curve restoration
 
 Restored the user-approved organic category identity with smooth object-bounding-box SVG clipping paths, complementary sloping edges and overlapping banner boxes that create the ivory seam. Small 32px circular arrows replace underlined links; the entire category anchors retain their accessible names and destinations. Existing photography is preserved, with the bag crop positioned to give its handle clearance.

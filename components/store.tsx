@@ -348,13 +348,20 @@ export function CartContents({ close }: { close?: () => void }) {
     </div>
   );
 }
-export function ProductCard({ product: p }: { product: Product }) {
+export function ProductCard({
+  product: p,
+  deferImage = false,
+}: {
+  product: Product;
+  deferImage?: boolean;
+}) {
   const { wish, toggleWish } = useStore();
   return (
     <article className="product-card">
       <div className="product-photo">
         <Link href={`/products/${p.slug}`} aria-label={`View ${p.name}`}>
           <Photo
+            defer={deferImage}
             name={p.image}
             alt={`Representative photograph for ${p.name}`}
             position={p.imagePosition}

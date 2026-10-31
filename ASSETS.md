@@ -1,4 +1,6 @@
 # Asset provenance
+The current hero delivery uses versioned `-v2` H.264 exports and opening-frame WebP/JPEG posters generated from the same approved masters. No creative film edit was made. `media/hero/optimize.mjs` reproduces them; `media/hero/PERFORMANCE.md` records encoding and measurements. Local WOFF2 files were converted from the supplied TTFs with unchanged glyphs and horizontal metrics; existing font licensing applies.
+
 The Option 2 category and editorial photographs are fictional, unbranded demo concepts generated with the built-in imagegen tool using the user-approved layout as a composition reference. Original PNGs and the exact prompt set are retained in `media/option2/`; responsive site sources are `public/images/option2-watch.jpg`, `option2-bag.jpg` and `option2-editorial.jpg`. JPEGs were encoded with ffmpeg and have embedded prompt provenance. They do not represent verified Dearelle inventory. The first two demo product cards reuse these assets; other catalogue photographs remain representative stock.
 
 Catalogue and moodboard images are representative stock photographs from Unsplash, downloaded locally. They do not show Dearelle products or customers and confer no brand affiliation. Replace with verified owned product photography before launch. Product colour names are demo interaction data and do not promise pictured variants.

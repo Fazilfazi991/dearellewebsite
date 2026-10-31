@@ -2,5 +2,29 @@ import type { NextConfig } from "next";
 const config: NextConfig = {
   poweredByHeader: false,
   images: { formats: ["image/avif", "image/webp"] },
+  async headers() {
+    return [
+      ...["mobile", "desktop"].flatMap((format) =>
+        ["mp4", "webp", "jpg"].map((extension) => ({
+          source: `/videos/dearelle-hero-${format}-v2.${extension}`,
+          headers: [
+            {
+              key: "Cache-Control",
+              value: "public, max-age=31536000, immutable",
+            },
+          ],
+        })),
+      ),
+      ...["editorial", "everyday"].map((font) => ({
+        source: `/fonts/${font}.woff2`,
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      })),
+    ];
+  },
 };
 export default config;

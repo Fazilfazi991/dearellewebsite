@@ -28,6 +28,7 @@ function CategoryBanner({
       >
         <div className="sculpted-image">
           <Photo
+            defer
             name={image}
             alt={alt}
             sizes="(max-width: 1100px) 90vw, 1000px"
@@ -100,7 +101,7 @@ export function NewArrivals() {
       </div>
       <div className="product-grid">
         {products.map((p) => (
-          <ProductCard key={p.id} product={p} />
+          <ProductCard key={p.id} product={p} deferImage />
         ))}
       </div>
       <p className="option2-demo-note">
@@ -115,6 +116,7 @@ export function EditorialCollection() {
     <section className="option2-editorial" aria-labelledby="details-heading">
       <div className="option2-editorial-photo">
         <Photo
+          defer
           name="option2-editorial"
           alt="Concept fashion photograph of a woman wearing an unbranded gold watch with ivory tailoring."
           sizes="100vw"

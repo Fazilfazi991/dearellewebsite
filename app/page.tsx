@@ -36,7 +36,7 @@ export default function Home() {
         </div>
         <div className="product-grid handpicked">
           {[products[3], products[0]].map((p) => (
-            <ProductCard key={p.id} product={p} />
+            <ProductCard key={p.id} product={p} deferImage />
           ))}
         </div>
       </section>
@@ -77,6 +77,7 @@ export default function Home() {
           {["bag-cream", "hero", "watch-gold", "editorial"].map((name, i) => (
             <div key={name}>
               <Photo
+                defer
                 name={name}
                 alt={`Brand inspiration moodboard, representative stock photography ${i + 1}`}
               />

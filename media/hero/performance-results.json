@@ -1,0 +1,2250 @@
+{
+  "date": "2026-10-31",
+  "conditions": {
+    "browser": "Chromium in Codex in-app browser on Windows, mobile viewport 390x844",
+    "cpu": "unthrottled",
+    "transport": "local HTTP/1.1, identity encoding, fair aggregate bandwidth proxy; not native DevTools or physical mobile tests",
+    "fast4g": {
+      "downloadMbps": 9,
+      "latencyMs": 60
+    },
+    "slow4g": {
+      "downloadMbps": 1.6,
+      "latencyMs": 150
+    },
+    "baseline": "isolated production build of commit 1f27c47, port 3006",
+    "after": "optimized production build, port 3001",
+    "sampleCount": "one observed cold and warm run per condition; cold uses a fresh origin",
+    "limitations": "Local proxy timing excludes public internet/CDN/TLS conditions and CPU throttling. Warm media Resource Timing transfer sizes can include cached range validation; do not treat them as billing-level byte counts."
+  },
+  "samples": [
+    {
+      "phase": "before",
+      "network": "fast4g",
+      "cache": "cold",
+      "navigation": "navigate",
+      "posterReadyMs": 703.9000000953674,
+      "lcpMs": 1076,
+      "firstFrameMs": 2869.9000000953674,
+      "cls": 0.25076163163570314,
+      "resourceTransferBytes": 2525798,
+      "waterfall": [
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fbrand%2Fdearelle-logo.png&w=256&q=75",
+          "startMs": 303.7000000476837,
+          "responseMs": 1283.5,
+          "endMs": 1308.6000001430511,
+          "transferBytes": 7926,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/2v31vloamnkaw.css",
+          "startMs": 304.2000000476837,
+          "responseMs": 575.2000000476837,
+          "endMs": 665.5,
+          "transferBytes": 37208,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/0ik08zyc5h2z3.js",
+          "startMs": 304.2999999523163,
+          "responseMs": 573.1000001430511,
+          "endMs": 575,
+          "transferBytes": 5884,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/0_xdfqcqyqpga.js",
+          "startMs": 304.2999999523163,
+          "responseMs": 574.5,
+          "endMs": 603.6000001430511,
+          "transferBytes": 29118,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/24ssml59sgv1e.js",
+          "startMs": 304.40000009536743,
+          "responseMs": 865,
+          "endMs": 1880.5,
+          "transferBytes": 229891,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/25qh7w8a3p07e.js",
+          "startMs": 304.60000014305115,
+          "responseMs": 894.1000001430511,
+          "endMs": 1652.5,
+          "transferBytes": 168680,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "startMs": 304.7999999523163,
+          "responseMs": 893.4000000953674,
+          "endMs": 899.9000000953674,
+          "transferBytes": 10330,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/0jdjybnob14kl.js",
+          "startMs": 304.90000009536743,
+          "responseMs": 894.1000001430511,
+          "endMs": 925.5,
+          "transferBytes": 21808,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/1rnthc2jv97nm.js",
+          "startMs": 305,
+          "responseMs": 894.2000000476837,
+          "endMs": 1046.2000000476837,
+          "transferBytes": 30671,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/41ft_690o77ez.js",
+          "startMs": 305,
+          "responseMs": 1187.1000001430511,
+          "endMs": 1234.4000000953674,
+          "transferBytes": 4314,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/22-lhspvl8fx5.js",
+          "startMs": 305.2000000476837,
+          "responseMs": 1310.1000001430511,
+          "endMs": 1314.7000000476837,
+          "transferBytes": 782,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/videos/dearelle-hero-mobile.webp",
+          "startMs": 305.40000009536743,
+          "responseMs": 573.7000000476837,
+          "endMs": 666,
+          "transferBytes": 41062,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/fonts/everyday.ttf",
+          "startMs": 674.6000001430511,
+          "responseMs": 1046.9000000953674,
+          "endMs": 1259.2999999523163,
+          "transferBytes": 48580,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/fonts/editorial.ttf",
+          "startMs": 674.7999999523163,
+          "responseMs": 1047.6000001430511,
+          "endMs": 2043.5,
+          "transferBytes": 290536,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fimages%2Foption2-watch.jpg&w=640&q=75",
+          "startMs": 1033.9000000953674,
+          "responseMs": 2061.7000000476837,
+          "endMs": 2081.2000000476837,
+          "transferBytes": 12537,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fimages%2Foption2-bag.jpg&w=640&q=75",
+          "startMs": 1034.2999999523163,
+          "responseMs": 2040.2000000476837,
+          "endMs": 2057.2999999523163,
+          "transferBytes": 10934,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fimages%2Foption2-watch.jpg&w=256&q=75",
+          "startMs": 1034.6000001430511,
+          "responseMs": 1915.5,
+          "endMs": 1933.7999999523163,
+          "transferBytes": 3086,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fimages%2Foption2-bag.jpg&w=256&q=75",
+          "startMs": 1034.7999999523163,
+          "responseMs": 2090.9000000953674,
+          "endMs": 2093.4000000953674,
+          "transferBytes": 2752,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fimages%2Fwatch-rose.jpg&w=256&q=75",
+          "startMs": 1034.9000000953674,
+          "responseMs": 2682.4000000953674,
+          "endMs": 2684.2000000476837,
+          "transferBytes": 1930,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fimages%2Fbag-tan.jpg&w=256&q=75",
+          "startMs": 1035.2000000476837,
+          "responseMs": 2802.7999999523163,
+          "endMs": 2810.2999999523163,
+          "transferBytes": 4401,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fimages%2Foption2-editorial.jpg&w=640&q=75",
+          "startMs": 1035.2000000476837,
+          "responseMs": 2862.9000000953674,
+          "endMs": 2881.100000143051,
+          "transferBytes": 8805,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/icon.svg?icon.1xfl1irmmulso.svg",
+          "startMs": 2149.100000143051,
+          "responseMs": 2826.2000000476837,
+          "endMs": 2853.7999999523163,
+          "transferBytes": 528,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/?_rsc=5CB68i4pnAekjehf",
+          "startMs": 2211.5,
+          "responseMs": 2613.4000000953674,
+          "endMs": 2633,
+          "transferBytes": 464,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/videos/dearelle-hero-mobile.mp4",
+          "startMs": 2295.100000143051,
+          "responseMs": 2662.600000143051,
+          "endMs": 5375.799999952316,
+          "transferBytes": 1517809,
+          "cache": "",
+          "status": 206
+        },
+        {
+          "url": "http://127.0.0.1:3131/new-arrivals?_rsc=5CB68i4pnAekjehf",
+          "startMs": 2316.7999999523163,
+          "responseMs": 3001.7000000476837,
+          "endMs": 3011.5,
+          "transferBytes": 572,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/watches?_rsc=5CB68i4pnAekjehf",
+          "startMs": 2317.5,
+          "responseMs": 2946.100000143051,
+          "endMs": 2954.2999999523163,
+          "transferBytes": 567,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/bags?_rsc=5CB68i4pnAekjehf",
+          "startMs": 2317.9000000953674,
+          "responseMs": 3124.7999999523163,
+          "endMs": 3126.7000000476837,
+          "transferBytes": 564,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/?_rsc=8nTjltbQWvg6NcbE",
+          "startMs": 2649.7999999523163,
+          "responseMs": 3002.4000000953674,
+          "endMs": 3012.2000000476837,
+          "transferBytes": 15486,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/watches?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 2964.100000143051,
+          "responseMs": 3075,
+          "endMs": 3076.7999999523163,
+          "transferBytes": 5145,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/new-arrivals?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 3031.2000000476837,
+          "responseMs": 3125.100000143051,
+          "endMs": 3129.9000000953674,
+          "transferBytes": 5169,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/1yd_8gcf23lxg.js",
+          "startMs": 3083.600000143051,
+          "responseMs": 3166.600000143051,
+          "endMs": 3170.2999999523163,
+          "transferBytes": 3118,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/bags?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 3135.7999999523163,
+          "responseMs": 3252.600000143051,
+          "endMs": 3254.4000000953674,
+          "transferBytes": 5141,
+          "cache": "",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "network": "fast4g",
+      "cache": "warm",
+      "navigation": "reload",
+      "posterReadyMs": 490.10000014305115,
+      "lcpMs": 584,
+      "firstFrameMs": 786.7000000476837,
+      "cls": 0.24423191880789688,
+      "resourceTransferBytes": 1552345,
+      "waterfall": [
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fbrand%2Fdearelle-logo.png&w=256&q=75",
+          "startMs": 142.20000004768372,
+          "responseMs": 142.20000004768372,
+          "endMs": 142.20000004768372,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/2v31vloamnkaw.css",
+          "startMs": 142.20000004768372,
+          "responseMs": 142.20000004768372,
+          "endMs": 142.20000004768372,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/0ik08zyc5h2z3.js",
+          "startMs": 142.30000019073486,
+          "responseMs": 142.30000019073486,
+          "endMs": 142.30000019073486,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/0_xdfqcqyqpga.js",
+          "startMs": 142.30000019073486,
+          "responseMs": 142.30000019073486,
+          "endMs": 142.30000019073486,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/24ssml59sgv1e.js",
+          "startMs": 142.40000009536743,
+          "responseMs": 142.40000009536743,
+          "endMs": 142.40000009536743,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/25qh7w8a3p07e.js",
+          "startMs": 142.40000009536743,
+          "responseMs": 142.40000009536743,
+          "endMs": 142.40000009536743,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "startMs": 142.40000009536743,
+          "responseMs": 142.40000009536743,
+          "endMs": 142.40000009536743,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/0jdjybnob14kl.js",
+          "startMs": 142.5,
+          "responseMs": 142.5,
+          "endMs": 142.5,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/1rnthc2jv97nm.js",
+          "startMs": 142.5,
+          "responseMs": 142.5,
+          "endMs": 142.5,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/41ft_690o77ez.js",
+          "startMs": 142.5,
+          "responseMs": 142.5,
+          "endMs": 142.5,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/22-lhspvl8fx5.js",
+          "startMs": 142.60000014305115,
+          "responseMs": 142.60000014305115,
+          "endMs": 142.60000014305115,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/videos/dearelle-hero-mobile.webp",
+          "startMs": 142.70000004768372,
+          "responseMs": 301.10000014305115,
+          "endMs": 304.40000009536743,
+          "transferBytes": 300,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fimages%2Foption2-watch.jpg&w=640&q=75",
+          "startMs": 252.30000019073486,
+          "responseMs": 252.30000019073486,
+          "endMs": 252.30000019073486,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/fonts/everyday.ttf",
+          "startMs": 256,
+          "responseMs": 353.40000009536743,
+          "endMs": 355.40000009536743,
+          "transferBytes": 300,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/fonts/editorial.ttf",
+          "startMs": 256.2000000476837,
+          "responseMs": 351.90000009536743,
+          "endMs": 354.80000019073486,
+          "transferBytes": 300,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fimages%2Foption2-bag.jpg&w=640&q=75",
+          "startMs": 302.40000009536743,
+          "responseMs": 302.40000009536743,
+          "endMs": 302.40000009536743,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fimages%2Fwatch-rose.jpg&w=256&q=75",
+          "startMs": 304.5,
+          "responseMs": 304.5,
+          "endMs": 304.5,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fimages%2Fbag-tan.jpg&w=256&q=75",
+          "startMs": 305.30000019073486,
+          "responseMs": 305.30000019073486,
+          "endMs": 305.30000019073486,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/image?url=%2Fimages%2Foption2-editorial.jpg&w=640&q=75",
+          "startMs": 306.30000019073486,
+          "responseMs": 306.30000019073486,
+          "endMs": 306.30000019073486,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/icon.svg?icon.1xfl1irmmulso.svg",
+          "startMs": 404.60000014305115,
+          "responseMs": 525.1000001430511,
+          "endMs": 539,
+          "transferBytes": 528,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/?_rsc=5CB68i4pnAekjehf",
+          "startMs": 410,
+          "responseMs": 548.5,
+          "endMs": 555.4000000953674,
+          "transferBytes": 464,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/watches?_rsc=5CB68i4pnAekjehf",
+          "startMs": 410.40000009536743,
+          "responseMs": 548.4000000953674,
+          "endMs": 555,
+          "transferBytes": 567,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/bags?_rsc=5CB68i4pnAekjehf",
+          "startMs": 410.80000019073486,
+          "responseMs": 604.2000000476837,
+          "endMs": 656.4000000953674,
+          "transferBytes": 564,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/new-arrivals?_rsc=5CB68i4pnAekjehf",
+          "startMs": 411.40000009536743,
+          "responseMs": 604.3000001907349,
+          "endMs": 657.1000001430511,
+          "transferBytes": 572,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/videos/dearelle-hero-mobile.mp4",
+          "startMs": 519.3000001907349,
+          "responseMs": 629.9000000953674,
+          "endMs": 692.9000000953674,
+          "transferBytes": 1517809,
+          "cache": "",
+          "status": 206
+        },
+        {
+          "url": "http://127.0.0.1:3131/watches?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 605.3000001907349,
+          "responseMs": 826.1000001430511,
+          "endMs": 833.3000001907349,
+          "transferBytes": 5145,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/?_rsc=8nTjltbQWvg6NcbE",
+          "startMs": 608,
+          "responseMs": 859.1000001430511,
+          "endMs": 871.7000000476837,
+          "transferBytes": 15486,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/bags?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 677.6000001430511,
+          "responseMs": 996.3000001907349,
+          "endMs": 1023.3000001907349,
+          "transferBytes": 5141,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/new-arrivals?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 680.7000000476837,
+          "responseMs": 995.8000001907349,
+          "endMs": 1019.4000000953674,
+          "transferBytes": 5169,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3131/_next/static/chunks/1yd_8gcf23lxg.js",
+          "startMs": 849.3000001907349,
+          "responseMs": 849.3000001907349,
+          "endMs": 849.3000001907349,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "phase": "after",
+      "network": "fast4g",
+      "cache": "cold",
+      "navigation": "navigate",
+      "posterReadyMs": 251.5,
+      "lcpMs": 300,
+      "firstFrameMs": 999.8999998569489,
+      "cls": 0.00039299595848325174,
+      "resourceTransferBytes": 2062623,
+      "waterfall": [
+        {
+          "url": "http://127.0.0.1:3191/_next/image?url=%2Fbrand%2Fdearelle-logo.png&w=256&q=75",
+          "startMs": 100.09999990463257,
+          "responseMs": 188.79999995231628,
+          "endMs": 229.70000004768372,
+          "transferBytes": 7926,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/21utqo8wx5sro.css",
+          "startMs": 100.39999985694885,
+          "responseMs": 189.39999985694885,
+          "endMs": 274.89999985694885,
+          "transferBytes": 37234,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/0ik08zyc5h2z3.js",
+          "startMs": 100.5,
+          "responseMs": 249.59999990463257,
+          "endMs": 253.79999995231628,
+          "transferBytes": 5884,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "startMs": 100.59999990463257,
+          "responseMs": 336.09999990463257,
+          "endMs": 367.59999990463257,
+          "transferBytes": 10330,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/0_xdfqcqyqpga.js",
+          "startMs": 100.59999990463257,
+          "responseMs": 250.59999990463257,
+          "endMs": 399.39999985694885,
+          "transferBytes": 29118,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/0jdjybnob14kl.js",
+          "startMs": 100.59999990463257,
+          "responseMs": 368,
+          "endMs": 432.5,
+          "transferBytes": 21808,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/25qh7w8a3p07e.js",
+          "startMs": 100.59999990463257,
+          "responseMs": 336,
+          "endMs": 1150.5999999046326,
+          "transferBytes": 168680,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/24ssml59sgv1e.js",
+          "startMs": 100.59999990463257,
+          "responseMs": 305.7999999523163,
+          "endMs": 1282.7000000476837,
+          "transferBytes": 229891,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/videos/dearelle-hero-mobile-v2.webp",
+          "startMs": 100.70000004768372,
+          "responseMs": 189.39999985694885,
+          "endMs": 249.89999985694885,
+          "transferBytes": 43224,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/1us3ogm0xps5b.js",
+          "startMs": 100.70000004768372,
+          "responseMs": 368,
+          "endMs": 466.2999999523163,
+          "transferBytes": 31324,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/0_5kfl44ivw40.js",
+          "startMs": 100.70000004768372,
+          "responseMs": 515.2999999523163,
+          "endMs": 518.2999999523163,
+          "transferBytes": 6423,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/1xgnaimfq731n.js",
+          "startMs": 100.70000004768372,
+          "responseMs": 599.3999998569489,
+          "endMs": 682.8999998569489,
+          "transferBytes": 781,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/fonts/everyday.woff2",
+          "startMs": 279.59999990463257,
+          "responseMs": 466.59999990463257,
+          "endMs": 599,
+          "transferBytes": 19440,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/fonts/editorial.woff2",
+          "startMs": 279.59999990463257,
+          "responseMs": 487,
+          "endMs": 732,
+          "transferBytes": 63940,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/videos/dearelle-hero-mobile-v2.mp4",
+          "startMs": 282.2000000476837,
+          "responseMs": 599.3999998569489,
+          "endMs": 3349.7999999523163,
+          "transferBytes": 1326524,
+          "cache": "",
+          "status": 206
+        },
+        {
+          "url": "http://127.0.0.1:3191/icon.svg?icon.3_gzry_o3ye3w.svg",
+          "startMs": 1344.3999998569489,
+          "responseMs": 1424.5,
+          "endMs": 1536.7999999523163,
+          "transferBytes": 527,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/?_rsc=5CB68i4pnAekjehf",
+          "startMs": 1393.5999999046326,
+          "responseMs": 1482.7999999523163,
+          "endMs": 1537,
+          "transferBytes": 464,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/new-arrivals?_rsc=5CB68i4pnAekjehf",
+          "startMs": 1394.0999999046326,
+          "responseMs": 1483.0999999046326,
+          "endMs": 1537.2000000476837,
+          "transferBytes": 573,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/watches?_rsc=5CB68i4pnAekjehf",
+          "startMs": 1394.3999998569489,
+          "responseMs": 1516.2000000476837,
+          "endMs": 1537.7000000476837,
+          "transferBytes": 568,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/bags?_rsc=5CB68i4pnAekjehf",
+          "startMs": 1394.5,
+          "responseMs": 1516,
+          "endMs": 1537.5,
+          "transferBytes": 565,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/image?url=%2Fimages%2Foption2-watch.jpg&w=640&q=75",
+          "startMs": 1403.2999999523163,
+          "responseMs": 1649.0999999046326,
+          "endMs": 1664.2000000476837,
+          "transferBytes": 12537,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/image?url=%2Fimages%2Foption2-bag.jpg&w=640&q=75",
+          "startMs": 1403.3999998569489,
+          "responseMs": 1649.5,
+          "endMs": 1664.2999999523163,
+          "transferBytes": 10934,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/?_rsc=8nTjltbQWvg6NcbE",
+          "startMs": 1548.2999999523163,
+          "responseMs": 1649.7000000476837,
+          "endMs": 1664.3999998569489,
+          "transferBytes": 15355,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/new-arrivals?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 1550,
+          "responseMs": 1649.7000000476837,
+          "endMs": 1664.5999999046326,
+          "transferBytes": 5169,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/bags?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 1551.7999999523163,
+          "responseMs": 1650.2999999523163,
+          "endMs": 1670,
+          "transferBytes": 5141,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/watches?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 1553.2999999523163,
+          "responseMs": 1739.2999999523163,
+          "endMs": 1740.5,
+          "transferBytes": 5145,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/2040l-k4vaq9u.js",
+          "startMs": 1674.2000000476837,
+          "responseMs": 1766.0999999046326,
+          "endMs": 1767.0999999046326,
+          "transferBytes": 3118,
+          "cache": "",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "phase": "after",
+      "network": "fast4g",
+      "cache": "warm",
+      "navigation": "reload",
+      "posterReadyMs": 326.59999990463257,
+      "lcpMs": 436,
+      "firstFrameMs": 401.89999985694885,
+      "cls": 0,
+      "resourceTransferBytes": 33507,
+      "waterfall": [
+        {
+          "url": "http://127.0.0.1:3191/_next/image?url=%2Fbrand%2Fdearelle-logo.png&w=256&q=75",
+          "startMs": 195.29999995231628,
+          "responseMs": 195.29999995231628,
+          "endMs": 195.29999995231628,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/21utqo8wx5sro.css",
+          "startMs": 195.39999985694885,
+          "responseMs": 195.39999985694885,
+          "endMs": 195.39999985694885,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/0ik08zyc5h2z3.js",
+          "startMs": 195.39999985694885,
+          "responseMs": 195.39999985694885,
+          "endMs": 195.39999985694885,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/0_xdfqcqyqpga.js",
+          "startMs": 195.39999985694885,
+          "responseMs": 195.39999985694885,
+          "endMs": 195.39999985694885,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/24ssml59sgv1e.js",
+          "startMs": 195.39999985694885,
+          "responseMs": 195.39999985694885,
+          "endMs": 195.39999985694885,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/25qh7w8a3p07e.js",
+          "startMs": 195.39999985694885,
+          "responseMs": 195.39999985694885,
+          "endMs": 195.39999985694885,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "startMs": 195.5,
+          "responseMs": 195.5,
+          "endMs": 195.5,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/0jdjybnob14kl.js",
+          "startMs": 195.5,
+          "responseMs": 195.5,
+          "endMs": 195.5,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/1us3ogm0xps5b.js",
+          "startMs": 195.59999990463257,
+          "responseMs": 195.59999990463257,
+          "endMs": 195.59999990463257,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/0_5kfl44ivw40.js",
+          "startMs": 195.59999990463257,
+          "responseMs": 195.59999990463257,
+          "endMs": 195.59999990463257,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/1xgnaimfq731n.js",
+          "startMs": 195.59999990463257,
+          "responseMs": 195.59999990463257,
+          "endMs": 195.59999990463257,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/videos/dearelle-hero-mobile-v2.webp",
+          "startMs": 195.59999990463257,
+          "responseMs": 281.39999985694885,
+          "endMs": 303.2999999523163,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/fonts/editorial.woff2",
+          "startMs": 259.7999999523163,
+          "responseMs": 259.7999999523163,
+          "endMs": 259.7999999523163,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/fonts/everyday.woff2",
+          "startMs": 259.7999999523163,
+          "responseMs": 259.7999999523163,
+          "endMs": 259.7999999523163,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/videos/dearelle-hero-mobile-v2.mp4",
+          "startMs": 303.09999990463257,
+          "responseMs": 308.39999985694885,
+          "endMs": 315,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 206
+        },
+        {
+          "url": "http://127.0.0.1:3191/?_rsc=5CB68i4pnAekjehf",
+          "startMs": 363.5,
+          "responseMs": 443.19999980926514,
+          "endMs": 448.5,
+          "transferBytes": 464,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/new-arrivals?_rsc=5CB68i4pnAekjehf",
+          "startMs": 363.59999990463257,
+          "responseMs": 443,
+          "endMs": 448.19999980926514,
+          "transferBytes": 573,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/watches?_rsc=5CB68i4pnAekjehf",
+          "startMs": 363.69999980926514,
+          "responseMs": 464.2999999523163,
+          "endMs": 466.39999985694885,
+          "transferBytes": 568,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/bags?_rsc=5CB68i4pnAekjehf",
+          "startMs": 363.89999985694885,
+          "responseMs": 464.5,
+          "endMs": 466.69999980926514,
+          "transferBytes": 565,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/image?url=%2Fimages%2Foption2-watch.jpg&w=640&q=75",
+          "startMs": 381.39999985694885,
+          "responseMs": 381.39999985694885,
+          "endMs": 381.39999985694885,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/image?url=%2Fimages%2Foption2-bag.jpg&w=640&q=75",
+          "startMs": 381.89999985694885,
+          "responseMs": 381.89999985694885,
+          "endMs": 381.89999985694885,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/icon.svg?icon.3_gzry_o3ye3w.svg",
+          "startMs": 393.89999985694885,
+          "responseMs": 485.2999999523163,
+          "endMs": 505.89999985694885,
+          "transferBytes": 527,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/new-arrivals?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 453.09999990463257,
+          "responseMs": 537.5999999046326,
+          "endMs": 542.3999998569489,
+          "transferBytes": 5169,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/?_rsc=8nTjltbQWvg6NcbE",
+          "startMs": 454.59999990463257,
+          "responseMs": 537.1999998092651,
+          "endMs": 540.0999999046326,
+          "transferBytes": 15355,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/watches?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 482.2999999523163,
+          "responseMs": 591.2999999523163,
+          "endMs": 593.7999999523163,
+          "transferBytes": 5145,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/bags?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 483.2999999523163,
+          "responseMs": 591.5,
+          "endMs": 594.2999999523163,
+          "transferBytes": 5141,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3191/_next/static/chunks/2040l-k4vaq9u.js",
+          "startMs": 545.8999998569489,
+          "responseMs": 545.8999998569489,
+          "endMs": 545.8999998569489,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "network": "slow4g",
+      "cache": "cold",
+      "navigation": "navigate",
+      "posterReadyMs": 2552.600000143051,
+      "lcpMs": 2604,
+      "firstFrameMs": 8680.400000095367,
+      "cls": 0.0000629774588271702,
+      "resourceTransferBytes": 2525798,
+      "waterfall": [
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fbrand%2Fdearelle-logo.png&w=256&q=75",
+          "startMs": 337.5,
+          "responseMs": 581.8000001907349,
+          "endMs": 728.5,
+          "transferBytes": 7926,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/2v31vloamnkaw.css",
+          "startMs": 337.90000009536743,
+          "responseMs": 652.2000000476837,
+          "endMs": 2296.4000000953674,
+          "transferBytes": 37208,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/0ik08zyc5h2z3.js",
+          "startMs": 338.2000000476837,
+          "responseMs": 875.6000001430511,
+          "endMs": 1073.7000000476837,
+          "transferBytes": 5884,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/0_xdfqcqyqpga.js",
+          "startMs": 338.30000019073486,
+          "responseMs": 909.1000001430511,
+          "endMs": 2057.2000000476837,
+          "transferBytes": 29118,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/24ssml59sgv1e.js",
+          "startMs": 338.30000019073486,
+          "responseMs": 942.3000001907349,
+          "endMs": 6774.100000143051,
+          "transferBytes": 229891,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "startMs": 338.40000009536743,
+          "responseMs": 1295.9000000953674,
+          "endMs": 1670,
+          "transferBytes": 10330,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/25qh7w8a3p07e.js",
+          "startMs": 338.40000009536743,
+          "responseMs": 1264.8000001907349,
+          "endMs": 5987.800000190735,
+          "transferBytes": 168680,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/0jdjybnob14kl.js",
+          "startMs": 338.5,
+          "responseMs": 1958.5,
+          "endMs": 2584.600000143051,
+          "transferBytes": 21808,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/1rnthc2jv97nm.js",
+          "startMs": 338.5,
+          "responseMs": 2271.2000000476837,
+          "endMs": 3040.800000190735,
+          "transferBytes": 30671,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/41ft_690o77ez.js",
+          "startMs": 338.60000014305115,
+          "responseMs": 2404,
+          "endMs": 2543.9000000953674,
+          "transferBytes": 4314,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/22-lhspvl8fx5.js",
+          "startMs": 338.60000014305115,
+          "responseMs": 2693.7000000476837,
+          "endMs": 2696.300000190735,
+          "transferBytes": 782,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/videos/dearelle-hero-mobile.webp",
+          "startMs": 338.7000000476837,
+          "responseMs": 681,
+          "endMs": 2173.7000000476837,
+          "transferBytes": 41062,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/fonts/everyday.ttf",
+          "startMs": 2524,
+          "responseMs": 2807.9000000953674,
+          "endMs": 4305.300000190735,
+          "transferBytes": 48580,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/fonts/editorial.ttf",
+          "startMs": 2530.4000000953674,
+          "responseMs": 2955.4000000953674,
+          "endMs": 8316.700000047684,
+          "transferBytes": 290536,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fimages%2Foption2-watch.jpg&w=640&q=75",
+          "startMs": 2551.2000000476837,
+          "responseMs": 2788,
+          "endMs": 3339.7000000476837,
+          "transferBytes": 12537,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fimages%2Foption2-bag.jpg&w=640&q=75",
+          "startMs": 2551.300000190735,
+          "responseMs": 3289.9000000953674,
+          "endMs": 3574.2000000476837,
+          "transferBytes": 10934,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fimages%2Foption2-watch.jpg&w=256&q=75",
+          "startMs": 2551.5,
+          "responseMs": 3572.7000000476837,
+          "endMs": 3726.4000000953674,
+          "transferBytes": 3086,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fimages%2Foption2-bag.jpg&w=256&q=75",
+          "startMs": 2551.600000143051,
+          "responseMs": 3955.5,
+          "endMs": 3957.300000190735,
+          "transferBytes": 2752,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fimages%2Fwatch-rose.jpg&w=256&q=75",
+          "startMs": 2551.7000000476837,
+          "responseMs": 3956,
+          "endMs": 4100.700000047684,
+          "transferBytes": 1930,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fimages%2Fbag-tan.jpg&w=256&q=75",
+          "startMs": 2551.9000000953674,
+          "responseMs": 4222.5,
+          "endMs": 4340.100000143051,
+          "transferBytes": 4401,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fimages%2Foption2-editorial.jpg&w=640&q=75",
+          "startMs": 2552,
+          "responseMs": 4339.400000095367,
+          "endMs": 4568.300000190735,
+          "transferBytes": 8805,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/?_rsc=5CB68i4pnAekjehf",
+          "startMs": 7336.600000143051,
+          "responseMs": 7543,
+          "endMs": 7549.900000095367,
+          "transferBytes": 464,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/videos/dearelle-hero-mobile.mp4",
+          "startMs": 7349,
+          "responseMs": 7543.400000095367,
+          "endMs": 19963,
+          "transferBytes": 1517809,
+          "cache": "",
+          "status": 206
+        },
+        {
+          "url": "http://127.0.0.1:3132/new-arrivals?_rsc=5CB68i4pnAekjehf",
+          "startMs": 7367,
+          "responseMs": 7575.200000047684,
+          "endMs": 7585,
+          "transferBytes": 572,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/watches?_rsc=5CB68i4pnAekjehf",
+          "startMs": 7367.400000095367,
+          "responseMs": 7675.200000047684,
+          "endMs": 7686.5,
+          "transferBytes": 567,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/bags?_rsc=5CB68i4pnAekjehf",
+          "startMs": 7367.5,
+          "responseMs": 7733.600000143051,
+          "endMs": 7753.300000190735,
+          "transferBytes": 564,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/?_rsc=8nTjltbQWvg6NcbE",
+          "startMs": 7570,
+          "responseMs": 7863.400000095367,
+          "endMs": 8223.600000143051,
+          "transferBytes": 15486,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/new-arrivals?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 7613,
+          "responseMs": 7868.5,
+          "endMs": 8015.900000095367,
+          "transferBytes": 5169,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/watches?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 7694.400000095367,
+          "responseMs": 7890.700000047684,
+          "endMs": 8016.5,
+          "transferBytes": 5145,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/bags?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 7761.700000047684,
+          "responseMs": 8138.800000190735,
+          "endMs": 8315.800000190735,
+          "transferBytes": 5141,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/1yd_8gcf23lxg.js",
+          "startMs": 8022.600000143051,
+          "responseMs": 8252.600000143051,
+          "endMs": 8254.400000095367,
+          "transferBytes": 3118,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/icon.svg?icon.1xfl1irmmulso.svg",
+          "startMs": 8666.800000190735,
+          "responseMs": 9197.600000143051,
+          "endMs": 9199.600000143051,
+          "transferBytes": 528,
+          "cache": "",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "network": "slow4g",
+      "cache": "warm",
+      "navigation": "reload",
+      "posterReadyMs": 837.7999999523163,
+      "lcpMs": 1308,
+      "firstFrameMs": 1246.1000001430511,
+      "cls": 0.0000629774588271702,
+      "resourceTransferBytes": 1552345,
+      "waterfall": [
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fbrand%2Fdearelle-logo.png&w=256&q=75",
+          "startMs": 335.5,
+          "responseMs": 335.5,
+          "endMs": 335.5,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/2v31vloamnkaw.css",
+          "startMs": 335.60000014305115,
+          "responseMs": 335.60000014305115,
+          "endMs": 335.60000014305115,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/0ik08zyc5h2z3.js",
+          "startMs": 335.7000000476837,
+          "responseMs": 335.7000000476837,
+          "endMs": 335.7000000476837,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/0_xdfqcqyqpga.js",
+          "startMs": 335.90000009536743,
+          "responseMs": 335.90000009536743,
+          "endMs": 335.90000009536743,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/24ssml59sgv1e.js",
+          "startMs": 335.90000009536743,
+          "responseMs": 335.90000009536743,
+          "endMs": 335.90000009536743,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/25qh7w8a3p07e.js",
+          "startMs": 335.90000009536743,
+          "responseMs": 335.90000009536743,
+          "endMs": 335.90000009536743,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "startMs": 336,
+          "responseMs": 336,
+          "endMs": 336,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/0jdjybnob14kl.js",
+          "startMs": 336.10000014305115,
+          "responseMs": 336.10000014305115,
+          "endMs": 336.10000014305115,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/1rnthc2jv97nm.js",
+          "startMs": 336.2000000476837,
+          "responseMs": 336.2000000476837,
+          "endMs": 336.2000000476837,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/41ft_690o77ez.js",
+          "startMs": 336.2000000476837,
+          "responseMs": 336.2000000476837,
+          "endMs": 336.2000000476837,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/22-lhspvl8fx5.js",
+          "startMs": 336.2999999523163,
+          "responseMs": 336.2999999523163,
+          "endMs": 336.2999999523163,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/videos/dearelle-hero-mobile.webp",
+          "startMs": 336.5,
+          "responseMs": 680.7999999523163,
+          "endMs": 683.7000000476837,
+          "transferBytes": 300,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fimages%2Foption2-watch.jpg&w=640&q=75",
+          "startMs": 639.2999999523163,
+          "responseMs": 639.2999999523163,
+          "endMs": 639.2999999523163,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fimages%2Foption2-bag.jpg&w=640&q=75",
+          "startMs": 640.9000000953674,
+          "responseMs": 640.9000000953674,
+          "endMs": 640.9000000953674,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fimages%2Fwatch-rose.jpg&w=256&q=75",
+          "startMs": 642.9000000953674,
+          "responseMs": 642.9000000953674,
+          "endMs": 642.9000000953674,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fimages%2Fbag-tan.jpg&w=256&q=75",
+          "startMs": 643.5,
+          "responseMs": 643.5,
+          "endMs": 643.5,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/image?url=%2Fimages%2Foption2-editorial.jpg&w=640&q=75",
+          "startMs": 644.2000000476837,
+          "responseMs": 644.2000000476837,
+          "endMs": 644.2000000476837,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/fonts/everyday.ttf",
+          "startMs": 734.7999999523163,
+          "responseMs": 910.7999999523163,
+          "endMs": 922.1000001430511,
+          "transferBytes": 300,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/fonts/editorial.ttf",
+          "startMs": 735.1000001430511,
+          "responseMs": 910.5,
+          "endMs": 918.5,
+          "transferBytes": 300,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/videos/dearelle-hero-mobile.mp4",
+          "startMs": 847.4000000953674,
+          "responseMs": 1047.2000000476837,
+          "endMs": 1100.7999999523163,
+          "transferBytes": 1517809,
+          "cache": "",
+          "status": 206
+        },
+        {
+          "url": "http://127.0.0.1:3132/?_rsc=5CB68i4pnAekjehf",
+          "startMs": 998.5,
+          "responseMs": 1263,
+          "endMs": 1281.2000000476837,
+          "transferBytes": 464,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/new-arrivals?_rsc=5CB68i4pnAekjehf",
+          "startMs": 999,
+          "responseMs": 1282.1000001430511,
+          "endMs": 1367.1000001430511,
+          "transferBytes": 572,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/watches?_rsc=5CB68i4pnAekjehf",
+          "startMs": 999.4000000953674,
+          "responseMs": 1320.9000000953674,
+          "endMs": 1370.6000001430511,
+          "transferBytes": 567,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/bags?_rsc=5CB68i4pnAekjehf",
+          "startMs": 999.6000001430511,
+          "responseMs": 1335.5,
+          "endMs": 1383.2999999523163,
+          "transferBytes": 564,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/icon.svg?icon.1xfl1irmmulso.svg",
+          "startMs": 1215,
+          "responseMs": 1438.9000000953674,
+          "endMs": 1480.5,
+          "transferBytes": 528,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/?_rsc=8nTjltbQWvg6NcbE",
+          "startMs": 1298.2999999523163,
+          "responseMs": 1677.6000001430511,
+          "endMs": 1821.7999999523163,
+          "transferBytes": 15486,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/new-arrivals?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 1378.7999999523163,
+          "responseMs": 1768.2999999523163,
+          "endMs": 1839.5,
+          "transferBytes": 5169,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/watches?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 1381.2999999523163,
+          "responseMs": 1859,
+          "endMs": 1888.2000000476837,
+          "transferBytes": 5145,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/bags?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 1419.1000001430511,
+          "responseMs": 1901.2000000476837,
+          "endMs": 1908.2000000476837,
+          "transferBytes": 5141,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3132/_next/static/chunks/1yd_8gcf23lxg.js",
+          "startMs": 1846.1000001430511,
+          "responseMs": 1846.1000001430511,
+          "endMs": 1846.1000001430511,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "phase": "after",
+      "network": "slow4g",
+      "cache": "cold",
+      "navigation": "navigate",
+      "posterReadyMs": 2073,
+      "lcpMs": 2088,
+      "firstFrameMs": 4737.100000143051,
+      "cls": 0.00039299595848325174,
+      "resourceTransferBytes": 2117199,
+      "waterfall": [
+        {
+          "url": "http://127.0.0.1:3182/_next/image?url=%2Fbrand%2Fdearelle-logo.png&w=256&q=75",
+          "startMs": 234,
+          "responseMs": 470,
+          "endMs": 621.7000000476837,
+          "transferBytes": 7926,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/21utqo8wx5sro.css",
+          "startMs": 234.40000009536743,
+          "responseMs": 498.5,
+          "endMs": 1925.2999999523163,
+          "transferBytes": 37234,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/0ik08zyc5h2z3.js",
+          "startMs": 234.5,
+          "responseMs": 541.9000000953674,
+          "endMs": 688.5,
+          "transferBytes": 5884,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/0_xdfqcqyqpga.js",
+          "startMs": 234.5,
+          "responseMs": 562.2999999523163,
+          "endMs": 1571.1000001430511,
+          "transferBytes": 29118,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/24ssml59sgv1e.js",
+          "startMs": 234.60000014305115,
+          "responseMs": 819.4000000953674,
+          "endMs": 6561.200000047684,
+          "transferBytes": 229891,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "startMs": 234.70000004768372,
+          "responseMs": 1620.2000000476837,
+          "endMs": 1902.5,
+          "transferBytes": 10330,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/25qh7w8a3p07e.js",
+          "startMs": 234.70000004768372,
+          "responseMs": 1003.2999999523163,
+          "endMs": 5688.100000143051,
+          "transferBytes": 168680,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/0jdjybnob14kl.js",
+          "startMs": 234.79999995231628,
+          "responseMs": 1902.2000000476837,
+          "endMs": 2402.600000143051,
+          "transferBytes": 21808,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/1us3ogm0xps5b.js",
+          "startMs": 234.79999995231628,
+          "responseMs": 2286.9000000953674,
+          "endMs": 3194.9000000953674,
+          "transferBytes": 31324,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/0_5kfl44ivw40.js",
+          "startMs": 234.90000009536743,
+          "responseMs": 2317.9000000953674,
+          "endMs": 2424.2999999523163,
+          "transferBytes": 6423,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/videos/dearelle-hero-mobile-v2.webp",
+          "startMs": 235,
+          "responseMs": 518.5,
+          "endMs": 2034.9000000953674,
+          "transferBytes": 43224,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/1xgnaimfq731n.js",
+          "startMs": 235,
+          "responseMs": 2353.4000000953674,
+          "endMs": 2355.100000143051,
+          "transferBytes": 781,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/fonts/everyday.woff2",
+          "startMs": 2052.2999999523163,
+          "responseMs": 2571.2000000476837,
+          "endMs": 3216,
+          "transferBytes": 19440,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/fonts/editorial.woff2",
+          "startMs": 2052.4000000953674,
+          "responseMs": 2594.2999999523163,
+          "endMs": 4570.700000047684,
+          "transferBytes": 63940,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/videos/dearelle-hero-mobile-v2.mp4",
+          "startMs": 2060.600000143051,
+          "responseMs": 2622.2999999523163,
+          "endMs": 15901.299999952316,
+          "transferBytes": 1326524,
+          "cache": "",
+          "status": 206
+        },
+        {
+          "url": "http://127.0.0.1:3182/icon.svg?icon.3_gzry_o3ye3w.svg",
+          "startMs": 6726.799999952316,
+          "responseMs": 6937.799999952316,
+          "endMs": 6941.299999952316,
+          "transferBytes": 527,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/?_rsc=5CB68i4pnAekjehf",
+          "startMs": 6830.600000143051,
+          "responseMs": 7022,
+          "endMs": 7213.700000047684,
+          "transferBytes": 464,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/new-arrivals?_rsc=5CB68i4pnAekjehf",
+          "startMs": 6830.900000095367,
+          "responseMs": 7022.299999952316,
+          "endMs": 7214,
+          "transferBytes": 573,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/watches?_rsc=5CB68i4pnAekjehf",
+          "startMs": 6831.400000095367,
+          "responseMs": 7023.600000143051,
+          "endMs": 7214.299999952316,
+          "transferBytes": 568,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/bags?_rsc=5CB68i4pnAekjehf",
+          "startMs": 6831.700000047684,
+          "responseMs": 7024.600000143051,
+          "endMs": 7214.700000047684,
+          "transferBytes": 565,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/image?url=%2Fimages%2Foption2-watch.jpg&w=640&q=75",
+          "startMs": 6903.299999952316,
+          "responseMs": 7104.900000095367,
+          "endMs": 7281.5,
+          "transferBytes": 12537,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/image?url=%2Fimages%2Foption2-bag.jpg&w=640&q=75",
+          "startMs": 6903.5,
+          "responseMs": 7386.600000143051,
+          "endMs": 7576.100000143051,
+          "transferBytes": 10934,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/image?url=%2Fimages%2Foption2-watch.jpg&w=256&q=75",
+          "startMs": 6903.900000095367,
+          "responseMs": 7419.100000143051,
+          "endMs": 7432.400000095367,
+          "transferBytes": 3086,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/image?url=%2Fimages%2Foption2-bag.jpg&w=256&q=75",
+          "startMs": 6904,
+          "responseMs": 7421.100000143051,
+          "endMs": 7522.600000143051,
+          "transferBytes": 2752,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/image?url=%2Fimages%2Fwatch-rose.jpg&w=256&q=75",
+          "startMs": 6904.100000143051,
+          "responseMs": 7441.799999952316,
+          "endMs": 7443.400000095367,
+          "transferBytes": 1930,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/image?url=%2Fimages%2Fbag-tan.jpg&w=256&q=75",
+          "startMs": 6904.200000047684,
+          "responseMs": 7522,
+          "endMs": 7576.5,
+          "transferBytes": 4401,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/products/the-everyday-watch?_rsc=5CB68i4pnAekjehf",
+          "startMs": 7257.600000143051,
+          "responseMs": 7637.100000143051,
+          "endMs": 7843.299999952316,
+          "transferBytes": 610,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/products/the-city-shoulder-bag?_rsc=5CB68i4pnAekjehf",
+          "startMs": 7259.700000047684,
+          "responseMs": 7637.299999952316,
+          "endMs": 7843.600000143051,
+          "transferBytes": 613,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/products/the-classic-watch?_rsc=5CB68i4pnAekjehf",
+          "startMs": 7261.200000047684,
+          "responseMs": 7702.600000143051,
+          "endMs": 7843.700000047684,
+          "transferBytes": 609,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/products/the-weekend-bag?_rsc=5CB68i4pnAekjehf",
+          "startMs": 7262.5,
+          "responseMs": 7769.600000143051,
+          "endMs": 7843.900000095367,
+          "transferBytes": 607,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/?_rsc=8nTjltbQWvg6NcbE",
+          "startMs": 7853.299999952316,
+          "responseMs": 8055,
+          "endMs": 8303.900000095367,
+          "transferBytes": 15355,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/new-arrivals?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 7855.200000047684,
+          "responseMs": 8086,
+          "endMs": 8219.299999952316,
+          "transferBytes": 5169,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/watches?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 7856.5,
+          "responseMs": 8110.700000047684,
+          "endMs": 8219.700000047684,
+          "transferBytes": 5145,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/bags?_rsc=w5RTLde4mtWyHdrS",
+          "startMs": 7858.5,
+          "responseMs": 8136.299999952316,
+          "endMs": 8261.700000047684,
+          "transferBytes": 5141,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/2040l-k4vaq9u.js",
+          "startMs": 8263,
+          "responseMs": 8453,
+          "endMs": 8454.600000143051,
+          "transferBytes": 3118,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/products/the-everyday-watch?_rsc=O1J9P368Hg4QOFED",
+          "startMs": 8267.700000047684,
+          "responseMs": 8453.100000143051,
+          "endMs": 8736.900000095367,
+          "transferBytes": 6692,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/products/the-city-shoulder-bag?_rsc=O1J9P368Hg4QOFED",
+          "startMs": 8271,
+          "responseMs": 8486.100000143051,
+          "endMs": 8653.400000095367,
+          "transferBytes": 6711,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/products/the-classic-watch?_rsc=O1J9P368Hg4QOFED",
+          "startMs": 8274.799999952316,
+          "responseMs": 8521.5,
+          "endMs": 8737.200000047684,
+          "transferBytes": 6611,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/products/the-weekend-bag?_rsc=O1J9P368Hg4QOFED",
+          "startMs": 8307.400000095367,
+          "responseMs": 8553,
+          "endMs": 8684.600000143051,
+          "transferBytes": 6595,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/image?url=%2Fimages%2Foption2-editorial.jpg&w=640&q=75",
+          "startMs": 8340.900000095367,
+          "responseMs": 8684.299999952316,
+          "endMs": 8868.100000143051,
+          "transferBytes": 8805,
+          "cache": "",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/30rgu-gtn9-rb.js",
+          "startMs": 8680.600000143051,
+          "responseMs": 8868.299999952316,
+          "endMs": 8920,
+          "transferBytes": 4554,
+          "cache": "",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "phase": "after",
+      "network": "slow4g",
+      "cache": "warm",
+      "navigation": "reload",
+      "posterReadyMs": 422.5,
+      "lcpMs": 544,
+      "firstFrameMs": 558,
+      "cls": 0,
+      "resourceTransferBytes": 0,
+      "waterfall": [
+        {
+          "url": "http://127.0.0.1:3182/_next/image?url=%2Fbrand%2Fdearelle-logo.png&w=256&q=75",
+          "startMs": 219,
+          "responseMs": 219,
+          "endMs": 219,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/21utqo8wx5sro.css",
+          "startMs": 219.09999990463257,
+          "responseMs": 219.09999990463257,
+          "endMs": 219.09999990463257,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/0ik08zyc5h2z3.js",
+          "startMs": 219.20000004768372,
+          "responseMs": 219.20000004768372,
+          "endMs": 219.20000004768372,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/0_xdfqcqyqpga.js",
+          "startMs": 219.29999995231628,
+          "responseMs": 219.29999995231628,
+          "endMs": 219.29999995231628,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/24ssml59sgv1e.js",
+          "startMs": 219.29999995231628,
+          "responseMs": 219.29999995231628,
+          "endMs": 219.29999995231628,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/25qh7w8a3p07e.js",
+          "startMs": 219.40000009536743,
+          "responseMs": 219.40000009536743,
+          "endMs": 219.40000009536743,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "startMs": 219.40000009536743,
+          "responseMs": 219.40000009536743,
+          "endMs": 219.40000009536743,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/0jdjybnob14kl.js",
+          "startMs": 219.5,
+          "responseMs": 219.5,
+          "endMs": 219.5,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/1us3ogm0xps5b.js",
+          "startMs": 219.5,
+          "responseMs": 219.5,
+          "endMs": 219.5,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/0_5kfl44ivw40.js",
+          "startMs": 219.59999990463257,
+          "responseMs": 219.59999990463257,
+          "endMs": 219.59999990463257,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/static/chunks/1xgnaimfq731n.js",
+          "startMs": 219.70000004768372,
+          "responseMs": 219.70000004768372,
+          "endMs": 219.70000004768372,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/videos/dearelle-hero-mobile-v2.webp",
+          "startMs": 219.79999995231628,
+          "responseMs": 372.7999999523163,
+          "endMs": 378.2999999523163,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/fonts/editorial.woff2",
+          "startMs": 330.7999999523163,
+          "responseMs": 330.7999999523163,
+          "endMs": 330.7999999523163,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/fonts/everyday.woff2",
+          "startMs": 331,
+          "responseMs": 331,
+          "endMs": 331,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/videos/dearelle-hero-mobile-v2.mp4",
+          "startMs": 352.2999999523163,
+          "responseMs": 360.90000009536743,
+          "endMs": 384.7000000476837,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 206
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/image?url=%2Fimages%2Foption2-watch.jpg&w=640&q=75",
+          "startMs": 531.7000000476837,
+          "responseMs": 531.7000000476837,
+          "endMs": 531.7000000476837,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:3182/_next/image?url=%2Fimages%2Foption2-bag.jpg&w=640&q=75",
+          "startMs": 532.2999999523163,
+          "responseMs": 532.2999999523163,
+          "endMs": 532.2999999523163,
+          "transferBytes": 0,
+          "cache": "cache",
+          "status": 200
+        }
+      ]
+    }
+  ]
+}
