@@ -1,6 +1,12 @@
 # Verification — 31 October 2026
 
-## Category refinement
+## Original Option 2 curve restoration
+
+Restored the user-approved organic category identity with smooth object-bounding-box SVG clipping paths, complementary sloping edges and overlapping banner boxes that create the ivory seam. Small 32px circular arrows replace underlined links; the entire category anchors retain their accessible names and destinations. Existing photography is preserved, with the bag crop positioned to give its handle clearance.
+
+Inspected real browser screenshots at 360, 375, 390 and 414px, with no horizontal overflow. A side-by-side comparison of the original Option 2 category region and the actual 375px browser capture is saved locally at `.impeccable/review/flowing-reference-comparison.jpg`. Desktop full-page evidence is also saved there. Both category links were clicked successfully. Production build and category-component lint passed; all four hero SHA256 hashes remain unchanged. Only category rendering and its documentation changed.
+
+## Prior category refinement (superseded by curve restoration above)
 
 Only category-card rendering changed: equally sized stacked banners, smaller opposing asymmetric corners, unclipped existing photography, vertically balanced text and subtle editorial shopping links. Hero component, hero stylesheet and both video files match their protected SHA256 baselines. New Arrivals and editorial section source blocks were preserved.
 

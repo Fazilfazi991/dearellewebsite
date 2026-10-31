@@ -30,14 +30,15 @@ function CategoryBanner({
           <Photo
             name={image}
             alt={alt}
-            sizes="(max-width: 640px) 100vw, 50vw"
+            sizes="(max-width: 1100px) 90vw, 1000px"
+            position={category === "bags" ? "center 30%" : "center"}
           />
         </div>
         <div className="sculpted-copy">
           <h3>{title}</h3>
           <p>{description}</p>
-          <span className="sculpted-shopping-link" aria-hidden="true">
-            Shop {title} <ArrowRight size={14} strokeWidth={1.3} />
+          <span className="sculpted-arrow" aria-hidden="true">
+            <ArrowRight size={16} strokeWidth={1.3} />
           </span>
         </div>
       </Link>
@@ -48,6 +49,20 @@ function CategoryBanner({
 export function ShopByCategory() {
   return (
     <section className="option2-categories" aria-labelledby="shop-categories">
+      <svg
+        className="category-clip-definitions"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <defs>
+          <clipPath id="category-watch-curve" clipPathUnits="objectBoundingBox">
+            <path d="M .16 .015 C .36 -.015 .71 .115 .90 .16 C .98 .18 1 .23 1 .35 L 1 .85 C 1 .96 .95 1 .87 .98 L .13 .78 C .035 .755 0 .68 0 .53 L 0 .28 C 0 .11 .045 .03 .16 .015 Z" />
+          </clipPath>
+          <clipPath id="category-bag-curve" clipPathUnits="objectBoundingBox">
+            <path d="M .14 .015 C .35 -.01 .71 .12 .90 .17 C .98 .19 1 .24 1 .36 L 1 .85 C 1 .96 .95 1 .86 .99 L .13 .90 C .035 .89 0 .81 0 .66 L 0 .29 C 0 .12 .035 .03 .14 .015 Z" />
+          </clipPath>
+        </defs>
+      </svg>
       <h2 id="shop-categories" className="sr-only">
         Shop by Category
       </h2>

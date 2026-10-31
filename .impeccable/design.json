@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-31T05:35:31.242Z",
+  "generatedAt": "2026-10-31T05:57:28.452362Z",
   "title": "Design System: Dearelle V2",
   "extensions": {
     "colorMeta": {
@@ -176,20 +176,20 @@
         "components/reveal.tsx"
       ],
       "layout": {
-        "categoriesDesktop": "1 column, 18px gap, centred 1000px grid, no offset; 1320px outer max; padding 34px 6% 20px",
-        "categoriesMobile": "1 column, 14px gap, no offset; padding 18px 16px 4px",
+        "categoriesDesktop": "1 column, 0 gap, centred 1000px grid; bag link margin-top -8%; 1320px outer max; padding 34px 6% 20px",
+        "categoriesMobile": "1 column, 0 gap, bag link margin-top -8%; padding 18px 16px 4px",
         "arrivalsDesktop": "4 columns, 26px gap; padding 38px 6% 54px",
         "arrivalsTablet": "18px gap at <=1000px",
         "arrivalsMobile": "2 columns, 22px 14px gap; padding 23px 20px 30px",
         "editorial": "1440px max; aspect-ratio 2.5 desktop, 2 tablet, 1.12 mobile"
       },
       "geometry": {
-        "watchClip": "none",
-        "bagClip": "none",
-        "radii": "Normative sculpted watch/bag and arrivals-photo tokens live in DESIGN.md frontmatter.",
-        "categoryRatio": "2.2 desktop; 1.65 mobile, matching watches and bags",
+        "watchClip": "SVG category-watch-curve; objectBoundingBox; M .16 .015 C .36 -.015 .71 .115 .90 .16 C .98 .18 1 .23 1 .35 L 1 .85 C 1 .96 .95 1 .87 .98 L .13 .78 C .035 .755 0 .68 0 .53 L 0 .28 C 0 .11 .045 .03 .16 .015 Z",
+        "bagClip": "SVG category-bag-curve; objectBoundingBox; M .14 .015 C .35 -.01 .71 .12 .90 .17 C .98 .19 1 .24 1 .36 L 1 .85 C 1 .96 .95 1 .86 .99 L .13 .90 C .035 .89 0 .81 0 .66 L 0 .29 C 0 .12 .035 .03 .14 .015 Z",
+        "radii": "Custom smooth SVG category clip paths with opposing flowing edges and a sloping ivory seam; no ordinary category border radii. Normative arrivals-photo radius remains in DESIGN.md frontmatter.",
+        "categoryRatio": "1.75 desktop and mobile, matching watches and bags",
         "arrivalPhotoRatio": ".94 desktop, .98 mobile",
-        "categoryCopy": "top 50%, translateY(-50%); watches right 6%, width 34% desktop / right 5.5%, width 35% mobile; bags left 8%, width 34% desktop / left 7%, width 30% mobile"
+        "categoryCopy": "translateY(-50%); desktop watches top 50%, right 6%, width 34%; bags top 50%, left 8%, width 34%; mobile watches top 52%, right 7%, width 33%; bags top 48%, left 7%, width 30%"
       },
       "secondaryType": {
         "viewAll": "12px desktop, 10px mobile",
@@ -197,14 +197,14 @@
         "demoLabel": "8px desktop, 7px mobile",
         "priceQualifier": "9px desktop, 8px mobile",
         "previewNote": "10px desktop, 9px mobile",
-        "categoryAction": "Underlined Shop Watches / Shop Bags; 11px desktop, 10px mobile; static 14px arrow"
+        "categoryAction": "Entire card is the Shop Watches / Shop Bags link; static 32px circular arrow with 1px currentColor border and 16px icon; no inner underlined text link"
       },
       "interaction": {
-        "categoryFocusOffset": "7px",
+        "categoryFocusOffset": "Link outline-offset 7px; unclipped reveal wrapper has 2px focus outline with 4px offset when its category link is focus-visible",
         "wishlistTarget": "40px desktop, 44px mobile",
         "editorialActionMinHeight": "44px desktop, 40px mobile"
       },
-      "imagery": "Representative concept watch and bag photography; wristwatch lifestyle image accompanies Details make it yours. Demo pieces and illustrative prices remain labelled."
+      "imagery": "Representative concept watch and bag photography; wristwatch lifestyle image accompanies Details make it yours. Demo pieces and illustrative prices remain labelled. Category image sizes: (max-width: 1100px) 90vw, 1000px; bag object-position center 30%."
     }
   },
   "components": [
@@ -261,9 +261,9 @@
     {
       "name": "Sculpted category banner",
       "kind": "custom",
-      "description": "Watch and bag links stacked at every size in a centred 1000px grid, with matching aspect ratios, opposite rounded corners and vertically centred copy. Underlined editorial shopping labels use static arrows. Preview shows fallback surfaces.",
-      "html": "<div class=\"ds-categories\"><a class=\"ds-sculpted\" href=\"/watches\"><div class=\"ds-sculpted-copy\"><h3>Watches</h3><p>For every moment you make yours.</p><span>Shop Watches <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></span></div></a><a class=\"ds-sculpted ds-sculpted-bag\" href=\"/bags\"><div class=\"ds-sculpted-copy\"><h3>Bags</h3><p>Carry a little more of you.</p><span>Shop Bags <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></span></div></a></div>",
-      "css": ".ds-categories{display:grid;grid-template-columns:1fr;max-width:1000px;margin:auto;gap:18px}.ds-sculpted{display:block;position:relative;aspect-ratio:2.2;overflow:hidden;border-radius:40px 10px 40px 10px;background:#e7dfd2;color:var(--espresso);text-decoration:none}.ds-sculpted-copy{position:absolute;top:50%;transform:translateY(-50%);right:6%;width:34%}.ds-sculpted h3{font:400 clamp(30px,3.6vw,48px)/1.1 Editorial,Georgia,serif;margin:0}.ds-sculpted p{font:13px/1.5 Everyday,Arial,sans-serif;max-width:15ch;margin:8px 0 0}.ds-sculpted span{display:inline-flex;align-items:center;gap:9px;min-height:30px;margin-top:16px;font:11px/1.4 Everyday,Arial,sans-serif;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}.ds-sculpted-bag{border-radius:10px 40px 10px 40px;background:#514033;color:var(--ivory)}.ds-sculpted-bag .ds-sculpted-copy{left:8%;right:auto;width:34%}.ds-sculpted:focus-visible{outline:2px solid #965c68;outline-offset:7px}@media(max-width:1000px){.ds-sculpted p{font-size:11px}}@media(max-width:640px){.ds-categories{gap:14px}.ds-sculpted{aspect-ratio:1.65;border-radius:28px 8px 28px 8px}.ds-sculpted-copy{right:5.5%;width:35%}.ds-sculpted h3{font-size:30px}.ds-sculpted p{margin-top:7px}.ds-sculpted span{font-size:10px;gap:7px;margin-top:11px}.ds-sculpted-bag{border-radius:8px 28px 8px 28px}.ds-sculpted-bag .ds-sculpted-copy{left:7%;width:30%}}"
+      "description": "Option 2 organic watch and bag silhouettes in a centred 1000px stack: smooth objectBoundingBox SVG paths, sloping ivory seam, zero gap and -8% bag offset. Each full card links to its category with a small circular arrow. Preview shows fallback surfaces.",
+      "html": "<svg class=\"ds-category-definitions\" aria-hidden=\"true\" focusable=\"false\"><defs><clipPath id=\"ds-category-watch-curve\" clipPathUnits=\"objectBoundingBox\"><path d=\"M .16 .015 C .36 -.015 .71 .115 .90 .16 C .98 .18 1 .23 1 .35 L 1 .85 C 1 .96 .95 1 .87 .98 L .13 .78 C .035 .755 0 .68 0 .53 L 0 .28 C 0 .11 .045 .03 .16 .015 Z\"/></clipPath><clipPath id=\"ds-category-bag-curve\" clipPathUnits=\"objectBoundingBox\"><path d=\"M .14 .015 C .35 -.01 .71 .12 .90 .17 C .98 .19 1 .24 1 .36 L 1 .85 C 1 .96 .95 1 .86 .99 L .13 .90 C .035 .89 0 .81 0 .66 L 0 .29 C 0 .12 .035 .03 .14 .015 Z\"/></clipPath></defs></svg><div class=\"ds-categories\"><div class=\"ds-category-reveal\"><a class=\"ds-sculpted\" href=\"/watches\" aria-label=\"Shop Watches\"><div class=\"ds-sculpted-copy\"><h3>Watches</h3><p>For every moment you make yours.</p><span class=\"ds-sculpted-arrow\" aria-hidden=\"true\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></span></div></a></div><div class=\"ds-category-reveal\"><a class=\"ds-sculpted ds-sculpted-bag\" href=\"/bags\" aria-label=\"Shop Bags\"><div class=\"ds-sculpted-copy\"><h3>Bags</h3><p>Carry a little more of you.</p><span class=\"ds-sculpted-arrow\" aria-hidden=\"true\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></span></div></a></div></div>",
+      "css": ".ds-category-definitions{position:absolute;width:0;height:0;overflow:hidden}.ds-categories{display:grid;grid-template-columns:1fr;max-width:1000px;margin:auto;gap:0;background:var(--ivory)}.ds-sculpted{display:block;position:relative;isolation:isolate;aspect-ratio:1.75;overflow:hidden;clip-path:url(#ds-category-watch-curve);background:#e7dfd2;color:var(--espresso);text-decoration:none}.ds-sculpted-copy{position:absolute;top:50%;transform:translateY(-50%);right:6%;width:34%}.ds-sculpted h3{font:400 clamp(30px,3.6vw,48px)/1.1 Editorial,Georgia,serif;margin:0}.ds-sculpted p{font:13px/1.5 Everyday,Arial,sans-serif;max-width:15ch;margin:8px 0 0}.ds-sculpted-arrow{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid currentColor;border-radius:50%;margin-top:13px}.ds-sculpted-bag{clip-path:url(#ds-category-bag-curve);margin-top:-8%;color:var(--ivory);background:#e7dfd2}.ds-sculpted-bag .ds-sculpted-copy{left:8%;right:auto;top:50%;width:34%}.ds-sculpted:focus-visible{outline:2px solid var(--focus);outline-offset:7px}.ds-category-reveal:has(.ds-sculpted:focus-visible){outline:2px solid var(--focus);outline-offset:4px}@media(max-width:1000px){.ds-sculpted p{font-size:11px}}@media(max-width:640px){.ds-sculpted{aspect-ratio:1.75}.ds-sculpted-copy{right:7%;top:52%;width:33%}.ds-sculpted h3{font-size:30px}.ds-sculpted p{margin-top:7px}.ds-sculpted-arrow{margin-top:10px}.ds-sculpted-bag .ds-sculpted-copy{left:7%;top:48%;width:30%}}"
     },
     {
       "name": "Arrival product card",

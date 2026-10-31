@@ -1,6 +1,6 @@
 # Dearelle V2
 
-Homepage collections follow the approved Option 2 direction. Watches and Bags use equally sized, alternating photographic banners with restrained asymmetric corners and editorial shopping links. Category navigation stays at `/watches` and `/bags`. New Arrivals and the wristwatch editorial remain below them; the approved hero is preserved. Product imagery and prices are explicitly demo-only.
+Homepage collections follow the approved Option 2 direction. Watches and Bags use alternating photographic banners with large smooth SVG curves, a flowing ivory seam and small circular arrow affordances. Each whole banner links to `/watches` or `/bags`. New Arrivals and the wristwatch editorial remain below them; the approved hero is preserved. Product imagery and prices are explicitly demo-only.
 
 The homepage now features the cinematic hero film and the owner's supplied gold logo. Both visible hero labels were removed at the owner's request; Explore Collection sits beneath the footage. Three real Veo source clips were produced for 50 existing credits total, with no purchases. Final files: `public/videos/dearelle-hero-mobile.mp4`, `dearelle-hero-desktop.mp4`, and matching WebP posters. High-quality masters, source clips, reproducible FFmpeg editing script and production notes are in `media/hero/`. Film controls support pause/resume, reduced motion, data saving and offscreen/hidden-tab pausing.
 
