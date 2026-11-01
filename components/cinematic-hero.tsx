@@ -35,8 +35,8 @@ export function CinematicHero() {
     let disposed = false;
     const sync = () => {
       const format = mobile.matches ? "mobile" : "desktop";
-      const src = `/videos/dearelle-hero-${format}-v2.mp4`;
-      video.poster = `/videos/dearelle-hero-${format}-v2.webp`;
+      const src = `/videos/dearelle-hero-${format}-v3.mp4`;
+      video.poster = `/videos/dearelle-hero-${format}-v3.webp`;
       if (video.getAttribute("src") && video.getAttribute("src") !== src) {
         video.removeAttribute("src");
         video.dataset.ready = "false";
@@ -103,7 +103,7 @@ export function CinematicHero() {
       <link
         rel="preload"
         as="image"
-        href="/videos/dearelle-hero-mobile-v2.webp"
+        href="/videos/dearelle-hero-mobile-v3.webp"
         type="image/webp"
         media="(max-width: 640px)"
         fetchPriority="high"
@@ -111,7 +111,7 @@ export function CinematicHero() {
       <link
         rel="preload"
         as="image"
-        href="/videos/dearelle-hero-desktop-v2.webp"
+        href="/videos/dearelle-hero-desktop-v3.webp"
         type="image/webp"
         media="(min-width: 641px)"
         fetchPriority="high"
@@ -124,21 +124,21 @@ export function CinematicHero() {
           <source
             media="(max-width: 640px)"
             type="image/webp"
-            srcSet="/videos/dearelle-hero-mobile-v2.webp"
+            srcSet="/videos/dearelle-hero-mobile-v3.webp"
           />
           <source
             media="(max-width: 640px)"
             type="image/jpeg"
-            srcSet="/videos/dearelle-hero-mobile-v2.jpg"
+            srcSet="/videos/dearelle-hero-mobile-v3.jpg"
           />
           <source
             type="image/webp"
-            srcSet="/videos/dearelle-hero-desktop-v2.webp"
+            srcSet="/videos/dearelle-hero-desktop-v3.webp"
           />
           <Image
-            src="/videos/dearelle-hero-desktop-v2.jpg"
+            src="/videos/dearelle-hero-desktop-v3.jpg"
             unoptimized
-            alt="Concept fashion film: an adult South Asian woman in ivory tailoring with an unbranded chocolate handbag and gold watch."
+            alt="A taupe handbag and rose-gold watch on pale stone and ivory silk."
             fill
             sizes="100vw"
             loading="eager"
@@ -149,17 +149,17 @@ export function CinematicHero() {
           id="campaign-video"
           ref={videoRef}
           suppressHydrationWarning
-          data-mobile-src="/videos/dearelle-hero-mobile-v2.mp4"
-          data-desktop-src="/videos/dearelle-hero-desktop-v2.mp4"
-          data-mobile-poster="/videos/dearelle-hero-mobile-v2.webp"
-          data-desktop-poster="/videos/dearelle-hero-desktop-v2.webp"
+          data-mobile-src="/videos/dearelle-hero-mobile-v3.mp4"
+          data-desktop-src="/videos/dearelle-hero-desktop-v3.mp4"
+          data-mobile-poster="/videos/dearelle-hero-mobile-v3.webp"
+          data-desktop-poster="/videos/dearelle-hero-desktop-v3.webp"
           className={failed ? "campaign-video unavailable" : "campaign-video"}
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-          aria-label="The Dearelle Edit. Silent AI concept fashion film featuring fictional accessories."
+          aria-label="Dearelle accessories. Silent editorial film."
           onPlaying={() => {
             setPlaying(true);
             const video = videoRef.current;

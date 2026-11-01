@@ -1,0 +1,14 @@
+{
+  "duration": 5.5,
+  "audio": false,
+  "mobile": {
+    "mp4": 1101293,
+    "webp": 69132,
+    "jpg": 119616
+  },
+  "desktop": {
+    "mp4": 1368330,
+    "webp": 73702,
+    "jpg": 136901
+  }
+}

@@ -13,15 +13,17 @@ const config: NextConfig = {
         ],
       })),
       ...["mobile", "desktop"].flatMap((format) =>
-        ["mp4", "webp", "jpg"].map((extension) => ({
-          source: `/videos/dearelle-hero-${format}-v2.${extension}`,
-          headers: [
-            {
-              key: "Cache-Control",
-              value: "public, max-age=31536000, immutable",
-            },
-          ],
-        })),
+        ["v2", "v3"].flatMap((version) =>
+          ["mp4", "webp", "jpg"].map((extension) => ({
+            source: `/videos/dearelle-hero-${format}-${version}.${extension}`,
+            headers: [
+              {
+                key: "Cache-Control",
+                value: "public, max-age=31536000, immutable",
+              },
+            ],
+          })),
+        ),
       ),
       ...["editorial", "everyday"].map((font) => ({
         source: `/fonts/${font}.woff2`,

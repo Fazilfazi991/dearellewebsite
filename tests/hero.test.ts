@@ -26,7 +26,7 @@ test("film preserves user motion and network preferences", () => {
 });
 test("both hero MP4s exist with fast-start metadata and bounded payloads", () => {
   for (const format of ["mobile", "desktop"]) {
-    const bytes = readFileSync(`public/videos/dearelle-hero-${format}-v2.mp4`);
+    const bytes = readFileSync(`public/videos/dearelle-hero-${format}-v3.mp4`);
     assert.ok(
       bytes.length < (format === "mobile" ? 2_500_000 : 4_000_000),
       `${format} payload must stay within the mobile-first delivery budget`,
@@ -44,7 +44,7 @@ test("both hero MP4s exist with fast-start metadata and bounded payloads", () =>
       "moov must precede media for fast start",
     );
     assert.ok(
-      readFileSync(`public/videos/dearelle-hero-${format}-v2.webp`).length <
+      readFileSync(`public/videos/dearelle-hero-${format}-v3.webp`).length <
         150_000,
     );
   }

@@ -98,10 +98,8 @@
     width: 155px;
   }
   .campaign-film {
-    aspect-ratio: auto;
-    height: 70svh;
-    min-height: 420px;
-    max-height: 740px;
+    aspect-ratio: 1 / 1.05;
+    max-height: 56svh;
   }
   .campaign-pause {
     right: 16px;
