@@ -1,0 +1,7 @@
+# November bag campaign
+
+Owner supplied `WhatsApp Unknown 2026-11-01 at 10.15.31 AM.zip`: eight photographs representing seven distinct styles/colours (two near-duplicate berry photographs). Generated fourteen new images using the built-in image tool: a studio product view and a fictional model lifestyle view for each. Preserve bag shape, colour, pattern, strap and visible hardware. Logos visible in references are product details, not verified brand or authenticity claims; catalogue branding remains Dearelle. No material or dimension claims inferred.
+
+Existing Purple, Patterned, Olive, Ivory and Berry SKUs receive updated galleries. The chocolate/ivory flap is added as a colour of b3 (renamed Marbled Flap Bag, retaining old slug and Taupe/Ivory SKU). The Navy Zip Crossbody is new b10. Every bag costs ₹399. Only the two new SKUs get three initial units; existing stock/reservations and historical order snapshots remain. Homepage colourful arrivals remain w1, b1, w4, b9.
+
+Galleries contain studio, model and a clearly zoomed studio detail view. These are two generated photographs plus a crop, not three independently photographed angles. Responsive JPEG delivery assets live in public/images/; full PNG outputs are retained locally in originals/ (excluded from Git). Exact prompts and references: PROMPTS.json. Generated-source/delivery mapping: ASSETS.json. Delivery JPEGs embed their prompts.

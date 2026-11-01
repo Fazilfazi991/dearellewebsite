@@ -80,8 +80,8 @@ export default function OwnerSetupForm() {
     return (
       <div className="owner-login">
         <p>
-          Your password is saved. Sign in and verify your authenticator to
-          access orders.
+          Your password is saved. Sign in with your email and password to access
+          orders.
         </p>
         <button
           className="button"

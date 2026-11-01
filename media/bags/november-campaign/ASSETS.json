@@ -1,0 +1,86 @@
+[
+  {
+    "key": "bag-olive-campaign-studio",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-e6889613-0841-4d19-9f25-9c041ca47402.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.26 PM.jpeg",
+    "delivery": "public/images/bag-olive-campaign-studio.jpg"
+  },
+  {
+    "key": "bag-olive-campaign-model",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-2eac729b-d12a-4f51-a420-a75ead1b30e8.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.26 PM.jpeg",
+    "delivery": "public/images/bag-olive-campaign-model.jpg"
+  },
+  {
+    "key": "bag-purple-campaign-studio",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-13288791-556b-41c2-ad6c-d853813af7e9.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.26 PM (1).jpeg",
+    "delivery": "public/images/bag-purple-campaign-studio.jpg"
+  },
+  {
+    "key": "bag-purple-campaign-model",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-122ebfd8-981f-4b1c-939a-af6547552121.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.26 PM (1).jpeg",
+    "delivery": "public/images/bag-purple-campaign-model.jpg"
+  },
+  {
+    "key": "bag-navy-campaign-studio",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-f5f07e1e-bf06-4379-9ba1-92484082cd42.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.26 PM (2).jpeg",
+    "delivery": "public/images/bag-navy-campaign-studio.jpg"
+  },
+  {
+    "key": "bag-navy-campaign-model",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-2398ef11-7b57-4596-853b-961804b3f22c.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.26 PM (2).jpeg",
+    "delivery": "public/images/bag-navy-campaign-model.jpg"
+  },
+  {
+    "key": "bag-berry-campaign-studio",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-944cf57d-200a-4ad8-86db-12c59b06ac98.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.27 PM.jpeg",
+    "delivery": "public/images/bag-berry-campaign-studio.jpg"
+  },
+  {
+    "key": "bag-berry-campaign-model",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-b69a9bf8-6f72-45cd-a7a2-2ece6b0453eb.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.27 PM.jpeg",
+    "delivery": "public/images/bag-berry-campaign-model.jpg"
+  },
+  {
+    "key": "bag-chocolate-flap-campaign-studio",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-5cfa1263-3f24-4840-a813-906136e1ef41.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.29 PM.jpeg",
+    "delivery": "public/images/bag-chocolate-flap-campaign-studio.jpg"
+  },
+  {
+    "key": "bag-chocolate-flap-campaign-model",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-f7c5281a-ae99-41ee-aced-b166ccd30d33.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.29 PM.jpeg",
+    "delivery": "public/images/bag-chocolate-flap-campaign-model.jpg"
+  },
+  {
+    "key": "bag-ivory-campaign-studio",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-0ab6c8cc-a9cf-4600-bc4c-be7adb658f97.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.30 PM.jpeg",
+    "delivery": "public/images/bag-ivory-campaign-studio.jpg"
+  },
+  {
+    "key": "bag-ivory-campaign-model",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-ccc95ff5-55af-4ac0-8cfc-120d402a4fcc.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.30 PM.jpeg",
+    "delivery": "public/images/bag-ivory-campaign-model.jpg"
+  },
+  {
+    "key": "bag-pattern-campaign-studio",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-e7ab7438-c71e-4ed2-bf3d-dd8aa27005c2.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.30 PM (1).jpeg",
+    "delivery": "public/images/bag-pattern-campaign-studio.jpg"
+  },
+  {
+    "key": "bag-pattern-campaign-model",
+    "source": "C:\\Users\\USER\\.codex\\generated_images\\01a19032-358f-7792-be5b-e8b170f28d99\\exec-e465070d-0f99-4912-87aa-6ceab6131853.png",
+    "reference": "C:/Users/USER/Desktop/Projects/Dearelle/dearelle-v2/Products/Bags/2026-11-01/WhatsApp Image 2026-10-31 at 4.52.30 PM (1).jpeg",
+    "delivery": "public/images/bag-pattern-campaign-model.jpg"
+  }
+]

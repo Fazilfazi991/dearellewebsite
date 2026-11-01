@@ -35,7 +35,7 @@ test("owner prices apply to every product and variant", () => {
       assert.equal(subtotal(bag), expected * 2);
     }
   }
-  assert.equal(products.filter((p) => p.category === "bags").length, 9);
+  assert.equal(products.filter((p) => p.category === "bags").length, 10);
 });
 
 test("digital models keep their confirmed price and matching gallery views", () => {

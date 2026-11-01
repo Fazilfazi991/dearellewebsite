@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { parseEnv } from "node:util";
 import { randomUUID, createHmac } from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
@@ -41,22 +41,6 @@ export class Browser {
     return { status: response.status, data, response };
   }
 }
-export function totp(secret: string) {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
-  let bits = "";
-  for (const c of secret.toUpperCase().replace(/=+$/, ""))
-    bits += alphabet.indexOf(c).toString(2).padStart(5, "0");
-  const key = Buffer.from(
-    (bits.match(/.{8}/g) ?? []).map((x) => parseInt(x, 2)),
-  );
-  const counter = Buffer.alloc(8);
-  counter.writeBigUInt64BE(BigInt(Math.floor(Date.now() / 30000)));
-  const digest = createHmac("sha1", key).update(counter).digest();
-  const offset = digest[19] & 15;
-  return ((digest.readUInt32BE(offset) & 0x7fffffff) % 1000000)
-    .toString()
-    .padStart(6, "0");
-}
 let passed = 0;
 const scenarios: string[] = [];
 async function test(name: string, fn: () => Promise<void>) {
@@ -65,8 +49,6 @@ async function test(name: string, fn: () => Promise<void>) {
   scenarios.push(name);
   console.log("PASS " + name);
 }
-let secret = "",
-  factorId = "";
 const browser = new Browser(),
   guest = new Browser();
 async function auth(body: unknown) {
@@ -76,7 +58,7 @@ try {
   // Isolated loopback fixtures: reset only their synthetic rate buckets between test runs.
   for (const scope of [
     "owner:login:local",
-    "owner:mfa:local",
+    "owner:auth:local",
     "order:ip:local",
   ]) {
     const key = createHmac("sha256", env.RATE_LIMIT_SECRET)
@@ -123,39 +105,16 @@ try {
       ).error,
     );
   });
-  await test("password alone denied; TOTP required; cookies HttpOnly and Strict", async () => {
+  await test("owner password opens orders directly; cookies HttpOnly and Strict", async () => {
     const login = await auth({
       action: "login",
       email: owner.email,
       password: owner.password,
     });
     assert.equal(login.status, 200, JSON.stringify(login.data));
-    assert.equal((await browser.call("/api/admin/orders")).status, 401);
-    if (existsSync(".data/local-owner-mfa.json"))
-      ({ secret, factorId } = JSON.parse(
-        readFileSync(".data/local-owner-mfa.json", "utf8"),
-      ));
-    else {
-      const enrollment = await auth({ action: "enroll" });
-      assert.equal(enrollment.status, 200, JSON.stringify(enrollment.data));
-      secret = enrollment.data.secret;
-      factorId = enrollment.data.factorId;
-      writeFileSync(
-        ".data/local-owner-mfa.json",
-        JSON.stringify({ factorId, secret }),
-      );
-    }
-    assert.equal(
-      (await auth({ action: "verify", factorId, code: "000000" })).status,
-      401,
-    );
-    const verify = await auth({
-      action: "verify",
-      factorId,
-      code: totp(secret),
-    });
-    assert.equal(verify.status, 200, JSON.stringify(verify.data));
+    assert.equal(login.data.next, "/admin/orders");
     assert.equal((await browser.call("/api/admin/orders")).status, 200);
+    assert.equal((await auth({ action: "enroll" })).status, 422);
   });
   let id: string;
   await test("quote authority, CSRF/body caps, safe retry and guest isolation", async () => {
@@ -284,7 +243,7 @@ try {
     await admin`update commerce.owner_sessions set last_seen=now(),created_at=now()-interval '9 hours' where owner_id=${owner.id}`;
     assert.equal((await browser.call("/api/admin/orders")).status, 401);
   });
-  await test("fresh login then logout blocks replayed MFA cookies", async () => {
+  await test("fresh login then logout blocks replayed password cookies", async () => {
     assert.equal(
       (
         await auth({
@@ -295,12 +254,6 @@ try {
       ).status,
       200,
     );
-    const verified = await auth({
-      action: "verify",
-      factorId,
-      code: totp(secret),
-    });
-    assert.equal(verified.status, 200, JSON.stringify(verified.data));
     const replay = new Browser();
     replay.cookies = new Map(browser.cookies);
     assert.equal((await auth({ action: "logout" })).status, 200);

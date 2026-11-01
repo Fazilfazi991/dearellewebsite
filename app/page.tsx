@@ -35,9 +35,11 @@ export default function Home() {
           </Link>
         </div>
         <div className="product-grid handpicked">
-          {[products[3], products[0]].map((p) => (
-            <ProductCard key={p.id} product={p} deferImage />
-          ))}
+          {["w1", "w5"]
+            .flatMap((id) => products.filter((p) => p.id === id))
+            .map((p) => (
+              <ProductCard key={p.id} product={p} deferImage />
+            ))}
         </div>
       </section>
       <section className="shopping-info" aria-label="Shopping information">

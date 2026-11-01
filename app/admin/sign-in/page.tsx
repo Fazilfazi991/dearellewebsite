@@ -9,7 +9,7 @@ export default function Page() {
     <main id="main" className="section inner-page owner-page">
       <div className="page-heading">
         <h1>Owner access.</h1>
-        <p>Sign in and verify your authenticator.</p>
+        <p>Sign in with your email and password.</p>
       </div>
       <OwnerLogin />
     </main>

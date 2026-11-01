@@ -37,6 +37,15 @@ export type Product = {
   description: string;
   testCheckoutOnly: true;
 };
+function bagCampaignImages(name: string): ProductImage[] {
+  const image = `bag-${name}-campaign-studio`;
+  return [
+    { image },
+    { image: `bag-${name}-campaign-model` },
+    { image, detail: true },
+  ];
+}
+
 const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
   brand: Product["brand"];
 })[] = [
@@ -122,6 +131,27 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     ],
     description:
       "Three circular display details sit above a digital window, framed by an angular black case and a stitched black strap. A distinct design from the map-dial model.",
+    imagery: "ai-styled",
+    testCheckoutOnly: true,
+  },
+  {
+    id: "b10",
+    brand: "Dearelle",
+    slug: "the-navy-zip-crossbody",
+    name: "The Navy Zip Crossbody",
+    category: "bags",
+    price: 399,
+    image: "bag-navy-campaign-studio",
+    colors: [
+      {
+        name: "Navy",
+        hex: "#182442",
+        image: "bag-navy-campaign-studio",
+        images: bagCampaignImages("navy"),
+      },
+    ],
+    description:
+      "A compact navy crossbody with a softly rounded profile, zip details and a wide matching shoulder strap.",
     imagery: "ai-styled",
     testCheckoutOnly: true,
   },
@@ -252,12 +282,18 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     id: "b3",
     brand: "Dearelle",
     slug: "the-taupe-flap-bag",
-    name: "The Taupe Flap Bag",
+    name: "The Marbled Flap Bag",
     category: "bags",
     price: 399,
     image: "bag-taupe-flap",
     colors: [
       { name: "Taupe / Ivory", hex: "#ab8b7b", image: "bag-taupe-flap" },
+      {
+        name: "Chocolate / Ivory",
+        hex: "#693c2a",
+        image: "bag-chocolate-flap-campaign-studio",
+        images: bagCampaignImages("chocolate-flap"),
+      },
     ],
     description: "A glossy marbled finish, ivory trim and a clean flap shape.",
     imagery: "ai-styled",
@@ -270,9 +306,14 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     name: "The Purple Flap Bag",
     category: "bags",
     price: 399,
-    image: "bag-purple-flap",
+    image: "bag-purple-campaign-studio",
     colors: [
-      { name: "Purple / Ivory", hex: "#ad7197", image: "bag-purple-flap" },
+      {
+        name: "Purple / Ivory",
+        hex: "#ad7197",
+        image: "bag-purple-campaign-studio",
+        images: bagCampaignImages("purple"),
+      },
     ],
     description: "A soft purple finish with contrasting ivory sides and strap.",
     imagery: "ai-styled",
@@ -285,9 +326,14 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     name: "The Patterned Crossbody",
     category: "bags",
     price: 399,
-    image: "bag-chocolate-pattern",
+    image: "bag-pattern-campaign-studio",
     colors: [
-      { name: "Chocolate", hex: "#513122", image: "bag-chocolate-pattern" },
+      {
+        name: "Chocolate",
+        hex: "#513122",
+        image: "bag-pattern-campaign-studio",
+        images: bagCampaignImages("pattern"),
+      },
     ],
     description:
       "A compact chocolate silhouette with a floral geometric pattern and a slim shoulder strap.",
@@ -321,8 +367,15 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     name: "The Olive Shoulder Bag",
     category: "bags",
     price: 399,
-    image: "bag-olive-shoulder",
-    colors: [{ name: "Olive", hex: "#6b705b", image: "bag-olive-shoulder" }],
+    image: "bag-olive-campaign-studio",
+    colors: [
+      {
+        name: "Olive",
+        hex: "#6b705b",
+        image: "bag-olive-campaign-studio",
+        images: bagCampaignImages("olive"),
+      },
+    ],
     description:
       "A curved shoulder silhouette with a textured olive finish and a small gold-tone accent.",
     imagery: "ai-styled",
@@ -335,8 +388,15 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     name: "The Ivory Shoulder Bag",
     category: "bags",
     price: 399,
-    image: "bag-ivory-shoulder",
-    colors: [{ name: "Ivory", hex: "#e7dccb", image: "bag-ivory-shoulder" }],
+    image: "bag-ivory-campaign-studio",
+    colors: [
+      {
+        name: "Ivory",
+        hex: "#e7dccb",
+        image: "bag-ivory-campaign-studio",
+        images: bagCampaignImages("ivory"),
+      },
+    ],
     description:
       "A gently curved profile, ivory texture and matching shoulder strap.",
     imagery: "ai-styled",
@@ -349,8 +409,15 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     name: "The Berry Shoulder Bag",
     category: "bags",
     price: 399,
-    image: "bag-berry-shoulder",
-    colors: [{ name: "Berry", hex: "#8f2445", image: "bag-berry-shoulder" }],
+    image: "bag-berry-campaign-studio",
+    colors: [
+      {
+        name: "Berry",
+        hex: "#8f2445",
+        image: "bag-berry-campaign-studio",
+        images: bagCampaignImages("berry"),
+      },
+    ],
     description:
       "A rich berry finish, softly curved body and a small gold-tone detail.",
     imagery: "ai-styled",

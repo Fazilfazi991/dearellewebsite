@@ -2,6 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { database } from "./database";
 import { CommerceError } from "./quote";
+import { passwordOwnerSession } from "./owner-session";
 
 export async function ownerAuthClient() {
   const url = process.env.SUPABASE_URL,
@@ -74,11 +75,9 @@ export async function ownerIdentity() {
 export async function requireOwner(register = false) {
   const { client, user } = await ownerIdentity();
   const { data, error } = await client.auth.getClaims();
-  const claims = data?.claims;
-  if (error || claims?.aal !== "aal2" || typeof claims.session_id !== "string")
-    throw new CommerceError("Verify your authenticator to continue.", 401);
+  if (error) throw new CommerceError("Owner sign-in required.", 401);
   const sql = database(),
-    sid = claims.session_id;
+    sid = passwordOwnerSession(data?.claims, user.id);
   const [valid] =
     await sql`select commerce.auth_session_valid(${sid}::uuid,${user.id}::uuid) as ok`;
   if (!valid?.ok)
