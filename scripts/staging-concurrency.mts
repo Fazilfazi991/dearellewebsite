@@ -23,6 +23,8 @@ if (!process.argv.includes("--run-synthetic")) {
     ),
   );
 } else {
+  if (plan.productionDeploymentAuthorized)
+    throw new Error("This database now serves production. Use a separately isolated staging project for synthetic concurrency checks.");
   const file = process.argv[process.argv.indexOf("--run-synthetic") + 1];
   if (!file) throw new Error("A private staging environment file is required.");
   const env = parseEnv(readFileSync(file, "utf8"));

@@ -1,4 +1,6 @@
-# Hosted staging handoff — 31 October 2026
+# Historical staging handoff — 31 October 2026
+
+Superseded by [PRODUCTION-RELEASE.md](PRODUCTION-RELEASE.md) following the owner’s explicit public-launch and domain-move authorization on 1 November. The status below records the earlier staging milestone.
 
 **NOT READY for live enablement.** The user approved the free Supabase installation and Auth hardening, and those database/schema changes are now applied and verified. The user completed the credential step and authorized private local reuse; the restricted hosted connection now passes the read-only preflight with TLS verification. No real account, invitation, paid upgrade, deployment or production change was made.
 

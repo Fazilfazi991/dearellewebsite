@@ -2,8 +2,8 @@
   "targetProjectRef": "pvdklulichacdvsjfdqz",
   "region": "ap-south-1",
   "applied": true,
-  "ownerSeeded": false,
-  "publicIntake": false,
+  "ownerSeeded": true,
+  "publicIntake": true,
   "files": [
     {
       "path": "supabase/migrations/20261031090525_commerce_foundation.sql",
@@ -12,6 +12,10 @@
     {
       "path": "supabase/seed.sql",
       "sha256": "661748a14016b9834a81b0243d6fb3c5acd51ce88bc51d3e0592fccacff5b771"
+    },
+    {
+      "path": "supabase/migrations/20261101022830_approved_live_cod.sql",
+      "sha256": "f5d9e92007c364f0ff589c536af9b73adc86592a4a0339f98a309bdde901ebc2"
     }
   ],
   "applicationMethod": "Supabase dashboard SQL editor; reviewed files in one transaction",
@@ -23,5 +27,7 @@
   "supabaseCliHistoryRegistered": false,
   "restrictedConnectionVerifiedDate": "2026-11-01",
   "readOnlyHostedPreflightPassed": true,
-  "tlsCertificateVerification": true
+  "tlsCertificateVerification": true,
+  "productionPromoted": true,
+  "ownerMfaVerified": true
 }

@@ -13,7 +13,11 @@
   "publicOrderIntake": false,
   "liveExpiryApproved": false,
   "hostedMigrationsAuthorized": true,
-  "ownerInvitationAuthorized": false,
+  "ownerInvitationAuthorized": true,
   "previewDeploymentAuthorized": false,
-  "hostedUatAuthorized": false
+  "hostedUatAuthorized": false,
+  "productionDeploymentAuthorized": true,
+  "domainMoveAuthorized": true,
+  "supabaseProjectPurpose": "production",
+  "stagingWritesAllowed": false
 }

@@ -6,7 +6,7 @@ export const launchConfig = {
   shippingPolicy: "Delivery across India. No delivery charge.",
   returnPolicy:
     "Contact us for damage during delivery. An unpacking video helps document damage; it does not limit your statutory consumer rights.",
-  liveCommerceEnabled: false,
+  liveCommerceEnabled: true,
 } as const;
 
 // Owner confirmed 31 October 2026. Deposit is part of, not added to, the total.
