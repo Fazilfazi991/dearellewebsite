@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { parseEnv } from "node:util";
 import { randomUUID, createHash } from "node:crypto";
 import postgres from "postgres";
+import { postgresTls } from "../lib/postgres-tls";
 import { stagingEnvironmentErrors } from "../staging/guards";
 import plan from "../staging/plan.json";
 import { syntheticStagingCustomer } from "../lib/staging-safety";
@@ -31,12 +32,12 @@ if (!process.argv.includes("--run-synthetic")) {
     );
   Object.assign(process.env, env);
   const a = postgres(env.DATABASE_URL, {
-      ssl: { rejectUnauthorized: true },
+      ssl: postgresTls(env),
       prepare: false,
       max: 6,
     }),
     b = postgres(env.DATABASE_URL, {
-      ssl: { rejectUnauthorized: true },
+      ssl: postgresTls(env),
       prepare: false,
       max: 6,
     });

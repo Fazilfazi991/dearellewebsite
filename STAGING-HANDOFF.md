@@ -1,12 +1,12 @@
 # Hosted staging handoff — 31 October 2026
 
-**NOT READY for live enablement.** The user approved the free Supabase installation and Auth hardening, and those database/schema changes are now applied and verified. The runtime password still requires a user-controlled credential step. No real account, invitation, paid upgrade, deployment or production change was made.
+**NOT READY for live enablement.** The user approved the free Supabase installation and Auth hardening, and those database/schema changes are now applied and verified. The user completed the credential step and authorized private local reuse; the restricted hosted connection now passes the read-only preflight with TLS verification. No real account, invitation, paid upgrade, deployment or production change was made.
 
 ## Infrastructure inspected
 
 - Existing protected preview: https://dearellewebsite-fxzspwaps-faziils-projects.vercel.app . It serves baseline `a3b3041`, has no backend environment variables, and is **not a backend-ready staging preview**. Anonymous requests redirect to Vercel authentication.
 - Existing Vercel project `dearellewebsite` can isolate staging using protected Preview deployments and environment variables scoped to `codex/secure-commerce-backend`. Production remains on main/`1661027`; dearelle.in is not attached. Current functions use iad1; the prepared preview configuration requests bom1. The candidate pins the tested Node 24 runtime.
-- Correct Supabase browser account: organization `dearelleonline`, project `pvdklulichacdvsjfdqz`, Free/Nano, Mumbai `ap-south-1`. After transactional installation: 13 products, 18 SKUs, three units each, 16/16 commerce tables with RLS, zero Auth users and orders. Public signup is disabled. Commerce is absent from exposed API schemas, with automatic table exposure disabled. The restricted app role remains NOLOGIN pending its user-set credential. The connected Supabase plugin is a different account and must not mutate this project.
+- Correct Supabase browser account: organization `dearelleonline`, project `pvdklulichacdvsjfdqz`, Free/Nano, Mumbai `ap-south-1`. After transactional installation: 13 products, 18 SKUs, three units each, 16/16 commerce tables with RLS, zero Auth users and orders. Public signup is disabled. Commerce is absent from exposed API schemas, with automatic table exposure disabled. The restricted app login is enabled and verified through an actual TLS connection. The connected Supabase plugin is a different account and must not mutate this project.
 - No paid resources were created or upgraded. The existing Vercel team is Hobby; commercial eligibility requires resolution before expanding hosted use. Do not upgrade the shared team automatically. [Vercel fair use](https://vercel.com/docs/limits/fair-use-guidelines), [Pro pricing from $20/month plus applicable usage/seats](https://vercel.com/pricing).
 
 ## Prepared changes
@@ -33,8 +33,16 @@ Supabase Free has no automatic backups. Prepare encrypted manual exports and obt
 
 The SQL-editor installation is recorded by exact hashes; Supabase CLI migration-history reconciliation remains pending administrative access, so do not blindly run db push.
 
-The database/Auth setup approval has been consumed for the reviewed installation. Next the user must enter and submit a fresh random 16+ character database password in the prepared guarded SQL handoff. The role remains unable to log in until that step. Do not paste the password into chat or commit the completed query. No paid upgrade, real owner invitation, public intake or live release is authorized.
+The database/Auth setup and private credential handoff are complete. The restricted login is enabled and its actual read-only connection is verified. No paid upgrade, real owner invitation, public intake or live release is authorized.
 
 Then resolve hosting eligibility, approve Preview-only configuration/deployment, owner invitation and synthetic hosted UAT/recovery at their respective boundaries. Complete the [owner policy checklist](staging/OWNER-APPROVALS.md). Exact setup, synthetic fixture, rollback/recovery and acceptance steps are in the [staging runbook](staging/README.md).
 
 On 1 November, verification found login enabled while the visible draft still assigned the public placeholder. Login was immediately disabled through the role UI and verified OFF, with zero app connections. No password was read from the database or copied. A clearer single-assignment template was prepared; the user must replace only the assignment placeholder with a fresh random 16+ character password containing letters and numbers and submit it themselves. The result grid in the original editor is historical until the corrected script is run.
+
+## Current connection verification — 1 November
+
+The user corrected the password assignment and explicitly authorized reading that existing password from the SQL draft into `.data/staging.env.local` for the approved Supabase connection. No password was printed or committed. Actual restricted-login preflight passed: role, RLS/grants, release gates, synthetic-only records, 18 SKUs, hidden Data API schema, disabled signup and Vercel preview authentication. The dashboard-provided Supabase Root 2021 CA is configured as server-only `DATABASE_CA_CERT`; chain and hostname verification remain enabled. Root fingerprint SHA-256: `80:70:25:AD:50:D4:ED:21:9D:2C:9C:7D:29:9C:00:4F:82:4E:B0:0C:F7:F6:5A:FE:F6:07:D0:7B:72:E6:CA:FA`. Certificate source: https://supabase-downloads.s3-ap-southeast-1.amazonaws.com/prod/ssl/prod-ca-2021.crt (linked by the project Database Settings). Earlier credential-boundary notes are historical.
+
+No Vercel credential upload/deployment, owner invitation, hosted test-order writes or paid upgrade was included in this connection check. Those remain pending.
+
+The local production server at http://127.0.0.1:3001 now uses the hosted restricted connection through the private staging file. HTTP verification: inventory 200, all 18 variants have three units, unauthenticated owner orders 401. No order write was performed. Validation: 25 tests, TypeScript, ESLint and production build passed.

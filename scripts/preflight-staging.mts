@@ -4,6 +4,7 @@ import { createHash } from "node:crypto";
 import postgres from "postgres";
 import plan from "../staging/plan.json";
 import { stagingEnvironmentErrors } from "../staging/guards";
+import { postgresTls } from "../lib/postgres-tls";
 const args = process.argv.slice(2),
   file = args[0];
 if (!file) {
@@ -40,7 +41,7 @@ if (!file) {
     );
     if (args.includes("--inspect")) {
       const sql = postgres(env.DATABASE_URL, {
-        ssl: { rejectUnauthorized: true },
+        ssl: postgresTls(env),
         prepare: false,
         max: 1,
       });

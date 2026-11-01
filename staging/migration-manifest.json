@@ -19,6 +19,9 @@
   "verifiedProducts": 13,
   "verifiedSkus": 18,
   "verifiedRlsTables": 16,
-  "runtimeLoginEnabled": false,
-  "supabaseCliHistoryRegistered": false
+  "runtimeLoginEnabled": true,
+  "supabaseCliHistoryRegistered": false,
+  "restrictedConnectionVerifiedDate": "2026-11-01",
+  "readOnlyHostedPreflightPassed": true,
+  "tlsCertificateVerification": true
 }

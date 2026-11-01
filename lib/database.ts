@@ -1,5 +1,6 @@
 import postgres from "postgres";
 import { CommerceError } from "./quote";
+import { postgresTls } from "./postgres-tls";
 
 let connection: ReturnType<typeof postgres> | undefined;
 export function database() {
@@ -20,7 +21,7 @@ export function database() {
     idle_timeout: 20,
     connect_timeout: 10,
     prepare: false,
-    ssl: local ? false : { rejectUnauthorized: true },
+    ssl: local ? false : postgresTls(),
   }));
 }
 export function testOrdersEnabled() {
