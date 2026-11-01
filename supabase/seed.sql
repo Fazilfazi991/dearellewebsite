@@ -3,12 +3,12 @@ insert into commerce.products(id,name,brand,category) values('w5','Casio Compact
 insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W5-BLACK','w5-black','w5','Black',69900,'[{"image":"watch-digital-compact-main"},{"image":"watch-digital-compact-wrist"},{"image":"watch-digital-compact-detail"}]'::jsonb,true) on conflict(sku) do nothing;
 insert into commerce.inventory(sku,on_hand) values('W5-BLACK',3) on conflict(sku) do nothing;
 insert into commerce.products(id,name,brand,category) values('w6','Casio World Map Watch','Casio','watches') on conflict(id) do nothing;
-insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W6-BLACK-BLACK','w6-black-black','w6','Black / Black',79900,'[{"image":"watch-digital-map-black-wrist"},{"image":"watch-digital-map-black-detail"}]'::jsonb,true) on conflict(sku) do nothing;
+insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W6-BLACK-BLACK','w6-black-black','w6','Black / Black',79900,'[{"image":"watch-digital-map-black-wrist"},{"image":"watch-digital-map-black-detail"},{"image":"watch-digital-map-black-studio"}]'::jsonb,true) on conflict(sku) do nothing;
 insert into commerce.inventory(sku,on_hand) values('W6-BLACK-BLACK',3) on conflict(sku) do nothing;
 insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W6-GOLD-BROWN','w6-gold-brown','w6','Gold / Brown',79900,'[{"image":"watch-digital-map-gold-main"},{"image":"watch-digital-map-gold-wrist"},{"image":"watch-digital-map-gold-detail"}]'::jsonb,true) on conflict(sku) do nothing;
 insert into commerce.inventory(sku,on_hand) values('W6-GOLD-BROWN',3) on conflict(sku) do nothing;
 insert into commerce.products(id,name,brand,category) values('w7','Casio Triple Display Watch','Casio','watches') on conflict(id) do nothing;
-insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W7-BLACK','w7-black','w7','Black',79900,'[{"image":"watch-digital-triple-main"}]'::jsonb,true) on conflict(sku) do nothing;
+insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W7-BLACK','w7-black','w7','Black',79900,'[{"image":"watch-digital-triple-main"},{"image":"watch-digital-triple-wrist"},{"image":"watch-digital-triple-detail"}]'::jsonb,true) on conflict(sku) do nothing;
 insert into commerce.inventory(sku,on_hand) values('W7-BLACK',3) on conflict(sku) do nothing;
 insert into commerce.products(id,name,brand,category) values('w1','The Signature Watch','Felix','watches') on conflict(id) do nothing;
 insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W1-ROSE-GOLD-PINK','w1-rose-gold-pink','w1','Rose gold / Pink',79900,'[{"image":"watch-square-pink","position":"center"},{"image":"watch-square-pink","position":"center","detail":true}]'::jsonb,true) on conflict(sku) do nothing;

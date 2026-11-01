@@ -47,9 +47,9 @@ test("digital models keep their confirmed price and matching gallery views", () 
   assert.equal(productPrice(map, "Gold / Brown"), 799);
   assert.equal(productPrice(triple), 799);
   assert.equal(compact.variants[0].images.length, 3);
-  assert.equal(map.variants[0].images.length, 2);
+  assert.equal(map.variants[0].images.length, 3);
   assert.equal(map.variants[1].images.length, 3);
-  assert.equal(triple.variants[0].images.length, 1);
+  assert.equal(triple.variants[0].images.length, 3);
   assert.ok(map.variants[0].images.every((i) => i.image.includes("map-black")));
   assert.ok(map.variants[1].images.every((i) => i.image.includes("map-gold")));
 });

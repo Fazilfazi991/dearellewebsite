@@ -81,6 +81,7 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
         images: [
           { image: "watch-digital-map-black-wrist" },
           { image: "watch-digital-map-black-detail" },
+          { image: "watch-digital-map-black-studio" },
         ],
       },
       {
@@ -112,7 +113,11 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
         name: "Black",
         hex: "#202122",
         image: "watch-digital-triple-main",
-        images: [{ image: "watch-digital-triple-main" }],
+        images: [
+          { image: "watch-digital-triple-main" },
+          { image: "watch-digital-triple-wrist" },
+          { image: "watch-digital-triple-detail" },
+        ],
       },
     ],
     description:

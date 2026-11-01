@@ -88,6 +88,9 @@ export function ShopByCategory() {
 }
 
 export function NewArrivals() {
+  const arrivals = ["w1", "b1", "w4", "b9"].flatMap((id) =>
+    products.filter((product) => product.id === id),
+  );
   return (
     <section
       className="option2-arrivals"
@@ -100,7 +103,7 @@ export function NewArrivals() {
         </Link>
       </div>
       <div className="product-grid">
-        {products.slice(0, 4).map((p) => (
+        {arrivals.map((p) => (
           <ProductCard key={p.id} product={p} deferImage />
         ))}
       </div>
