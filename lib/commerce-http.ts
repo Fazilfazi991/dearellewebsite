@@ -35,7 +35,12 @@ export async function readBody(request: Request) {
   try {
     const parsed = new URL(origin ?? "");
     sameOrigin = process.env.APP_ORIGIN
-      ? parsed.origin === process.env.APP_ORIGIN
+      ? [
+          process.env.APP_ORIGIN,
+          ...(process.env.APP_ADDITIONAL_ORIGINS ?? "")
+            .split(",")
+            .filter(Boolean),
+        ].includes(parsed.origin)
       : parsed.host === host && parsed.protocol === `${protocol}:`;
   } catch {}
   if (!sameOrigin)

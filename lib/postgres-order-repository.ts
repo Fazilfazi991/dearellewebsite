@@ -1,7 +1,12 @@
 import { assertSyntheticStagingCustomer } from "./staging-safety";
 import { randomUUID, createHash } from "node:crypto";
 import type { Sql } from "postgres";
-import { database, testOrdersEnabled } from "./database";
+import {
+  database,
+  testOrdersEnabled,
+  liveOrdersConfigured,
+  ordersConfigured,
+} from "./database";
 import { CommerceError, type Quote, type OrderLine } from "./quote";
 import { validateCustomer } from "./checkout";
 import type { Order, Fulfilment } from "./order-domain";
@@ -82,7 +87,11 @@ export class PostgresOrderRepository {
       codBalance: total - advance,
       currency: "INR" as const,
     };
-    return { ...data, fingerprint: hash(JSON.stringify(data)), testMode: true };
+    return {
+      ...data,
+      fingerprint: hash(JSON.stringify(data)),
+      testMode: !liveOrdersConfigured(),
+    };
   }
   async get(
     id: string,
@@ -101,10 +110,10 @@ export class PostgresOrderRepository {
     return {
       id: r.id,
       createdAt: r.created_at.toISOString(),
-      expiresAt: r.expires_at.toISOString(),
+      expiresAt: r.expires_at?.toISOString(),
       customer: r.customer,
       quote: r.quote,
-      mode: "test",
+      mode: r.mode,
       payment: r.payment,
       fulfilment: r.fulfilment,
       tracking: r.tracking,
@@ -152,9 +161,10 @@ export class PostgresOrderRepository {
       !/^[a-f0-9]{64}$/.test(guest)
     )
       throw new CommerceError(
-        "Check your delivery details and acknowledge the test request.",
+        "Check your delivery details and acknowledge the order request.",
       );
     assertSyntheticStagingCustomer(checked.customer);
+    const mode = liveOrdersConfigured() ? "live" : "test";
     const payload = hash(
       JSON.stringify({
         items: input.items,
@@ -186,14 +196,14 @@ export class PostgresOrderRepository {
           );
         const id = randomUUID();
         const [r] =
-          await tx`insert into commerce.orders(id,guest_hash,customer,quote,subtotal,total,advance,cod_balance,expires_at)
-    select ${id},${guest},${tx.json(checked.customer)},${tx.json(quote)},${quote.subtotal * 100},${quote.total * 100},${quote.advance * 100},${quote.codBalance * 100},now()+reservation_hours*interval '1 hour' from commerce.settings returning expires_at`;
+          await tx`insert into commerce.orders(id,guest_hash,customer,quote,subtotal,total,advance,cod_balance,mode,expires_at)
+    select ${id},${guest},${tx.json(checked.customer)},${tx.json(quote)},${quote.subtotal * 100},${quote.total * 100},${quote.advance * 100},${quote.codBalance * 100},${mode},case when ${mode}='live' then null else now()+reservation_hours*interval '1 hour' end from commerce.settings returning expires_at`;
         for (const l of quote.lines) {
           await tx`insert into commerce.order_lines(order_id,sku,snapshot,quantity,unit_price) values(${id},${l.sku},${tx.json(l)},${l.quantity},${l.unitPrice * 100})`;
           await tx`insert into commerce.reservations(order_id,sku,quantity,expires_at) values(${id},${l.sku},${l.quantity},${r.expires_at})`;
         }
         await tx`insert into commerce.idempotency(guest_hash,key,payload_hash,order_id) values(${guest},${input.idempotencyKey},${payload},${id})`;
-        await tx`insert into commerce.history(order_id,message) values(${id},'Test COD request received. No payment taken; awaiting customer contact and manual advance verification.')`;
+        await tx`insert into commerce.history(order_id,message) values(${id},${mode === "live" ? "COD order request received. Awaiting customer contact and manual advance verification." : "Test COD request received. No payment taken; awaiting customer contact and manual advance verification."})`;
         return (await this.get(id, guest, tx))!;
       })) as Order;
     } catch (error) {
@@ -293,11 +303,11 @@ export class PostgresOrderRepository {
     })) as Order;
   }
   async expire() {
-    // Schema only permits test orders; live expiry requires a separately approved migration.
+    // Live reservation expiry remains disabled; no unapproved live timeout.
     return this.sql.begin(async (transaction) => {
       const tx = transaction as unknown as Sql;
       const rows =
-        await tx`select id from commerce.orders where expires_at<=now() and payment='advance_pending' and fulfilment in ('awaiting_contact','confirmed') order by id for update skip locked`;
+        await tx`select id from commerce.orders where mode='test' and expires_at<=now() and payment='advance_pending' and fulfilment in ('awaiting_contact','confirmed') order by id for update skip locked`;
       for (const r of rows) {
         await tx`update commerce.orders set fulfilment='expired',version=version+1 where id=${r.id}`;
         await tx`update commerce.reservations set state='released' where order_id=${r.id} and state='active'`;
@@ -310,11 +320,11 @@ export class PostgresOrderRepository {
 }
 let instance: PostgresOrderRepository | undefined;
 export function orderRepository() {
-  if (!testOrdersEnabled())
+  if (!ordersConfigured())
     throw new CommerceError(
       "Public ordering is closed. Local/staging test recording is not configured.",
       503,
     );
   return (instance ??= new PostgresOrderRepository());
 }
-export { testOrdersEnabled };
+export { testOrdersEnabled, ordersConfigured };

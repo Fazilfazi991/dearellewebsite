@@ -30,7 +30,7 @@ export type Quote = {
   codBalance: number;
   currency: "INR";
   fingerprint: string;
-  testMode: true;
+  testMode: boolean;
 };
 export function createQuote(
   input: unknown,

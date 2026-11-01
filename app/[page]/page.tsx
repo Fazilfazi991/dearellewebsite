@@ -13,7 +13,7 @@ const pages: Record<string, { title: string; text: string }> = {
   },
   "new-arrivals": {
     title: "Your next little luxury.",
-    text: "Explore the preview collection of everyday watches and bags.",
+    text: "Explore our collection of everyday watches and bags.",
   },
   about: {
     title: "Lovely things. Everyday moments.",
@@ -21,7 +21,7 @@ const pages: Record<string, { title: string; text: string }> = {
   },
   contact: {
     title: "A little help, when you need it.",
-    text: "Contact and WhatsApp assistance are not configured in this independent preview. The owner will add verified contact details before launch.",
+    text: "For order confirmation, delivery updates or product questions, contact Dearelle on WhatsApp at +91 8086191325.",
   },
   shipping: {
     title: "Shipping, thoughtfully considered.",
@@ -29,19 +29,19 @@ const pages: Record<string, { title: string; text: string }> = {
   },
   returns: {
     title: "The details that matter.",
-    text: "Returns are available for damage during delivery. Please record an unpacking video to help document delivery damage. This evidence guidance does not exclude statutory consumer rights. A return time window, return shipping arrangements and refund process have not yet been specified.",
+    text: "Returns are available for damage during delivery. Please record an unpacking video to help document delivery damage. This evidence guidance does not exclude statutory consumer rights. Contact us on WhatsApp at +91 8086191325 so we can review the damage and explain the return arrangements.",
   },
   privacy: {
     title: "Your privacy matters.",
-    text: "This site stores your bag and wishlist in this browser’s local storage. When enabled locally, test checkout stores the sample contact and delivery details you submit in a private test order database for owner review. Use sample details only. Order access is restricted to the submitting browser and the owner. No payment details are collected. A reviewed privacy policy and verified data-controller contact must be added before launch.",
+    text: "Your bag and wishlist are saved in this browser. When you place an order, we use your contact and delivery details to confirm and fulfil it. Order details are stored privately and access is restricted to your browser and the store owner. We do not collect card or bank login details. For questions about your information, contact Dearelle on WhatsApp at +91 8086191325.",
   },
   terms: {
-    title: "A note about this preview.",
-    text: "This preview records test COD requests only and does not create real deliveries or take payment. Prices, three pieces per colour/SKU, free delivery across India and a ₹50 advance deposit deducted from the total are supplied by Dearelle. Customer contact and manual advance verification are required before dispatch in the intended COD process. Product images are styled representations; no independent authenticity claim is made.",
+    title: "Ordering with Dearelle.",
+    text: "Prices are in Indian rupees. Delivery across India is free. We contact you to confirm your order before dispatch and arrange a ₹50 advance, which is deducted from your total. Pay the remaining balance by cash on delivery. Advance verification is manual; no online payment gateway is used. For cancellation, damage claims or refund questions, contact Dearelle on WhatsApp at +91 8086191325.",
   },
   instagram: {
     title: "Stay close to Dearelle.",
-    text: "Our verified Instagram handle will be added here before launch. The homepage moodboard uses editorial stock photography and does not represent customers or endorsements.",
+    text: "For current product information and order assistance, contact us on WhatsApp at +91 8086191325. Our editorial inspiration images are not customer endorsements.",
   },
 };
 export function generateStaticParams() {
@@ -86,13 +86,17 @@ export default async function Page({
         <Catalogue category={page as "watches" | "bags" | "new-arrivals"} />
       ) : (
         <>
-          <p className="notice">
-            {page === "about"
-              ? "Independent V2 prototype · Launch details are being prepared."
-              : "Preview information · Not a final published policy or contact channel."}
-          </p>
+          {["contact", "returns", "privacy", "terms", "instagram"].includes(
+            page,
+          ) && (
+            <p>
+              <a className="button" href="https://wa.me/918086191325">
+                Chat on WhatsApp
+              </a>
+            </p>
+          )}
           <Link className="button" href="/new-arrivals">
-            Explore the preview
+            Explore the collection
           </Link>
         </>
       )}

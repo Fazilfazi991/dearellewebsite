@@ -359,6 +359,55 @@ try {
       else process.env.STAGING_SYNTHETIC_ONLY = beforeFlag;
     }
   });
+  await test("approved live COD respects the database intake gate and has no unapproved timeout", async () => {
+    await admin.unsafe(
+      readFileSync(
+        "supabase/migrations/20261101022830_approved_live_cod.sql",
+        "utf8",
+      ),
+    );
+    const saved = { ...process.env };
+    try {
+      Object.assign(process.env, {
+        DEPLOYMENT_STAGE: "production",
+        VERCEL_ENV: "production",
+        PUBLIC_ORDER_INTAKE: "1",
+        COMMERCE_LIVE_ORDERS: "1",
+      });
+      const r = await make();
+      await assert.rejects(repo.create(r.input, r.g));
+      await admin`update commerce.settings set public_intake=true`;
+      const order = await repo.create(r.input, r.g);
+      assert.equal(order.mode, "live");
+      assert.equal(order.quote.testMode, false);
+      assert.equal(order.expiresAt, undefined);
+      assert.equal(order.quote.advance, 50);
+      assert.equal(order.quote.codBalance, order.quote.total - 50);
+      const duplicate = await repo.create(r.input, r.g);
+      assert.equal(duplicate.id, order.id);
+      await repo.expire();
+      assert.equal((await repo.get(order.id))?.fulfilment, "awaiting_contact");
+      await assert.rejects(
+        admin`update commerce.orders set expires_at=now(),version=version+1 where id=${order.id}`,
+      );
+      await repo.update(
+        order.id,
+        { action: "fulfilment", fulfilment: "cancelled", version: 1 },
+        owner,
+      );
+    } finally {
+      await admin`update commerce.settings set public_intake=false`;
+      for (const key of [
+        "DEPLOYMENT_STAGE",
+        "VERCEL_ENV",
+        "PUBLIC_ORDER_INTAKE",
+        "COMMERCE_LIVE_ORDERS",
+      ]) {
+        if (saved[key] === undefined) delete process.env[key];
+        else process.env[key] = saved[key];
+      }
+    }
+  });
   await test("retention requires approval and preserves financial records", async () => {
     await assert.rejects(
       admin.unsafe("select commerce.anonymize_closed_orders()"),

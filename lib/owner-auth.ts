@@ -9,7 +9,7 @@ export async function ownerAuthClient() {
   if (!url || !key)
     throw new CommerceError("Owner authentication is not configured.", 503);
   if (
-    process.env.DEPLOYMENT_STAGE === "staging" &&
+    ["staging", "production"].includes(process.env.DEPLOYMENT_STAGE ?? "") &&
     (process.env.COOKIE_SECURE !== "1" ||
       !process.env.APP_ORIGIN?.startsWith("https://"))
   )

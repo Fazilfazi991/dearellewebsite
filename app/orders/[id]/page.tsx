@@ -4,12 +4,12 @@ import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import {
   orderRepository,
-  testOrdersEnabled,
+  ordersConfigured,
 } from "@/lib/postgres-order-repository";
 import { money } from "@/lib/products";
 export const dynamic = "force-dynamic";
 export const metadata = {
-  title: "Your test request",
+  title: "Your order",
   robots: { index: false, follow: false },
 };
 export default async function OrderConfirmation({
@@ -19,15 +19,21 @@ export default async function OrderConfirmation({
 }) {
   const { id } = await params;
   const token = (await cookies()).get("dearelle_guest")?.value;
-  if (!token || !testOrdersEnabled()) notFound();
+  if (!token || !ordersConfigured()) notFound();
   const order = await orderRepository().get(id, hash(token));
   if (!order) notFound();
   return (
     <main id="main" className="section inner-page confirmation-page">
       <div className="page-heading">
-        <h1>Test request received.</h1>
+        <h1>
+          {order.mode === "live"
+            ? "Order request received."
+            : "Test request received."}
+        </h1>
         <p>
-          No payment was taken. This request will not create a real delivery.
+          {order.mode === "live"
+            ? "We’ll contact you to confirm your order and arrange the ₹50 advance before dispatch."
+            : "No payment was taken. This request will not create a real delivery."}
         </p>
       </div>
       <p className="notice">

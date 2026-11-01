@@ -23,7 +23,7 @@ export type Order = {
   createdAt: string;
   customer: Customer;
   quote: Quote;
-  mode: "test";
+  mode: "test" | "live";
   payment: "advance_pending" | "advance_verified" | "cod_collected";
   fulfilment: Fulfilment;
   tracking: string;

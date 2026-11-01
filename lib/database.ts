@@ -33,3 +33,21 @@ export function testOrdersEnabled() {
     process.env.PUBLIC_ORDER_INTAKE !== "1"
   );
 }
+export function liveOrdersConfigured() {
+  return (
+    process.env.DEPLOYMENT_STAGE === "production" &&
+    process.env.VERCEL_ENV === "production" &&
+    process.env.PUBLIC_ORDER_INTAKE === "1" &&
+    process.env.COMMERCE_LIVE_ORDERS === "1" &&
+    !!process.env.DATABASE_URL
+  );
+}
+export function ordersConfigured() {
+  return testOrdersEnabled() || liveOrdersConfigured();
+}
+export async function orderIntakeReady() {
+  if (testOrdersEnabled()) return true;
+  if (!liveOrdersConfigured()) return false;
+  const [row] = await database()`select public_intake from commerce.settings`;
+  return row?.public_intake === true;
+}

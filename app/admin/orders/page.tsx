@@ -16,7 +16,7 @@ export default async function OwnerPage() {
     <main id="main" className="section inner-page owner-page">
       <div className="page-heading">
         <h1>Owner orders.</h1>
-        <p>Private staging workflow. Public ordering is closed.</p>
+        <p>Confirm orders, verify advances and manage dispatch.</p>
       </div>
       <OwnerOrders />
     </main>

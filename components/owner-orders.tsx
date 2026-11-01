@@ -200,7 +200,7 @@ export function OwnerOrders() {
             ))}
           </details>
           {!orders.length ? (
-            <p>No test requests yet.</p>
+            <p>No order requests yet.</p>
           ) : (
             <div className={`owner-grid${order ? " has-selection" : ""}`}>
               <div className="owner-list">

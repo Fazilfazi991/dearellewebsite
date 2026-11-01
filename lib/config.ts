@@ -1,7 +1,7 @@
 // Owner-confirmed values only. Null means the channel is intentionally unavailable.
 export const launchConfig = {
   contactEmail: null,
-  whatsappNumber: null,
+  whatsappNumber: "918086191325",
   instagramUrl: null,
   shippingPolicy: "Delivery across India. No delivery charge.",
   returnPolicy:

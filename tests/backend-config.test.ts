@@ -1,6 +1,10 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { database, testOrdersEnabled } from "../lib/database";
+import {
+  database,
+  testOrdersEnabled,
+  liveOrdersConfigured,
+} from "../lib/database";
 function restore(snapshot: NodeJS.ProcessEnv) {
   for (const key of [
     "DATABASE_URL",
@@ -8,6 +12,7 @@ function restore(snapshot: NodeJS.ProcessEnv) {
     "PUBLIC_ORDER_INTAKE",
     "COMMERCE_TEST_ORDERS",
     "VERCEL_ENV",
+    "COMMERCE_LIVE_ORDERS",
   ]) {
     if (snapshot[key] === undefined) delete process.env[key];
     else process.env[key] = snapshot[key];
@@ -35,6 +40,28 @@ test("test recording is closed under production, public-intake flags or missing 
     process.env.DEPLOYMENT_STAGE = "staging";
     delete process.env.DATABASE_URL;
     assert.equal(testOrdersEnabled(), false);
+  } finally {
+    restore(saved);
+  }
+});
+test("live ordering requires explicit production approval and never opens staging", () => {
+  const saved = { ...process.env };
+  try {
+    Object.assign(process.env, {
+      DATABASE_URL: "postgres://dearelle_app:unused@127.0.0.1/local",
+      DEPLOYMENT_STAGE: "production",
+      VERCEL_ENV: "production",
+      PUBLIC_ORDER_INTAKE: "1",
+      COMMERCE_LIVE_ORDERS: "1",
+    });
+    assert.equal(liveOrdersConfigured(), true);
+    for (const key of ["PUBLIC_ORDER_INTAKE", "COMMERCE_LIVE_ORDERS"]) {
+      process.env[key] = "0";
+      assert.equal(liveOrdersConfigured(), false);
+      process.env[key] = "1";
+    }
+    process.env.DEPLOYMENT_STAGE = "staging";
+    assert.equal(liveOrdersConfigured(), false);
   } finally {
     restore(saved);
   }

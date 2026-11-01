@@ -94,7 +94,7 @@ export default function Checkout() {
     }
     if (!acknowledged) {
       setMessage(
-        "Please acknowledge this is a test request and review the ₹50 advance process.",
+        "Please confirm you understand the ₹50 advance and COD process.",
       );
       return;
     }
@@ -140,7 +140,11 @@ export default function Checkout() {
       </Link>
       <div className="page-heading">
         <h1>Your checkout.</h1>
-        <p>Test checkout · No real order, payment or dispatch.</p>
+        <p>
+          {quote?.testMode
+            ? "Test checkout · No real order, payment or dispatch."
+            : "Cash on delivery · Free delivery across India."}
+        </p>
       </div>
       <Mounted>
         {items.length ? (
@@ -152,8 +156,9 @@ export default function Checkout() {
           >
             <div className="checkout-contact">
               <p className="notice">
-                Use sample details only. This preview stores test requests for
-                review.
+                {quote?.testMode
+                  ? "Use sample details only. This preview stores test requests for review."
+                  : "We’ll contact you to confirm your order before dispatch. Pay a ₹50 advance after we contact you; it is deducted from your total. Pay the remaining balance on delivery."}
               </p>
               <h2>Contact &amp; delivery</h2>
               <div className="checkout-fields">
@@ -289,9 +294,11 @@ export default function Checkout() {
                   onChange={(e) => setAcknowledged(e.target.checked)}
                 />{" "}
                 <span>
-                  I’m submitting sample details for a test request. I understand
-                  the ₹50 advance is part of the total and dispatch requires
-                  confirmation.
+                  {quote?.testMode
+                    ? "I’m submitting sample details for a test request. "
+                    : ""}
+                  I understand the ₹50 advance is part of the total and dispatch
+                  requires confirmation.
                 </span>
               </label>
               {message && (
@@ -314,12 +321,14 @@ export default function Checkout() {
                   ? "Recording request…"
                   : reviewing
                     ? "Checking your bag…"
-                    : "Submit test COD request"}
+                    : quote?.testMode
+                      ? "Submit test COD request"
+                      : "Place COD order"}
               </button>
               {quote && !quote.recordingEnabled && (
                 <p className="small muted">
-                  Test order recording is not configured on this host. Nothing
-                  can be submitted.
+                  Ordering opens after owner setup is complete. No order has
+                  been placed.
                 </p>
               )}
             </div>

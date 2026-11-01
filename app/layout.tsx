@@ -3,17 +3,17 @@ import { StoreProvider } from "@/components/store";
 import { assertTestCheckout } from "@/lib/products";
 import "./globals.css";
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL("https://www.dearelle.in"),
   title: {
     default: "Dearelle — Little luxuries, everyday",
     template: "%s | Dearelle",
   },
   description:
     "Explore a new world of everyday watches and handbags. Dearelle watches and bags.",
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Dearelle — Little Luxuries. Big Feelings.",
-    description: "An independent preview of everyday watches and bags.",
+    description: "Everyday watches and handbags from Dearelle. Free delivery across India.",
     images: ["/images/hero.jpg"],
   },
 };
