@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { randomUUID, createHash } from "node:crypto";
 import postgres from "postgres";
 import { PostgresOrderRepository } from "../lib/postgres-order-repository";
-import { products } from "../lib/products";
+import { products, productPrice } from "../lib/products";
 const env = Object.fromEntries(
   readFileSync(".env.local", "utf8")
     .split(/\r?\n/)
@@ -12,6 +12,10 @@ const env = Object.fromEntries(
     .map((l) => [l.slice(0, l.indexOf("=")), l.slice(l.indexOf("=") + 1)]),
 );
 Object.assign(process.env, env);
+if (!["127.0.0.1", "localhost"].includes(new URL(env.DATABASE_URL).hostname))
+  throw new Error(
+    "This integration runner requires a local database configuration.",
+  );
 const root = postgres("postgres://postgres:postgres@127.0.0.1:55422/postgres", {
   max: 1,
 });
@@ -27,6 +31,12 @@ await admin.unsafe(
 await admin.unsafe(
   readFileSync(
     "supabase/migrations/20261031090525_commerce_foundation.sql",
+    "utf8",
+  ),
+);
+await admin.unsafe(
+  readFileSync(
+    "supabase/migrations/20261101041344_digital_watch_prices.sql",
     "utf8",
   ),
 );
@@ -82,7 +92,7 @@ try {
   await admin`insert into commerce.owner_accounts(id) values(${owner}) on conflict(singleton) do nothing`;
   const [o] = await admin`select id from commerce.owner_accounts`;
   owner = o.id;
-  await test("18 real SKUs, prices and exact variant groups preserved", async () => {
+  await test("catalogue SKUs, model prices and exact variant groups preserved", async () => {
     const inventory = await repo.inventory();
     assert.equal(
       inventory.length,
@@ -93,10 +103,7 @@ try {
         const q = await repo.quote([
           { productId: p.id, variantId: v.id, quantity: 1 },
         ]);
-        assert.equal(
-          q.total,
-          p.brand === "Felix" ? 799 : p.brand === "Casio" ? 599 : 399,
-        );
+        assert.equal(q.total, productPrice(p, v.id));
         assert.equal(q.codBalance, q.total - 50);
       }
   });

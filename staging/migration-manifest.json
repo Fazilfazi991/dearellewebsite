@@ -16,12 +16,16 @@
     {
       "path": "supabase/migrations/20261101022830_approved_live_cod.sql",
       "sha256": "f5d9e92007c364f0ff589c536af9b73adc86592a4a0339f98a309bdde901ebc2"
+    },
+    {
+      "sha256": "7c2e3591e1754a633ff3de845aaf96f0c9ec23007560dc9e65ac639b145c9fdf",
+      "path": "supabase/migrations/20261101041344_digital_watch_prices.sql"
     }
   ],
   "applicationMethod": "Supabase dashboard SQL editor; reviewed files in one transaction",
   "appliedDate": "2026-10-31",
-  "verifiedProducts": 13,
-  "verifiedSkus": 18,
+  "verifiedProducts": 16,
+  "verifiedSkus": 22,
   "verifiedRlsTables": 16,
   "runtimeLoginEnabled": true,
   "supabaseCliHistoryRegistered": false,
@@ -29,5 +33,10 @@
   "readOnlyHostedPreflightPassed": true,
   "tlsCertificateVerification": true,
   "productionPromoted": true,
-  "ownerMfaVerified": true
+  "ownerMfaVerified": true,
+  "digitalCatalogueUpdate": {
+    "date": "2026-11-01",
+    "method": "Dashboard transaction: new digital products and SKUs only; preserved existing stock. Updated W3-BLACK-BLACK images only.",
+    "seedFileState": "Seed hash above records original historical seed. Current full seed updated for fresh environments; hosted update used only additions, not a full reseed."
+  }
 }

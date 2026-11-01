@@ -13,7 +13,7 @@ const config: NextConfig = {
         ],
       })),
       ...["mobile", "desktop"].flatMap((format) =>
-        ["v2", "v3"].flatMap((version) =>
+        ["v2", "v3", "v4"].flatMap((version) =>
           ["mp4", "webp", "jpg"].map((extension) => ({
             source: `/videos/dearelle-hero-${format}-${version}.${extension}`,
             headers: [

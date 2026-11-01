@@ -1,4 +1,15 @@
 -- Reviewed catalogue snapshot. Conflict handling never replenishes existing stock.
+insert into commerce.products(id,name,brand,category) values('w5','Casio Compact Digital Watch','Casio','watches') on conflict(id) do nothing;
+insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W5-BLACK','w5-black','w5','Black',69900,'[{"image":"watch-digital-compact-main"},{"image":"watch-digital-compact-wrist"},{"image":"watch-digital-compact-detail"}]'::jsonb,true) on conflict(sku) do nothing;
+insert into commerce.inventory(sku,on_hand) values('W5-BLACK',3) on conflict(sku) do nothing;
+insert into commerce.products(id,name,brand,category) values('w6','Casio World Map Watch','Casio','watches') on conflict(id) do nothing;
+insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W6-BLACK-BLACK','w6-black-black','w6','Black / Black',79900,'[{"image":"watch-digital-map-black-wrist"},{"image":"watch-digital-map-black-detail"}]'::jsonb,true) on conflict(sku) do nothing;
+insert into commerce.inventory(sku,on_hand) values('W6-BLACK-BLACK',3) on conflict(sku) do nothing;
+insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W6-GOLD-BROWN','w6-gold-brown','w6','Gold / Brown',79900,'[{"image":"watch-digital-map-gold-main"},{"image":"watch-digital-map-gold-wrist"},{"image":"watch-digital-map-gold-detail"}]'::jsonb,true) on conflict(sku) do nothing;
+insert into commerce.inventory(sku,on_hand) values('W6-GOLD-BROWN',3) on conflict(sku) do nothing;
+insert into commerce.products(id,name,brand,category) values('w7','Casio Triple Display Watch','Casio','watches') on conflict(id) do nothing;
+insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W7-BLACK','w7-black','w7','Black',79900,'[{"image":"watch-digital-triple-main"}]'::jsonb,true) on conflict(sku) do nothing;
+insert into commerce.inventory(sku,on_hand) values('W7-BLACK',3) on conflict(sku) do nothing;
 insert into commerce.products(id,name,brand,category) values('w1','The Signature Watch','Felix','watches') on conflict(id) do nothing;
 insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W1-ROSE-GOLD-PINK','w1-rose-gold-pink','w1','Rose gold / Pink',79900,'[{"image":"watch-square-pink","position":"center"},{"image":"watch-square-pink","position":"center","detail":true}]'::jsonb,true) on conflict(sku) do nothing;
 insert into commerce.inventory(sku,on_hand) values('W1-ROSE-GOLD-PINK',3) on conflict(sku) do nothing;
@@ -20,7 +31,7 @@ insert into commerce.products(id,name,brand,category) values('b2','The Burgundy 
 insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('B2-BURGUNDY','b2-burgundy','b2','Burgundy',39900,'[{"image":"bag-burgundy-tote","position":"center"},{"image":"bag-burgundy-tote","position":"center","detail":true}]'::jsonb,true) on conflict(sku) do nothing;
 insert into commerce.inventory(sku,on_hand) values('B2-BURGUNDY',3) on conflict(sku) do nothing;
 insert into commerce.products(id,name,brand,category) values('w3','The Petite Dial Watch','Felix','watches') on conflict(id) do nothing;
-insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W3-BLACK-BLACK','w3-black-black','w3','Black / Black',79900,'[{"image":"watch-petite-black","position":"center"},{"image":"watch-petite-black-side","position":"center"},{"image":"watch-petite-black-bracelet","position":"center"}]'::jsonb,true) on conflict(sku) do nothing;
+insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W3-BLACK-BLACK','w3-black-black','w3','Black / Black',79900,'[{"image":"watch-petite-black-studio-main"},{"image":"watch-petite-black-studio-side"},{"image":"watch-petite-black-studio-bracelet"}]'::jsonb,true) on conflict(sku) do nothing;
 insert into commerce.inventory(sku,on_hand) values('W3-BLACK-BLACK',3) on conflict(sku) do nothing;
 insert into commerce.skus(sku,variant_id,product_id,color,price_paise,images,enabled) values('W3-ROSE-GOLD-WHITE','w3-rose-gold-white','w3','Rose gold / White',79900,'[{"image":"watch-category-stock","position":"23% center"},{"image":"watch-category-stock","position":"23% center","detail":true}]'::jsonb,true) on conflict(sku) do nothing;
 insert into commerce.inventory(sku,on_hand) values('W3-ROSE-GOLD-WHITE',3) on conflict(sku) do nothing;

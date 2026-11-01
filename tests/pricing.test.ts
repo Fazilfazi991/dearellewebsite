@@ -7,7 +7,15 @@ import { autoplayAllowed } from "../lib/carousel-scheduler";
 test("owner prices apply to every product and variant", () => {
   for (const p of products) {
     const expected =
-      p.category === "bags" ? 399 : p.brand === "Casio" ? 599 : 799;
+      p.id === "w5"
+        ? 699
+        : ["w6", "w7"].includes(p.id)
+          ? 799
+          : p.category === "bags"
+            ? 399
+            : p.brand === "Casio"
+              ? 599
+              : 799;
     assert.equal(p.price, expected);
     assert.equal(p.basePrice, expected);
     for (const v of p.variants) {
@@ -30,8 +38,24 @@ test("owner prices apply to every product and variant", () => {
   assert.equal(products.filter((p) => p.category === "bags").length, 9);
 });
 
+test("digital models keep their confirmed price and matching gallery views", () => {
+  const compact = products.find((p) => p.id === "w5")!;
+  const map = products.find((p) => p.id === "w6")!;
+  const triple = products.find((p) => p.id === "w7")!;
+  assert.equal(productPrice(compact), 699);
+  assert.equal(productPrice(map, "Black / Black"), 799);
+  assert.equal(productPrice(map, "Gold / Brown"), 799);
+  assert.equal(productPrice(triple), 799);
+  assert.equal(compact.variants[0].images.length, 3);
+  assert.equal(map.variants[0].images.length, 2);
+  assert.equal(map.variants[1].images.length, 3);
+  assert.equal(triple.variants[0].images.length, 1);
+  assert.ok(map.variants[0].images.every((i) => i.image.includes("map-black")));
+  assert.ok(map.variants[1].images.every((i) => i.image.includes("map-gold")));
+});
+
 test("explicit variant price override takes precedence over base price", () => {
-  const source = products[0];
+  const source = products.find((p) => p.id === "w1")!;
   const variant = selectedVariant(source);
   const p = { ...source, variants: [{ ...variant, price: 699 }] };
   assert.equal(productPrice(p, variant.name), 699);

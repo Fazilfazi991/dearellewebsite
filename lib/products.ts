@@ -3,6 +3,7 @@ export type ProductColor = {
   hex: string;
   image?: string;
   imagePosition?: string;
+  images?: ProductImage[];
 };
 export type ProductImage = {
   image: string;
@@ -39,6 +40,86 @@ export type Product = {
 const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
   brand: Product["brand"];
 })[] = [
+  {
+    id: "w5",
+    brand: "Casio",
+    slug: "casio-compact-digital-watch",
+    name: "Casio Compact Digital Watch",
+    category: "watches",
+    price: 699,
+    image: "watch-digital-compact-main",
+    colors: [
+      {
+        name: "Black",
+        hex: "#202122",
+        image: "watch-digital-compact-main",
+        images: [
+          { image: "watch-digital-compact-main" },
+          { image: "watch-digital-compact-wrist" },
+          { image: "watch-digital-compact-detail" },
+        ],
+      },
+    ],
+    description:
+      "A compact rectangular digital face, a black strap and warm gold-tone markings. A clean, understated shape for everyday styling.",
+    imagery: "ai-styled",
+    testCheckoutOnly: true,
+  },
+  {
+    id: "w6",
+    brand: "Casio",
+    slug: "casio-world-map-watch",
+    name: "Casio World Map Watch",
+    category: "watches",
+    price: 799,
+    image: "watch-digital-map-black-wrist",
+    colors: [
+      {
+        name: "Black / Black",
+        hex: "#202122",
+        image: "watch-digital-map-black-wrist",
+        images: [
+          { image: "watch-digital-map-black-wrist" },
+          { image: "watch-digital-map-black-detail" },
+        ],
+      },
+      {
+        name: "Gold / Brown",
+        hex: "#8b4b36",
+        image: "watch-digital-map-gold-main",
+        images: [
+          { image: "watch-digital-map-gold-main" },
+          { image: "watch-digital-map-gold-wrist" },
+          { image: "watch-digital-map-gold-detail" },
+        ],
+      },
+    ],
+    description:
+      "An angular digital face with a small map motif and a contrasting stitched strap. Choose an all-black finish or a gold-tone case with brown.",
+    imagery: "ai-styled",
+    testCheckoutOnly: true,
+  },
+  {
+    id: "w7",
+    brand: "Casio",
+    slug: "casio-triple-display-watch",
+    name: "Casio Triple Display Watch",
+    category: "watches",
+    price: 799,
+    image: "watch-digital-triple-main",
+    colors: [
+      {
+        name: "Black",
+        hex: "#202122",
+        image: "watch-digital-triple-main",
+        images: [{ image: "watch-digital-triple-main" }],
+      },
+    ],
+    description:
+      "Three circular display details sit above a digital window, framed by an angular black case and a stitched black strap. A distinct design from the map-dial model.",
+    imagery: "ai-styled",
+    testCheckoutOnly: true,
+  },
   {
     id: "w1",
     brand: "Felix",
@@ -124,9 +205,18 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     name: "The Petite Dial Watch",
     category: "watches",
     price: 799,
-    image: "watch-petite-black",
+    image: "watch-petite-black-studio-main",
     colors: [
-      { name: "Black / Black", hex: "#252526", image: "watch-petite-black" },
+      {
+        name: "Black / Black",
+        hex: "#252526",
+        image: "watch-petite-black-studio-main",
+        images: [
+          { image: "watch-petite-black-studio-main" },
+          { image: "watch-petite-black-studio-side" },
+          { image: "watch-petite-black-studio-bracelet" },
+        ],
+      },
       {
         name: "Rose gold / White",
         hex: "#bd9687",
@@ -264,10 +354,8 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
 ];
 // Normalize legacy colour data once; all buying surfaces share these variants.
 export const products: Product[] = catalogue.map((p) => {
-  const basePrice =
-    p.category === "bags"
-      ? 399
-      : watchBrandPrices[p.brand as keyof typeof watchBrandPrices];
+  // Owner-confirmed model pricing takes precedence over historical brand defaults.
+  const basePrice = p.price;
   return {
     ...p,
     basePrice,
@@ -290,7 +378,8 @@ export const products: Product[] = catalogue.map((p) => {
         availability: "available" as const,
         stock: 3,
         images:
-          image === "watch-petite-black"
+          c.images ??
+          (image === "watch-petite-black"
             ? [
                 { image, position },
                 { image: "watch-petite-black-side", position: "center" },
@@ -299,7 +388,7 @@ export const products: Product[] = catalogue.map((p) => {
             : [
                 { image, position },
                 { image, position, detail: true },
-              ],
+              ]),
       };
     }),
   };

@@ -40,7 +40,7 @@ test("owner-corrected Felix models cannot mix dial families", () => {
   );
   assert.equal(
     productVisual(petite, "Black / Black").image,
-    "watch-petite-black",
+    "watch-petite-black-studio-main",
   );
   assert.equal(
     first.variants.some((v) => v.name === "Black / Black"),
