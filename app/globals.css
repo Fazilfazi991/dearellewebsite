@@ -2164,3 +2164,59 @@ select {
     display: none;
   }
 }
+/* Optional marketing choice uses the same ivory and espresso as the store. */
+.marketing-choice {
+  position: fixed;
+  z-index: 100;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  margin-inline: auto;
+  max-width: 760px;
+  padding: 20px;
+  background: #fbf8f4;
+  color: #302824;
+  border: 1px solid #c9beb5;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 13px;
+}
+.marketing-choice p {
+  margin: 6px 0 0;
+  line-height: 1.5;
+}
+.marketing-choice a {
+  text-decoration: underline;
+}
+.marketing-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.marketing-actions button {
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid #302824;
+  background: transparent;
+  color: #302824;
+  cursor: pointer;
+}
+.marketing-actions button:last-child {
+  background: #302824;
+  color: #fffaf5;
+}
+.marketing-actions button:hover {
+  opacity: 0.8;
+}
+@media (max-width: 640px) {
+  .marketing-choice {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 16px;
+  }
+  .marketing-actions button {
+    flex: 1;
+  }
+}

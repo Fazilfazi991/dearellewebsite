@@ -12,6 +12,7 @@ import {
 import { commercePolicy } from "@/lib/config";
 import { ProductGallery } from "./product-gallery";
 import { useStore } from "./store";
+import { marketingAllowed, metaEvent, productEvent } from "@/lib/meta";
 export function ProductDetail({ product: p }: { product: Product }) {
   const [color, setColor] = useState(p.colors[0].name);
   const [qty, setQty] = useState(1);
@@ -22,6 +23,17 @@ export function ProductDetail({ product: p }: { product: Product }) {
   const lastBuy = useRef(0);
   const [stock, setStock] = useState<Record<string, number>>({});
   const available = stock[variant.id] ?? variant.stock;
+  const lastView = useRef("");
+  useEffect(() => {
+    const view = () => {
+      if (!marketingAllowed() || lastView.current === variant.id) return;
+      metaEvent("ViewContent", productEvent(p.id, color));
+      lastView.current = variant.id;
+    };
+    view();
+    window.addEventListener("dearelle-marketing-allowed", view);
+    return () => window.removeEventListener("dearelle-marketing-allowed", view);
+  }, [p.id, color, variant.id]);
   useEffect(() => {
     const controller = new AbortController();
     fetch("/api/inventory", { cache: "no-store", signal: controller.signal })

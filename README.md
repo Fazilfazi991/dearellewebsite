@@ -1,5 +1,13 @@
 # Dearelle V2
 
+## Current production — 1 November 2026
+
+The live storefront is https://www.dearelle.in; owner access is `/admin/orders`. This current status supersedes the historical prototype milestones below. Orders use durable Supabase storage, server-checked prices and stock, manual customer confirmation, a ₹50 advance included in the total, and COD for the remainder. No online gateway is connected.
+
+The Burgundy Tote (B2-BURGUNDY) is ₹799; other bags remain ₹399. The homepage moodboard containing unrelated fashion imagery has been removed. Orders now open automatically in an owner workspace with priority filters, search, customer details, product photos, explicit next actions, payment records, tracking, history and searchable inventory. The list covers the most recent 100 orders.
+
+Meta Pixel `2358200315014695` runs only on dearelle.in public storefront routes after optional marketing consent. Events: PageView, ViewContent (selected SKU), AddToWishlist, AddToCart (added quantity), Search (selected result SKU, no raw query), Contact (WhatsApp click), InitiateCheckout, and Purchase. Purchase means an accepted **live COD submission**, not a paid order; value is the full server-reviewed INR total, with the advance included. Test orders do not emit Purchase; submission event IDs are deduplicated in session storage. Browser/ad blockers and declined consent can prevent measurement. No server Conversions API is connected. Admin/private receipt/API routes are excluded, automatic configuration is disabled, and no customer form fields are passed as event data. Footer Cookie preferences changes the choice. Private receipts use full navigation to unload the storefront pixel.
+
 Hero delivery is optimized without changing the approved film or layout: immediate responsive poster, hydration-independent startup, decoded-frame reveal, versioned cached media and deferred offscreen homepage imagery. Measurements, exact asset sizes and remaining device-testing limits are in `media/hero/PERFORMANCE.md`; raw request waterfalls are in `media/hero/performance-results.json`.
 
 Homepage collections follow the approved Option 2 direction. Watches and Bags use alternating photographic banners with large smooth SVG curves, a flowing ivory seam and small circular arrow affordances. Each whole banner links to `/watches` or `/bags`. New Arrivals and the wristwatch editorial remain below them; the approved hero is preserved. Product imagery and prices are explicitly demo-only.

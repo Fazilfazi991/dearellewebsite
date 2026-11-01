@@ -33,7 +33,7 @@ const pages: Record<string, { title: string; text: string }> = {
   },
   privacy: {
     title: "Your privacy matters.",
-    text: "Your bag and wishlist are saved in this browser. When you place an order, we use your contact and delivery details to confirm and fulfil it. Order details are stored privately and access is restricted to your browser and the store owner. We do not collect card or bank login details. For questions about your information, contact Dearelle on WhatsApp at +91 8086191325.",
+    text: "Your bag and wishlist are saved in this browser. When you place an order, we use your contact and delivery details to confirm and fulfil it. Order details are stored privately and access is restricted to your browser and the store owner. We do not collect card or bank login details. If you allow optional marketing cookies, Meta Pixel receives public page views and shopping events such as product views, wishlist saves, bag additions, checkout and successful COD order submissions, including product identifiers and INR order values. Meta may use cookies and browser information to measure ads. We do not send your checkout contact or delivery fields to Meta. Owner and private order pages are excluded. You can decline or change your choice using Cookie preferences in the footer. For questions about your information, contact Dearelle on WhatsApp at +91 8086191325.",
   },
   terms: {
     title: "Ordering with Dearelle.",

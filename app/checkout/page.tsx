@@ -1,13 +1,14 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+
 import { ArrowLeft } from "lucide-react";
 import { useStore, Mounted } from "@/components/store";
 import { money } from "@/lib/products";
 import { validateCustomer, type CustomerErrors } from "@/lib/checkout";
 import type { Quote } from "@/lib/quote";
 import { commercePolicy } from "@/lib/config";
+import { metaEvent } from "@/lib/meta";
 
 type ReviewedQuote = Quote & { recordingEnabled: boolean };
 const fields = [
@@ -22,7 +23,7 @@ const fields = [
 
 export default function Checkout() {
   const { items, clear } = useStore();
-  const router = useRouter();
+
   const [quote, setQuote] = useState<ReviewedQuote | null>(null);
   const [errors, setErrors] = useState<CustomerErrors>({});
   const [message, setMessage] = useState("");
@@ -33,6 +34,25 @@ export default function Checkout() {
   const form = useRef<HTMLFormElement>(null);
   const requestKey = useRef<{ payload: string; key: string } | null>(null);
   const submitting = useRef(false);
+  const checkoutSeen = useRef("");
+  useEffect(() => {
+    if (!quote || quote.testMode || checkoutSeen.current === quote.fingerprint)
+      return;
+    const track = () => {
+      metaEvent("InitiateCheckout", {
+        currency: "INR",
+        value: quote.total,
+        content_type: "product",
+        content_ids: quote.lines.map((l) => l.sku),
+        num_items: quote.lines.reduce((n, l) => n + l.quantity, 0),
+      });
+    };
+    track();
+    checkoutSeen.current = quote.fingerprint;
+    window.addEventListener("dearelle-marketing-allowed", track);
+    return () =>
+      window.removeEventListener("dearelle-marketing-allowed", track);
+  }, [quote]);
   const lines = items.map((item) => ({
     productId: item.productId,
     variantId: item.variantId,
@@ -120,8 +140,27 @@ export default function Checkout() {
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error);
+      if (!quote.testMode && data.mode === "live")
+        metaEvent(
+          "Purchase",
+          {
+            currency: "INR",
+            value: quote.total,
+            content_type: "product",
+            content_ids: quote.lines.map((l) => l.sku),
+            contents: quote.lines.map((l) => ({
+              id: l.sku,
+              quantity: l.quantity,
+              item_price: l.unitPrice,
+            })),
+            num_items: quote.lines.reduce((n, l) => n + l.quantity, 0),
+          },
+          requestKey.current!.key,
+        );
       clear();
-      router.push(`/orders/${data.id}`);
+      // A fresh document prevents the storefront pixel from persisting on the private receipt.
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+      window.location.assign(`/orders/${data.id}`);
     } catch (error) {
       setMessage(
         error instanceof Error

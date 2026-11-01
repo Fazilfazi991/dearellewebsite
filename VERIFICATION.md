@@ -1,5 +1,13 @@
 # Verification — 31 October 2026
 
+## Owner workspace, pricing and Meta — 1 November 2026
+
+Production build and changed-file ESLint passed. All 33 unit tests passed, including private-route/consent/domain exclusions, purchase event deduplication and catalogue-only Meta payloads, order-stage filtering and the Burgundy Tote price exception. The design detector reported zero anti-pattern failures; advisory type and semantic-status palette additions are deliberate for the compact owner workspace.
+
+Inspected the actual owner UI at 375px and 1280px. Mobile document width stayed within its viewport; the stage select now uses the full available width. Captured list/detail/completed-order views locally in `.impeccable/review/owner-refresh/`. A synthetic **local** order completed customer confirmation → advance verification → packing → tracking/dispatch → delivery → COD reconciliation, with seven history entries and two payment records. Search with no matches and clearing filters were verified. No real customer orders or payments were changed during testing.
+
+Hosted SQL changed only B2-BURGUNDY to ₹799 and added an audit entry; verified the resulting SKU/price row. Stock and existing order snapshots were preserved. The homepage journal/moodboard was removed; hero and other collection sections were preserved. Consent banner and homepage cleanup inspected at 375px. Browser Pixel does not run on localhost or previews; live event receipt requires production verification in Meta Test events. No production Purchase was fabricated for testing.
+
 ## Hero delivery optimization
 
 Production build, lint and all seven cart/hero tests pass. Independent performance-preservation review: ship, no material fixes. Measured cold Fast 4G LCP 1.076→0.300s / first decoded frame 2.870→1.000s; Slow 4G LCP 2.604→2.088s / first frame 8.680→4.737s under the explicitly documented local network simulation. Final CLS was below 0.001; the root homepage loading boundary was responsible for earlier placeholder-to-hero shifts.

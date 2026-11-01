@@ -9,7 +9,7 @@ test("owner prices apply to every product and variant", () => {
     const expected =
       p.id === "w5"
         ? 699
-        : ["w6", "w7"].includes(p.id)
+        : ["w6", "w7", "b2"].includes(p.id)
           ? 799
           : p.category === "bags"
             ? 399

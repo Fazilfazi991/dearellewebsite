@@ -32,6 +32,8 @@ import {
 import { addItem, subtotal, validCart, type CartItem } from "@/lib/cart";
 import { Photo } from "./image";
 import { ProductImageCarousel } from "./product-image-carousel";
+import { Marketing } from "./marketing";
+import { metaEvent, productEvent } from "@/lib/meta";
 type Store = {
   items: CartItem[];
   add: (item: CartItem, options?: { openCart?: boolean }) => void;
@@ -115,16 +117,31 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         items,
         clear: () => setItems([]),
         add: (item, options) => {
+          const before =
+            items.find(
+              (r) => r.productId === item.productId && r.color === item.color,
+            )?.quantity ?? 0;
+          const next =
+            addItem(items, item).find(
+              (r) => r.productId === item.productId && r.color === item.color,
+            )?.quantity ?? 0;
+          if (next > before)
+            metaEvent(
+              "AddToCart",
+              productEvent(item.productId, item.color, next - before),
+            );
           setItems((old) => addItem(old, item));
           if (options?.openCart !== false) setPanel("cart");
         },
         update,
         open: () => setPanel("cart"),
         wish,
-        toggleWish: (id) =>
+        toggleWish: (id) => {
+          if (!wish.includes(id)) metaEvent("AddToWishlist", productEvent(id));
           setWish((old) =>
             old.includes(id) ? old.filter((x) => x !== id) : [...old, id],
-          ),
+          );
+        },
       }}
     >
       <div className="preview-banner">Your everyday little luxury </div>
@@ -180,6 +197,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       </header>
       {children}
       <Footer />
+      <Marketing />
       <dialog
         ref={dialog}
         className={`drawer ${panel === "search" ? "search-drawer" : ""}`}
@@ -251,7 +269,14 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
                     </div>
                     <Link
                       href={`/products/${p.slug}`}
-                      onClick={() => setPanel(null)}
+                      onClick={() => {
+                        if (query.trim())
+                          metaEvent("Search", {
+                            content_ids: [p.variants[0].sku],
+                            content_type: "product",
+                          });
+                        setPanel(null);
+                      }}
                     >
                       {p.name}
                       <small>
@@ -450,6 +475,13 @@ function Footer() {
           <Link href="/about">About Dearelle</Link>
           <Link href="/instagram">Instagram</Link>
           <Link href="/privacy">Privacy policy</Link>
+          <button
+            className="text-link"
+            type="button"
+            onClick={() => window.dispatchEvent(new Event("dearelle-privacy"))}
+          >
+            Cookie preferences
+          </button>
           <Link href="/terms">Terms of use</Link>
         </div>
       </div>

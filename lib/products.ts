@@ -225,7 +225,7 @@ const catalogue: (Omit<Product, "brand" | "basePrice" | "variants"> & {
     slug: "the-weekend-bag",
     name: "The Burgundy Tote",
     category: "bags",
-    price: 399,
+    price: 799,
     image: "bag-burgundy-tote",
     colors: [{ name: "Burgundy", hex: "#652633", image: "bag-burgundy-tote" }],
     description:

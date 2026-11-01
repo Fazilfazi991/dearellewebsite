@@ -5,14 +5,7 @@ import {
   NewArrivals,
   EditorialCollection,
 } from "@/components/collection-sections";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  PackageCheck,
-  Eye,
-  ShoppingBag,
-} from "lucide-react";
-import { Photo } from "@/components/image";
+import { ArrowRight, PackageCheck, Eye, ShoppingBag } from "lucide-react";
 import { ProductCard } from "@/components/store";
 import { products } from "@/lib/products";
 export default function Home() {
@@ -57,35 +50,6 @@ export default function Home() {
             <Link href="/shipping">Delivery &amp; returns</Link>
           </span>
         </div>
-      </section>
-      <section className="section journal">
-        <div className="section-heading">
-          <h2>
-            A little everyday <em>inspiration.</em>
-          </h2>
-          <p>Our moodboard, made for your next “where did you get that?”</p>
-        </div>
-        <div className="moodboard">
-          {["bag-berry-shoulder", "hero", "watch-date-green", "editorial"].map(
-            (name, i) => (
-              <div key={name}>
-                <Photo
-                  defer
-                  name={name}
-                  alt={
-                    name === "watch-date-green"
-                      ? "Soft Square watch in rose gold and green"
-                      : `Brand inspiration moodboard, representative stock photography ${i + 1}`
-                  }
-                />
-              </div>
-            ),
-          )}
-        </div>
-
-        <Link className="text-link" href="/instagram">
-          Stay close to Dearelle <ArrowUpRight size={17} />
-        </Link>
       </section>
     </main>
   );
