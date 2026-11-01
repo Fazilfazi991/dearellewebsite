@@ -101,3 +101,5 @@ Evidence in .impeccable/review/product-ux/: options-final-360/375/390/414.jpg, p
 ## COD purchase milestone
 
 See PURCHASE-MILESTONE.md for the superseding owner facts and full test matrix. Seventeen tests and the actual-server verification script pass. Mobile 360/375/390/414 and desktop checkout/owner views were inspected. No gateway payment or real dispatch was performed. Test requests persist locally; unauthorized/other-browser access is denied; duplicate retries do not create duplicate orders. Cart shipping copy and confirmation status display were corrected after read-only review. Evidence is under .impeccable/review/commerce/.
+
+Production deployment 6cbdc24 is READY on www.dearelle.in. Live quote for B2-BURGUNDY verified total ₹799, advance ₹50 and COD ₹749. Meta Test events processed PageView, ViewContent, AddToWishlist, AddToCart and InitiateCheckout. Automatic page/product detail collection, automatic events and automatic advanced matching are off. No synthetic live Purchase was sent.
