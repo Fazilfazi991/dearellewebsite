@@ -30,3 +30,11 @@ test("staging preflight accepts only the pinned isolated preview configuration",
   ])
     assert.ok(stagingEnvironmentErrors({ ...valid, ...override }).length > 0);
 });
+
+test("staging accepts the approved 16-character database password minimum", () => {
+  const url = new URL(valid.DATABASE_URL);
+  url.password = "SyntheticTest12";
+  assert.ok(stagingEnvironmentErrors({ ...valid, DATABASE_URL: url.toString() }).length > 0);
+  url.password = "SyntheticTest123";
+  assert.deepEqual(stagingEnvironmentErrors({ ...valid, DATABASE_URL: url.toString() }), []);
+});

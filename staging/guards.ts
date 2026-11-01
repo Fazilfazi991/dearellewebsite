@@ -44,7 +44,7 @@ export function stagingEnvironmentErrors(
       !["postgres:", "postgresql:"].includes(db.protocol) ||
       !(pooler || direct) ||
       db.pathname !== "/postgres" ||
-      decodeURIComponent(db.password).length < 24 ||
+      decodeURIComponent(db.password).length < 16 ||
       db.searchParams.get("sslmode") === "disable"
     )
       errors.push(

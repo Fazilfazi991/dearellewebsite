@@ -1,16 +1,18 @@
 -- USER ACTION ONLY: project pvdklulichacdvsjfdqz (Mumbai staging).
--- Replace the placeholder yourself with a fresh password from your password manager.
--- Use at least 24 characters. Keep it private; do not send it in chat.
+-- Edit ONLY the TYPE_NEW_RANDOM_PASSWORD_HERE text on the assignment line below.
+-- Use a fresh random password of 16+ characters with letters and numbers.
+-- Keep it in your password manager; do not send it in chat.
 -- Run this yourself, then clear/discard the completed editor draft. Do not save it.
 -- The placeholder is deliberately guarded and cannot enable login.
 rollback;
 do $setup$
 declare
-  chosen_password text := $private$REPLACE_WITH_YOUR_PRIVATE_PASSWORD$private$;
+  chosen_password text := $private$TYPE_NEW_RANDOM_PASSWORD_HERE$private$;
 begin
-  if length(chosen_password)<24
-     or chosen_password='REPLACE_WITH_YOUR_PRIVATE_PASSWORD' then
-    raise exception 'Enter a fresh private password of at least 24 characters before running';
+  if length(chosen_password)<16 or length(chosen_password)>128
+     or chosen_password ~ '^TYPE_'
+     or chosen_password !~ '[A-Za-z]' or chosen_password !~ '[0-9]' then
+    raise exception 'Replace only the assignment placeholder with a fresh random 16+ character password containing letters and numbers';
   end if;
   if not exists(select 1 from pg_roles where rolname='dearelle_app'
     and not rolsuper and not rolbypassrls and not rolcreatedb and not rolcreaterole) then

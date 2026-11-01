@@ -12,7 +12,7 @@ Custom SMTP is absent: the dashboard blocks editing invitation/recovery template
 
 Dashboard execution does not register Supabase CLI migration history. The version and exact applied hashes are recorded in `migration-manifest.json`. Do not run `supabase db push` against this project until the existing migration history has been inspected and the already-applied version reconciled through an authorized administrative connection. Never rerun the foundation blindly over the installed schema.
 
-`USER-SET-RUNTIME-PASSWORD.sql` is a guarded template for the user to enter and submit the new credential themselves. It has not been executed. The role stays NOLOGIN until that action; do not store the completed query in Git or send it in chat.
+`USER-SET-RUNTIME-PASSWORD.sql` is a guarded template for the user to enter and submit the new credential themselves. The corrected template has not been executed. A 1 November check found an incorrect placeholder edit with login enabled; the agent disabled login and verified zero app connections. Only the assignment line should be edited, using a fresh random 16+ character password with letters and numbers. The role stays NOLOGIN until that action; do not store the completed query in Git or send it in chat.
 
 ## Initial infrastructure inspection (historical)
 

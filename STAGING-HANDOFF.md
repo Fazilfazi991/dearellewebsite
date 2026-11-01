@@ -33,6 +33,8 @@ Supabase Free has no automatic backups. Prepare encrypted manual exports and obt
 
 The SQL-editor installation is recorded by exact hashes; Supabase CLI migration-history reconciliation remains pending administrative access, so do not blindly run db push.
 
-The database/Auth setup approval has been consumed for the reviewed installation. Next the user must enter and submit a fresh 24+ character database password in the prepared guarded SQL handoff. The role remains unable to log in until that step. Do not paste the password into chat or commit the completed query. No paid upgrade, real owner invitation, public intake or live release is authorized.
+The database/Auth setup approval has been consumed for the reviewed installation. Next the user must enter and submit a fresh random 16+ character database password in the prepared guarded SQL handoff. The role remains unable to log in until that step. Do not paste the password into chat or commit the completed query. No paid upgrade, real owner invitation, public intake or live release is authorized.
 
 Then resolve hosting eligibility, approve Preview-only configuration/deployment, owner invitation and synthetic hosted UAT/recovery at their respective boundaries. Complete the [owner policy checklist](staging/OWNER-APPROVALS.md). Exact setup, synthetic fixture, rollback/recovery and acceptance steps are in the [staging runbook](staging/README.md).
+
+On 1 November, verification found login enabled while the visible draft still assigned the public placeholder. Login was immediately disabled through the role UI and verified OFF, with zero app connections. No password was read from the database or copied. A clearer single-assignment template was prepared; the user must replace only the assignment placeholder with a fresh random 16+ character password containing letters and numbers and submit it themselves. The result grid in the original editor is historical until the corrected script is run.
