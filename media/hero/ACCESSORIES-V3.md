@@ -1,4 +1,4 @@
-# Compact accessory film — review preview
+# Compact accessory film — approved production release
 
 Owner request, 1 November 2026: replace the long mobile portrait treatment with a shorter, smaller and more creative hero. This supersedes the earlier instruction to preserve the hero. All other homepage sections and commerce remain outside scope.
 
@@ -6,7 +6,7 @@ Owner request, 1 November 2026: replace the long mobile portrait treatment with 
 
 Owner selected the first new take: an upright taupe handbag on pale stone with a rose-gold rectangular watch on ivory silk. The camera slides across the composition. The later static flat-lay was explicitly rejected. No model portrait or text overlay. Existing brand mark, collection caption, accessible playback control, responsive first-frame poster and preference-aware loading stay intact. Film accessories are generated campaign styling, not a claim that they exactly represent sale inventory.
 
-Mobile frame: full width, aspect ratio 1:1.05, maximum 56svh; no former 420px minimum. Desktop retains its 16:9 frame. Both deliveries use the same owner-selected take, separately framed. A 5.5-second silent loop replaces 8.4167 seconds. A 0.3-second tail-to-head dissolve joins matching camera positions; no CSS camera zoom or additional entrance animation.
+Mobile frame: full width, aspect ratio 1:1.05, maximum 56svh; no former 420px minimum. Desktop retains its 16:9 frame. Both deliveries use the same owner-selected take, separately framed. A 5.5-second silent loop replaces 8.4167 seconds. A 0.3-second tail-to-head dissolve bridges the return to the starting camera position; no CSS camera zoom or additional entrance animation.
 
 ## Motion assessment before implementation
 
@@ -33,4 +33,4 @@ Render with `node media/hero/render-accessories.mjs`. Exact delivery sizes are r
 
 ## Release boundary
 
-This creative replacement is prepared on `codex/compact-accessory-hero` for owner review. Do not promote it to the live custom domains until the owner approves this new direction. The live COD system is not changed.
+The owner selected the upright take and explicitly instructed “push to production” on 1 November 2026. Release the reviewed hero changes through main to the existing Dearelle V2 Vercel project and custom domains. The live COD system is not changed.
