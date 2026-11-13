@@ -53,3 +53,13 @@ Protected preview deployment dpl_FLF2miZ5sRHpQKP34NmUFjt93rdJ for e2bc593 is REA
 
 Preexisting PRODUCT.md/DESIGN.md historical all-bags-₹399 and checkout-foundation statements remain unchanged. Current source pricing governs this route. No global document refresh or PRODUCT schema upgrade belongs to this scoped finish.
 
+
+## V2 direction — supersedes the V1 viewer treatment
+
+The established photo-first collection remains. Centre the real logo, use the supplied friendly introduction, 4:5 product photographs with small corner radii, readable 12–13px captions, and two full-width model features. Add blush only to the enquiry area; dusty rose carries the CTA. Preserve every product, price and asset.
+
+The primary interaction is a nearly full-height mobile sheet with an ivory header, contained photograph, compact product/colour block and a separate pinned enquiry footer. Desktop uses a spacious centred overlay, with the catalogue visible underneath. Exact scroll restoration, focus return, native Back (including an initial WhatsApp deep link) and URL/colour synchronization are core requirements.
+
+Motion assessment before implementation: sheet entry is occasional and explains spatial continuity (opacity + translateY 12px, 240ms established --ease). Explicit photograph arrows move over300ms with a fast ease-out; touch swipe uses native scrolling. Tile press feedback is120ms/scale.99 and hover only changes image treatment on fine pointers. Reject catalogue auto-rotation, staggered entrances and animated product text. Reduced motion removes entry/press transitions and makes arrow navigation immediate. No animation library or HyperFrames runtime belongs in this interaction.
+
+Enquiry uses the configured official number and includes the selected name, colour, current catalogue price, SKU and absolute lookbook link. Single-photo variants show no carousel arrows or count. Distinct colourways reset the gallery; shared legacy bag IDs remain supported alongside descriptive slugs. No separate product navigation or commerce requests.

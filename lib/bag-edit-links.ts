@@ -10,6 +10,7 @@ export type LookbookVariant = {
 };
 export type LookbookBag = {
   id: string;
+  slug: string;
   name: string;
   variants: LookbookVariant[];
 };
@@ -20,7 +21,9 @@ export function bagEditLink(bagId: string, variantId: string) {
 
 export function resolveBagLink(bags: LookbookBag[], search: string) {
   const query = new URLSearchParams(search);
-  const bag = bags.find((item) => item.id === query.get("bag"));
+  const bag = bags.find(
+    (item) => item.id === query.get("bag") || item.slug === query.get("bag"),
+  );
   if (!bag) return null;
   const colour = query.get("colour");
   const variant = colour
@@ -29,6 +32,10 @@ export function resolveBagLink(bags: LookbookBag[], search: string) {
   return variant ? { bag, variant } : null;
 }
 
-export function bagEnquiry(bag: LookbookBag, variant: LookbookVariant) {
-  return `Hello Dearelle, I'd like to ask about ${bag.name}.\nBag: ${bag.id} · ${variant.sku}\nColour: ${variant.name}\nPrice: ${new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(variant.price)}`;
+export function bagEnquiry(
+  bag: LookbookBag,
+  variant: LookbookVariant,
+  directLink: string,
+) {
+  return `Hi Dearelle! ♡\n\nI found this lovely bag in your collection.\n\nBag: ${bag.name}\nColour: ${variant.name}\nPrice: ${new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(variant.price)}\nReference: ${variant.sku}\nLink: ${directLink}\n\nIs this available?`;
 }

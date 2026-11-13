@@ -2,12 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   ArrowUpRight,
+  Check,
   ChevronLeft,
   ChevronRight,
   Copy,
+  Heart,
+  Maximize2,
   Share2,
   X,
   ZoomIn,
@@ -16,11 +19,11 @@ import {
 import {
   bagEditLink,
   bagEnquiry,
-  resolveBagLink,
   type LookbookBag,
   type LookbookVariant,
 } from "@/lib/bag-edit-links";
 import type { ProductImage } from "@/lib/products";
+import { useBagLookbook } from "./use-bag-lookbook";
 
 const price = (amount: number) =>
   new Intl.NumberFormat("en-IN", {
@@ -29,30 +32,23 @@ const price = (amount: number) =>
     maximumFractionDigits: 0,
   }).format(amount);
 const featuredBags = new Set(["b7", "b5"]);
-const subscribeToLink = (listener: () => void) => {
-  window.addEventListener("popstate", listener);
-  return () => window.removeEventListener("popstate", listener);
-};
-const currentSearch = () => window.location.search;
-const emptySearch = () => "";
-
-function changeBagLink(href: string, replace = false) {
-  window.history[replace ? "replaceState" : "pushState"]({}, "", href);
-  window.dispatchEvent(new PopStateEvent("popstate"));
-}
 
 function LookbookPhoto({
   image,
   alt,
   sizes,
   eager = false,
+  priority = false,
   contain = false,
+  onLoad,
 }: {
   image: ProductImage;
   alt: string;
   sizes: string;
   eager?: boolean;
+  priority?: boolean;
   contain?: boolean;
+  onLoad?: () => void;
 }) {
   const [failed, setFailed] = useState(false);
   if (failed)
@@ -68,11 +64,12 @@ function LookbookPhoto({
       fill
       sizes={sizes}
       loading={eager ? "eager" : "lazy"}
-      fetchPriority={eager ? "high" : "auto"}
+      fetchPriority={priority ? "high" : eager ? "auto" : "low"}
       style={{
         objectFit: contain ? "contain" : "cover",
         objectPosition: image.position ?? "center",
       }}
+      onLoad={onLoad}
       onError={() => setFailed(true)}
     />
   );
@@ -84,7 +81,7 @@ async function copyText(text: string) {
       await navigator.clipboard.writeText(text);
       return true;
     } catch {
-      /* Older embedded browsers use the selection fallback. */
+      /* Selection fallback for older in-app browsers. */
     }
   }
   const field = document.createElement("textarea");
@@ -93,7 +90,6 @@ async function copyText(text: string) {
   field.setAttribute("readonly", "");
   field.style.cssText =
     "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0";
-  // Stay inside the active dialog's focus boundary.
   (document.querySelector("dialog[open]") ?? document.body).append(field);
   field.select();
   const copied = document.execCommand("copy");
@@ -102,7 +98,26 @@ async function copyText(text: string) {
   return copied;
 }
 
-function PhotoGallery({
+function WhatsAppIcon() {
+  return (
+    <svg
+      width="19"
+      height="19"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M20.5 11.7a8.7 8.7 0 0 1-12.8 7.6L3 20.5l1.3-4.6A8.7 8.7 0 1 1 20.5 11.7Z" />
+      <path d="m8.1 7.7 1.5-.3 1.1 2.3-1 1a7.4 7.4 0 0 0 3.6 3.6l1-1 2.3 1.1-.3 1.5c-.2 1-1.8 1-2.7.7-3.2-1.1-5.7-3.6-6.8-6.8-.3-.9-.3-2.5.7-2.7Z" />
+    </svg>
+  );
+}
+
+function BagImageViewer({
   bag,
   variant,
 }: {
@@ -110,19 +125,66 @@ function PhotoGallery({
   variant: LookbookVariant;
 }) {
   const track = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
-  const [zoomed, setZoomed] = useState(false);
+  const frame = useRef(0);
+  const [gallery, setGallery] = useState({
+    variant: variant.id,
+    active: 0,
+    zoomed: false,
+    firstReady: false,
+  });
+  const matching = gallery.variant === variant.id;
+  const active = matching ? gallery.active : 0;
+  const zoomed = matching ? gallery.zoomed : false;
+  const firstReady = matching ? gallery.firstReady : false;
+  if (!matching)
+    setGallery({
+      variant: variant.id,
+      active: 0,
+      zoomed: false,
+      firstReady: false,
+    });
+  const setActive = (index: number) =>
+    setGallery((old) =>
+      old.active === index ? old : { ...old, active: index },
+    );
+  const setZoomed = (value: boolean) =>
+    setGallery((old) => ({ ...old, zoomed: value }));
+  const setFirstReady = (value: boolean) =>
+    setGallery((old) => ({ ...old, firstReady: value }));
   const count = variant.images.length;
+  useLayoutEffect(() => {
+    cancelAnimationFrame(frame.current);
+    if (track.current) {
+      track.current.style.removeProperty("scroll-snap-type");
+      track.current.scrollLeft = 0;
+    }
+    return () => cancelAnimationFrame(frame.current);
+  }, [variant.id]);
+  function stopMovement() {
+    cancelAnimationFrame(frame.current);
+    track.current?.style.removeProperty("scroll-snap-type");
+  }
   function move(offset: number) {
     const element = track.current;
     if (!element) return;
+    stopMovement();
     const next = Math.min(count - 1, Math.max(0, active + offset));
-    element.scrollTo({
-      left: next * element.clientWidth,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "instant"
-        : "smooth",
-    });
+    const target = next * element.clientWidth;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      element.scrollLeft = target;
+      return;
+    }
+    const from = element.scrollLeft;
+    const start = performance.now();
+    element.style.scrollSnapType = "none";
+    function tick(now: number) {
+      const elapsed = Math.min(1, (now - start) / 300);
+      element!.scrollLeft =
+        from + (target - from) * (1 - Math.pow(1 - elapsed, 3));
+      if (elapsed < 1) frame.current = requestAnimationFrame(tick);
+      else element!.style.removeProperty("scroll-snap-type");
+    }
+    frame.current = requestAnimationFrame(tick);
   }
   return (
     <section
@@ -150,17 +212,19 @@ function PhotoGallery({
         className="be-gallery-track"
         ref={track}
         role="region"
-        aria-roledescription="carousel"
+        aria-roledescription={count > 1 ? "carousel" : undefined}
         aria-label="Bag photographs"
-        tabIndex={0}
+        tabIndex={count > 1 ? 0 : -1}
         inert={zoomed}
         aria-hidden={zoomed || undefined}
+        onPointerDown={stopMovement}
+        onWheel={stopMovement}
         onScroll={(event) => {
-          const element = event.currentTarget;
+          const el = event.currentTarget;
           setActive(
             Math.min(
               count - 1,
-              Math.max(0, Math.round(element.scrollLeft / element.clientWidth)),
+              Math.max(0, Math.round(el.scrollLeft / el.clientWidth)),
             ),
           );
         }}
@@ -190,8 +254,12 @@ function PhotoGallery({
                 image={image}
                 alt={`${bag.name}, ${variant.name} — ${image.image.includes("model") ? "styled view" : "product view"}`}
                 contain
-                sizes="(min-width: 900px) 65vw, 100vw"
-                eager={index === 0}
+                sizes="(min-width: 900px) 660px, 100vw"
+                eager={
+                  index === 0 || (firstReady && Math.abs(index - active) <= 1)
+                }
+                priority={index === 0}
+                onLoad={index === 0 ? () => setFirstReady(true) : undefined}
               />
             </button>
           </div>
@@ -219,13 +287,16 @@ function PhotoGallery({
           </button>
         </div>
       )}
-      <span
-        className="be-image-count"
-        role="status"
-        aria-label={`Photograph ${active + 1} of ${count}`}
-      >
-        {active + 1} / {count}
-      </span>
+      {count > 1 && (
+        <span
+          className="be-image-count"
+          role="status"
+          aria-label={`Photograph ${active + 1} of ${count}`}
+        >
+          {String(active + 1).padStart(2, "0")} <span>/</span>{" "}
+          {String(count).padStart(2, "0")}
+        </span>
+      )}
       <button
         type="button"
         className="be-circle be-zoom-control"
@@ -234,16 +305,108 @@ function PhotoGallery({
         onClick={() => setZoomed(!zoomed)}
       >
         {zoomed ? (
-          <ZoomOut size={19} strokeWidth={1.4} />
+          <ZoomOut size={18} strokeWidth={1.4} />
         ) : (
-          <ZoomIn size={19} strokeWidth={1.4} />
+          <ZoomIn size={18} strokeWidth={1.4} />
         )}
       </button>
     </section>
   );
 }
 
-function BagViewer({
+function WhatsAppEnquiry({
+  bag,
+  variant,
+  whatsappNumber,
+}: {
+  bag: LookbookBag;
+  variant: LookbookVariant;
+  whatsappNumber: string | null;
+}) {
+  const [notice, setNotice] = useState("");
+  const relativeLink = bagEditLink(bag.slug, variant.id);
+  const directLink =
+    typeof window === "undefined"
+      ? relativeLink
+      : `${window.location.origin}${relativeLink}`;
+  const message = bagEnquiry(bag, variant, directLink);
+  async function copyEnquiry() {
+    const ok = await copyText(message);
+    setNotice(
+      ok
+        ? "Enquiry copied. Paste it into WhatsApp."
+        : "Copy is unavailable. Use your browser’s share menu.",
+    );
+  }
+  async function copyLink() {
+    const ok = await copyText(directLink);
+    setNotice(
+      ok
+        ? "Bag link copied. Share something lovely."
+        : "Copy is unavailable. Use your browser’s share menu.",
+    );
+  }
+  async function shareBag() {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `${bag.name} — Dearelle`,
+          text: `${variant.name} · ${price(variant.price)}`,
+          url: directLink,
+        });
+        return;
+      } catch (error) {
+        if (error instanceof Error && error.name === "AbortError") return;
+      }
+    }
+    await copyLink();
+  }
+  return (
+    <footer className="be-enquiry">
+      <p className="be-favourite">
+        Found your favourite? <span aria-hidden="true">♡</span>
+      </p>
+      {whatsappNumber ? (
+        <a
+          href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`}
+          className="be-ask"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <WhatsAppIcon />
+          <span>Ask about this bag ♡</span>
+          <ArrowUpRight size={17} strokeWidth={1.5} aria-hidden="true" />
+        </a>
+      ) : (
+        <button type="button" className="be-ask" onClick={copyEnquiry}>
+          <Copy size={18} />
+          <span>Copy enquiry</span>
+          <ArrowUpRight size={17} aria-hidden="true" />
+        </button>
+      )}
+      <div className="be-share-actions">
+        <button type="button" onClick={copyLink}>
+          <Copy size={14} strokeWidth={1.4} />
+          Copy link
+        </button>
+        <button type="button" onClick={shareBag}>
+          <Share2 size={14} strokeWidth={1.4} />
+          Share bag
+        </button>
+      </div>
+      <p className="be-notice" role="status">
+        {notice && (
+          <>
+            <Check size={12} aria-hidden="true" />
+            {notice}
+          </>
+        )}
+      </p>
+    </footer>
+  );
+}
+
+function BagQuickView({
   bag,
   variant,
   whatsappNumber,
@@ -257,57 +420,42 @@ function BagViewer({
   onColour: (id: string) => void;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
-  const [notice, setNotice] = useState("");
   const closeButton = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    const lastFocus = document.activeElement as HTMLElement | null;
+    const active = document.activeElement;
+    const lastFocus =
+      active instanceof HTMLElement && active !== document.body
+        ? active
+        : document.getElementById("be-collection-title");
+    const scrollTop = window.scrollY;
+    const body = document.body;
+    const old = {
+      position: body.style.position,
+      top: body.style.top,
+      left: body.style.left,
+      width: body.style.width,
+      overflow: body.style.overflow,
+      paddingRight: body.style.paddingRight,
+    };
+    const gutter = window.innerWidth - document.documentElement.clientWidth;
+    const existingPadding =
+      parseFloat(getComputedStyle(body).paddingRight) || 0;
+    body.style.position = "fixed";
+    body.style.top = `-${scrollTop}px`;
+    body.style.left = "0";
+    body.style.width = "100%";
+    body.style.overflow = "hidden";
+    body.style.paddingRight = `${existingPadding + gutter}px`;
     const element = dialog.current;
-    const oldOverflow = document.body.style.overflow;
     element?.showModal();
-    document.body.style.overflow = "hidden";
     closeButton.current?.focus({ preventScroll: true });
     return () => {
       element?.close();
-      document.body.style.overflow = oldOverflow;
+      Object.assign(body.style, old);
+      window.scrollTo({ top: scrollTop, behavior: "instant" });
       lastFocus?.focus({ preventScroll: true });
     };
   }, []);
-  async function copyDetails() {
-    const copied = await copyText(
-      `${bagEnquiry(bag, variant)}\n${window.location.origin}${bagEditLink(bag.id, variant.id)}`,
-    );
-    setNotice(
-      copied
-        ? "Bag details copied."
-        : "Copy is unavailable. Use your browser’s share menu.",
-    );
-  }
-  async function copyLink() {
-    const copied = await copyText(
-      `${window.location.origin}${bagEditLink(bag.id, variant.id)}`,
-    );
-    setNotice(
-      copied
-        ? "Bag link copied."
-        : "Copy is unavailable. Use your browser’s share menu.",
-    );
-  }
-  async function shareBag() {
-    const url = `${window.location.origin}${bagEditLink(bag.id, variant.id)}`;
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: `${bag.name} — Dearelle`,
-          text: `${variant.name} · ${price(variant.price)}`,
-          url,
-        });
-        return;
-      } catch (error) {
-        if (error instanceof Error && error.name === "AbortError") return;
-      }
-    }
-    await copyLink();
-  }
   return (
     <dialog
       className="be-viewer"
@@ -317,23 +465,51 @@ function BagViewer({
         event.preventDefault();
         onClose();
       }}
+      onKeyDown={(event) => {
+        if (event.key !== "Tab") return;
+        const element = event.currentTarget;
+        const controls = Array.from(
+          element.querySelectorAll<HTMLElement>(
+            "a[href], button:not(:disabled), [tabindex]:not([tabindex='-1'])",
+          ),
+        ).filter(
+          (control) =>
+            control.tabIndex >= 0 &&
+            !control.closest("[inert]") &&
+            control.getClientRects().length > 0,
+        );
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (
+          event.shiftKey &&
+          (document.activeElement === first ||
+            document.activeElement === element)
+        ) {
+          event.preventDefault();
+          last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
+      }}
     >
       <div className="be-viewer-layout">
         <header className="be-viewer-header">
-          <span>
-            The Bag Edit <span className="be-viewer-by">by Dearelle</span>
+          <span className="be-viewer-brand">
+            DEARELLE <span>The Bag Edit</span>
           </span>
           <button
             ref={closeButton}
             type="button"
-            className="be-icon"
-            aria-label="Close bag viewer"
+            className="be-close"
+            aria-label="Close bag viewer, back to the collection"
             onClick={onClose}
           >
-            <X size={23} strokeWidth={1.3} />
+            <span>Back to collection</span>
+            <X size={21} strokeWidth={1.3} aria-hidden="true" />
           </button>
         </header>
-        <PhotoGallery key={variant.id} bag={bag} variant={variant} />
+        <BagImageViewer bag={bag} variant={variant} />
         <div className="be-viewer-info">
           <div className="be-viewer-product">
             <h2 id="be-viewer-title">{bag.name}</h2>
@@ -348,10 +524,7 @@ function BagViewer({
                     type="button"
                     key={colour.id}
                     aria-pressed={variant.id === colour.id}
-                    onClick={() => {
-                      setNotice("");
-                      onColour(colour.id);
-                    }}
+                    onClick={() => onColour(colour.id)}
                   >
                     <span
                       className="be-swatch"
@@ -363,38 +536,84 @@ function BagViewer({
               </div>
             )}
           </div>
-          <div className="be-enquiry">
-            {whatsappNumber ? (
-              <a
-                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(bagEnquiry(bag, variant))}`}
-                className="be-ask"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ask about this bag <ArrowUpRight size={18} strokeWidth={1.5} />
-              </a>
-            ) : (
-              <button type="button" className="be-ask" onClick={copyDetails}>
-                Copy bag details <Copy size={17} />
-              </button>
-            )}
-            <div className="be-share-actions">
-              <button type="button" onClick={copyLink}>
-                <Copy size={15} strokeWidth={1.4} />
-                Copy link
-              </button>
-              <button type="button" onClick={shareBag}>
-                <Share2 size={15} strokeWidth={1.4} />
-                Share bag
-              </button>
-            </div>
-            <p className="be-notice" role="status">
-              {notice}
-            </p>
-          </div>
         </div>
+        <WhatsAppEnquiry
+          key={variant.id}
+          bag={bag}
+          variant={variant}
+          whatsappNumber={whatsappNumber}
+        />
       </div>
     </dialog>
+  );
+}
+
+function BagLookbookCard({
+  bag,
+  index,
+  onOpen,
+}: {
+  bag: LookbookBag;
+  index: number;
+  onOpen: (bag: LookbookBag, colour: string) => void;
+}) {
+  const variant = bag.variants[0];
+  const featured = featuredBags.has(bag.id);
+  const image =
+    (featured
+      ? variant.images.find((image) => image.image.includes("model"))
+      : null) ?? variant.images[0];
+  return (
+    <article
+      className={`be-item${featured ? " be-item-featured" : ""}`}
+      data-bag-id={bag.id}
+    >
+      <a
+        href={bagEditLink(bag.slug, variant.id)}
+        className="be-bag-link"
+        aria-label={`Explore ${bag.name}, ${price(variant.price)}`}
+        onClick={(event) => {
+          if (
+            event.button !== 0 ||
+            event.metaKey ||
+            event.ctrlKey ||
+            event.shiftKey ||
+            event.altKey
+          )
+            return;
+          event.preventDefault();
+          onOpen(bag, variant.id);
+        }}
+      >
+        <div className="be-tile-image">
+          <LookbookPhoto
+            image={image}
+            alt={`${bag.name}, ${variant.name}`}
+            sizes={
+              featured
+                ? "(min-width: 900px) 800px, 100vw"
+                : "(min-width: 900px) 400px, 50vw"
+            }
+            eager={index < 2}
+          />
+          {variant.images.length > 1 && (
+            <span
+              className="be-photo-count"
+              aria-label={`${variant.images.length} photographs`}
+            >
+              {String(variant.images.length).padStart(2, "0")} photos
+            </span>
+          )}
+          <span className="be-tile-open" aria-hidden="true">
+            <Maximize2 size={13} strokeWidth={1.3} />
+          </span>
+        </div>
+        <div className="be-tile-caption">
+          <h3>{bag.name}</h3>
+          <p>{price(variant.price)}</p>
+        </div>
+      </a>
+    </article>
   );
 }
 
@@ -405,13 +624,7 @@ export function BagEdit({
   bags: LookbookBag[];
   whatsappNumber: string | null;
 }) {
-  const search = useSyncExternalStore(
-    subscribeToLink,
-    currentSearch,
-    emptySearch,
-  );
-  const selected = resolveBagLink(bags, search);
-  const invalid = new URLSearchParams(search).has("bag") && !selected;
+  const { selected, invalid, open, close, chooseColour } = useBagLookbook(bags);
   const heroBag = bags.find((bag) => bag.id === "b8") ?? bags[0];
   const heroVariant = heroBag?.variants[0];
   const heroImage =
@@ -426,11 +639,10 @@ export function BagEdit({
             alt="Dearelle — Your everyday little luxury."
             width={550}
             height={170}
-            sizes="156px"
+            sizes="150px"
             loading="eager"
           />
         </Link>
-        <span>THE COLLECTION</span>
       </header>
       <main id="main">
         <section className="be-intro" aria-labelledby="be-title">
@@ -440,13 +652,15 @@ export function BagEdit({
                 image={{ ...heroImage, position: "50% 64%" }}
                 alt={`${heroBag.name} in ${heroVariant.name}, styled with ivory tailoring`}
                 eager
+                priority
                 sizes="(min-width: 1200px) 1120px, 100vw"
               />
             </div>
           )}
           <div className="be-intro-caption">
             <h1 id="be-title">THE BAG EDIT</h1>
-            <p>A curated collection by Dearelle.</p>
+            <p>A little collection of lovely things.</p>
+            <span>Curated by Dearelle</span>
           </div>
         </section>
         <section
@@ -454,9 +668,12 @@ export function BagEdit({
           aria-labelledby="be-collection-title"
         >
           <div className="be-collection-heading">
-            <h2 id="be-collection-title">Find your everyday.</h2>
+            <h2 id="be-collection-title" tabIndex={-1}>
+              Find your everyday.{" "}
+              <Heart size={14} strokeWidth={1.25} aria-hidden="true" />
+            </h2>
             <span>
-              Tap a bag to explore <ArrowUpRight size={13} />
+              A closer look <ArrowUpRight size={13} />
             </span>
           </div>
           {invalid && (
@@ -465,66 +682,14 @@ export function BagEdit({
             </p>
           )}
           <div className="be-grid">
-            {bags.map((bag, index) => {
-              const variant = bag.variants[0];
-              const featured = featuredBags.has(bag.id);
-              const image =
-                (featured
-                  ? variant.images.find((image) =>
-                      image.image.includes("model"),
-                    )
-                  : null) ?? variant.images[0];
-              return (
-                <article
-                  key={bag.id}
-                  className={`be-item${featured ? " be-item-featured" : ""}`}
-                  data-bag-id={bag.id}
-                >
-                  <a
-                    href={bagEditLink(bag.id, variant.id)}
-                    className="be-bag-link"
-                    aria-label={`Explore ${bag.name}, ${price(variant.price)}`}
-                    onClick={(event) => {
-                      if (
-                        event.button !== 0 ||
-                        event.metaKey ||
-                        event.ctrlKey ||
-                        event.shiftKey ||
-                        event.altKey
-                      )
-                        return;
-                      event.preventDefault();
-                      changeBagLink(bagEditLink(bag.id, variant.id));
-                    }}
-                  >
-                    <div className="be-tile-image">
-                      <LookbookPhoto
-                        image={image}
-                        alt={`${bag.name}, ${variant.name}`}
-                        sizes={
-                          featured
-                            ? "(min-width: 900px) 800px, 100vw"
-                            : "(min-width: 900px) 400px, 50vw"
-                        }
-                        eager={index < 2}
-                      />
-                      {variant.images.length > 1 && (
-                        <span
-                          className="be-photo-count"
-                          aria-label={`${variant.images.length} photographs`}
-                        >
-                          {variant.images.length} photos
-                        </span>
-                      )}
-                    </div>
-                    <div className="be-tile-caption">
-                      <h3>{bag.name}</h3>
-                      <p>{price(variant.price)}</p>
-                    </div>
-                  </a>
-                </article>
-              );
-            })}
+            {bags.map((bag, index) => (
+              <BagLookbookCard
+                key={bag.id}
+                bag={bag}
+                index={index}
+                onOpen={open}
+              />
+            ))}
           </div>
         </section>
         <footer className="be-footer">
@@ -538,15 +703,13 @@ export function BagEdit({
         </footer>
       </main>
       {selected && (
-        <BagViewer
+        <BagQuickView
           key={selected.bag.id}
           bag={selected.bag}
           variant={selected.variant}
           whatsappNumber={whatsappNumber}
-          onClose={() => changeBagLink("/bag-edit", true)}
-          onColour={(id) =>
-            changeBagLink(bagEditLink(selected.bag.id, id), true)
-          }
+          onClose={close}
+          onColour={chooseColour}
         />
       )}
     </div>

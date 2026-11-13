@@ -29,6 +29,7 @@ export function lookbookCollection(
     })
     .map((product) => ({
       id: product.id,
+      slug: product.slug,
       name: product.name,
       variants: product.variants.map((variant) => ({
         id: variant.id,
