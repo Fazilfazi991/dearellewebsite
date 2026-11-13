@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { StoreProvider } from "@/components/store";
+import { SiteShell } from "@/components/site-shell";
 import { assertTestCheckout } from "@/lib/products";
 import "./globals.css";
 export const metadata: Metadata = {
@@ -13,7 +13,8 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   openGraph: {
     title: "Dearelle — Little Luxuries. Big Feelings.",
-    description: "Everyday watches and handbags from Dearelle. Free delivery across India.",
+    description:
+      "Everyday watches and handbags from Dearelle. Free delivery across India.",
     images: ["/images/hero.jpg"],
   },
 };
@@ -29,7 +30,7 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        <StoreProvider>{children}</StoreProvider>
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );
