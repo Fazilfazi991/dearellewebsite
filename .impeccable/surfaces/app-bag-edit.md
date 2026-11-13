@@ -30,3 +30,26 @@ Viewer reveal: occasional, prevents a jarring change, opacity 0 to 1 over 160ms 
 ## Photography provenance
 
 All images reuse public/images catalogue assets, unchanged. Sources and prompts remain in media/bags/november-campaign and ASSETS.md. Model/studio views are chosen only from the selected variant. Repeated detail crops of an existing image are omitted rather than counted as angles.
+
+## Route-specific tokens and advisory exceptions
+
+This is an extension of the incumbent Dearelle world, not a global design-system replacement. Preserve DESIGN.md and .impeccable/design.json. The existing ivory #FCF9F6, espresso #302725, muted #76665F, gold logo and Editorial/Everyday fonts remain authoritative.
+
+- Stone #EEE8E0: photograph loading/containment surface and selected-colour background.
+- Burgundy #652633: enquiry action, emphasis and keyboard focus; hover #50202A. These are confined to this surface rather than new global primary tokens.
+- Display: Editorial, clamp(42px, 11.5vw, 70px), line-height .98, tracking -.025em. Viewer title: 27px mobile / 42px wide desktop.
+- Compact 9–11px metadata and photo-caption labels are deliberate editorial exceptions to general storefront typography. They remain secondary; prices are 12px on collection tiles and 15px in the viewer, with 44px control targets. Colour/type detector advisories do not authorize shrinking functional targets or spreading these sizes to general body copy.
+- Straight photograph edges, 12px mobile / 26px desktop grid gap, 840px collection and 1120px introduction maxima; 700px collection and 900px wide-viewer breakpoints. Motion: 160ms opacity using existing --ease, omitted under reduced motion.
+
+## Finish evidence
+
+Completed collection: 10 styles, 11 colourways, four one-photo and seven two-photo colour galleries; Burgundy Tote ₹799, others ₹399, all derived from current catalogue data. No duplicate catalogue or shipping raster was created. Full handoff: BAG-EDIT.md.
+
+Implementation validation reports 35 unit tests, lint and production build passing. functional-results.json and correction-checks.json in .impeccable/review/bag-edit record checks at 360, 375, 390, 414 and 1280px; touch swipe was specifically exercised at 375px. Collection/viewer screenshots exist at each width, plus 375/390 colour and Chocolate views and a 375px error state. Recorded checks include all bag deep links, keyboard/arrows, zoom return, correct colour/reset, copying/share fallback, refresh recovery, reduced motion, Back, invalid links, no overflow and zero commerce requests. Storefront/cart/homepage preservation is recorded in the implementation handoff.
+
+The review's error-copy and unsettled-390px-capture findings were corrected and both marked resolved by a fresh reviewer. Final disposition: ship to protected preview for owner approval. Local initial script transfers are about 149KB; mobile introduction is approximately 49% of an 812px viewport. These are local measurements, not deployed compression or physical-device claims.
+
+Protected preview deployment dpl_FLF2miZ5sRHpQKP34NmUFjt93rdJ for e2bc593 is READY. Anonymous access redirects to Vercel authentication (302); authenticated fetch returns 200 with ten bag entries and no commerce header/video. Project protection is all_except_custom_domains. Preview: https://dearellewebsite-a9hjp1csu-faziils-projects.vercel.app/bag-edit. Production /bag-edit remains 404. Owner approval and publication remain outstanding; no main push/public publication occurred.
+
+Preexisting PRODUCT.md/DESIGN.md historical all-bags-₹399 and checkout-foundation statements remain unchanged. Current source pricing governs this route. No global document refresh or PRODUCT schema upgrade belongs to this scoped finish.
+
