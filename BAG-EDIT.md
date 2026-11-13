@@ -4,9 +4,9 @@
 
 ## Current presentation
 
-The centred original gold logo leads a compact editorial photograph and the supplied introduction: “THE BAG EDIT”, “A little collection of lovely things.” and “Curated by Dearelle”. The two-column mobile collection uses 4:5 product photographs, small rounded corners, readable names and prices, and two full-width model features. Warm ivory and espresso continue the existing world; dusty rose and a restrained blush enquiry area supply the requested boutique treatment.
+The centred original gold logo leads a compact editorial photograph and the supplied introduction: “THE BAG EDIT”, “A little collection of lovely things.” and “Curated by Dearelle”. The two-column mobile collection uses 4:5 product photographs, small rounded corners, readable names and prices, and two full-width model features. Warm ivory and espresso continue the existing world; dusty rose remains a boutique accent while the enquiry area uses the owner-requested WhatsApp green treatment.
 
-The native dialog is a nearly full-height mobile sheet with a contained photograph, product/colour information and a separate pinned enquiry footer. At wide desktop sizes it becomes a centred overlay with the collection visible underneath. Safe-area padding keeps the enquiry action reachable. The footer reads “Found your favourite? ♡” and “Ask about this bag ♡”.
+The native dialog is a nearly full-height mobile sheet with a contained photograph, product/colour information and a separate pinned enquiry footer. At wide desktop sizes it becomes a centred overlay with the collection visible underneath. Safe-area padding keeps the enquiry action reachable. The footer reads “Found your favourite? ♡” and “Ask on WhatsApp ♡”.
 
 The scoped values and their relationship to the existing design system are recorded in `.impeccable/surfaces/app-bag-edit.md`. `DESIGN.md`, `.impeccable/design.json` and `PRODUCT.md` are preserved; this extension does not redefine the global world.
 
@@ -49,3 +49,7 @@ V2 protected preview: [Open The Bag Edit](https://dearellewebsite-j2lzkt9bp-fazi
 No main-branch push or public production publication is included. Owner approval of the current protected V2 preview remains outstanding before publication. Existing production checkout behavior, including COD, is outside this change; this work adds or enables none.
 
 Historical drift remains deliberately untouched: older `PRODUCT.md`/`DESIGN.md` passages describe all bags at ₹399 alongside later catalogue/design guidance for the ₹799 Burgundy Tote, and older checkout foundations alongside later hosted test-backend milestones. Current catalogue pricing governs this route. No global documentation repair, schema upgrade or backend policy change is included.
+
+## WhatsApp action treatment
+
+The configured WhatsApp enquiry area now uses a pale green background and a white-on-green button labelled “Ask on WhatsApp ♡”. The 22px filled WhatsApp mark uses the Simple Icons CC0 glyph. Button green #087F3F gives 5.10:1 contrast with white; hover is #066633. Destination, selected-product message and copy fallback behavior are preserved. Browser checks passed at 375, 390 and 1280px; local proof is in .impeccable/review/bag-edit-whatsapp/. This remains a preview-only refinement.

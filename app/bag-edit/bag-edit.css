@@ -644,3 +644,25 @@
     background: #754651;
   }
 }
+
+/* WhatsApp enquiries use a recognizable channel treatment, separate from copy fallback. */
+.be-enquiry-whatsapp {
+  background: #edf6ef;
+  border-top-color: #d7e8dc;
+}
+.be-enquiry-whatsapp .be-ask {
+  background: #087f3f;
+  color: #ffffff;
+}
+.be-enquiry-whatsapp .be-favourite,
+.be-enquiry-whatsapp .be-notice {
+  color: #246a42;
+}
+.be-enquiry-whatsapp :focus-visible {
+  outline-color: #087f3f;
+}
+@media (hover: hover) and (pointer: fine) {
+  .be-enquiry-whatsapp .be-ask:hover {
+    background: #066633;
+  }
+}
